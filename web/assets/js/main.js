@@ -55,26 +55,77 @@ async function initHero() {
   nums.forEach((el) => obs.observe(el));
 }
 
+let mapInstance = null;
+let allMarkers = [];
+let allMapData = [];
+
 async function initMap() {
   if (typeof L === "undefined") {
     document.getElementById("map").innerHTML =
       '<p style="padding:2rem;text-align:center;color:#888">Peta butuh koneksi internet.</p>';
     return;
   }
-  const data = await loadJSON("choropleth.json");
-  const map = L.map("map", { scrollWheelZoom: false }).setView([-7.3, 110.3], 8);
+  allMapData = await loadJSON("choropleth.json");
+  mapInstance = L.map("map", { scrollWheelZoom: false }).setView([-7.3, 110.3], 8);
   L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
-    { attribution: "OpenStreetMap / CartoDB", maxZoom: 18 }).addTo(map);
-  data.forEach((d) => {
-    if (!d.lat_perkiraan || !d.lon_perkiraan) return;
+    { attribution: "OpenStreetMap / CartoDB", maxZoom: 18 }).addTo(mapInstance);
+
+  const kategoriSet = new Set();
+  allMapData.forEach((d) => {
+    if (d.kategori_terbanyak) kategoriSet.add(d.kategori_terbanyak);
+  });
+  const kategoriSelect = document.getElementById("filter-kategori");
+  Array.from(kategoriSet).sort().forEach((k) => {
+    const opt = document.createElement("option");
+    opt.value = k;
+    opt.textContent = k;
+    kategoriSelect.appendChild(opt);
+  });
+
+  renderMarkers();
+  document.getElementById("filter-jenis").addEventListener("change", renderMarkers);
+  document.getElementById("filter-kategori").addEventListener("change", renderMarkers);
+  document.getElementById("filter-jumlah").addEventListener("change", renderMarkers);
+}
+
+function renderMarkers() {
+  if (!mapInstance) return;
+  allMarkers.forEach((m) => mapInstance.removeLayer(m));
+  allMarkers = [];
+
+  const fJenis = document.getElementById("filter-jenis").value;
+  const fKategori = document.getElementById("filter-kategori").value;
+  const fJumlah = document.getElementById("filter-jumlah").value;
+
+  const mappable = allMapData.filter((d) => d.lat_perkiraan && d.lon_perkiraan);
+  let visible = 0;
+
+  mappable.forEach((d) => {
     const n = d.jumlah_kasus_unik;
+    if (fJenis && d.jenis_kabkota !== fJenis) return;
+    if (fKategori && d.kategori_terbanyak !== fKategori) return;
+    if (fJumlah === "0" && n !== 0) return;
+    if (fJumlah === "1-4" && (n < 1 || n > 4)) return;
+    if (fJumlah === "5-14" && (n < 5 || n > 14)) return;
+    if (fJumlah === "15+" && n < 15) return;
+
     const radius = n === 0 ? 4 : 6 + Math.sqrt(n) * 6;
     const color = n === 0 ? "#bbb" : n >= 15 ? "#7a1a1e" : n >= 5 ? RED : "#e37a7e";
-    L.circleMarker([d.lat_perkiraan, d.lon_perkiraan], {
+
+    const marker = L.circleMarker([d.lat_perkiraan, d.lon_perkiraan], {
       radius: radius, fillColor: color, color: "#fff", weight: 1.5, fillOpacity: 0.8,
-    }).bindPopup("<strong>" + d.nama_wilayah + "</strong><br>" + n +
-      " kasus unik" + (d.catatan ? "<br><em>" + d.catatan + "</em>" : "")).addTo(map);
+    }).bindPopup(
+      "<strong>" + d.nama_wilayah + "</strong><br>" +
+      n + " kasus unik" +
+      (d.catatan ? "<br><em>" + d.catatan + "</em>" : "")
+    ).addTo(mapInstance);
+
+    allMarkers.push(marker);
+    visible += 1;
   });
+
+  document.getElementById("filter-count").innerHTML =
+    "Menampilkan <strong>" + visible + "</strong> dari " + mappable.length + " wilayah";
 }
 
 async function initTimeline() {
@@ -217,8 +268,23 @@ async function initCases() {
   }).join("");
 }
 
+
+function initProgress() {
+  const bar = document.getElementById("progress-bar");
+  if (!bar) return;
+  const update = () => {
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = h > 0 ? (window.scrollY / h) * 100 : 0;
+    bar.style.width = Math.min(pct, 100) + "%";
+  };
+  window.addEventListener("scroll", update, { passive: true });
+  window.addEventListener("resize", update);
+  update();
+}
+
 document.addEventListener("DOMContentLoaded", async () => {
   try {
+    initProgress();
     await initHero();
     await initMap();
     await initTimeline();

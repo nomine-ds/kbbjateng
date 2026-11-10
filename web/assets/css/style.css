@@ -161,3 +161,160 @@ h3.sub-head { font-size: 1.15rem; margin: 3rem 0 1.5rem;
     top: -3.5rem;
   }
 }
+
+
+/* Step 5: reading progress bar + font Fraunces */
+#progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: var(--accent);
+  z-index: 9999;
+  transition: width 0.1s linear;
+  pointer-events: none;
+  box-shadow: 0 0 8px rgba(193, 39, 45, 0.4);
+}
+.hero h1,
+.section h2,
+.case h3,
+.section-pullquote .pullquote p {
+  font-family: "Fraunces", Georgia, "Times New Roman", serif;
+  font-optical-sizing: auto;
+  font-variation-settings: "SOFT" 0, "WONK" 0;
+}
+
+
+/* Ilustrasi AI */
+.hero.hero-with-img {
+  position: relative;
+  overflow: hidden;
+  background: #1a1a1a;
+  color: #f0ede5;
+}
+.hero.hero-with-img .dek { color: #ddd; }
+.hero.hero-with-img .byline { color: #aaa; }
+.hero.hero-with-img .stat-number { color: var(--accent); }
+.hero.hero-with-img .stat-label { color: #aaa; }
+.hero.hero-with-img .stats {
+  border-top-color: #555;
+  border-bottom-color: #333;
+}
+.hero.hero-with-img .hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.32;
+  z-index: 0;
+}
+.hero.hero-with-img .hero-inner {
+  position: relative;
+  z-index: 1;
+}
+.section-illustration {
+  margin: 2.5rem 0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.section-illustration img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 4px;
+}
+.section-illustration figcaption {
+  font-family: system-ui, sans-serif;
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-style: italic;
+  margin-top: 0.65rem;
+  line-height: 1.45;
+}
+.section-dark .section-illustration figcaption { color: #888; }
+@media (max-width: 640px) {
+  .section-illustration { margin: 1.5rem 0; }
+  .section-illustration figcaption { font-size: 0.72rem; }
+}
+
+
+/* Filter peta */
+.map-controls {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr) auto;
+  gap: 1rem;
+  align-items: end;
+  margin: 1.5rem 0 0.75rem;
+  padding: 1.25rem 1.5rem;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+.filter-group { display: flex; flex-direction: column; gap: 0.4rem; }
+.filter-group label {
+  font-family: system-ui, sans-serif;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  font-weight: 600;
+}
+.filter-group select {
+  font-family: system-ui, sans-serif;
+  font-size: 0.92rem;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  background: #fafaf7;
+  color: var(--ink);
+  cursor: pointer;
+}
+.filter-group select:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+.filter-count {
+  font-family: system-ui, sans-serif;
+  font-size: 0.85rem;
+  color: var(--muted);
+  padding-bottom: 0.6rem;
+  white-space: nowrap;
+}
+.filter-count strong { color: var(--accent); font-weight: 700; }
+@media (max-width: 640px) {
+  .map-controls { grid-template-columns: 1fr; }
+  .filter-count { padding-bottom: 0; text-align: center; }
+}
+
+
+/* Narasi longform */
+.narrative-section { padding: 5rem 1.5rem; background: var(--paper); }
+.narrative-inner { max-width: 680px; margin: 0 auto; }
+.narrative-kicker {
+  font-family: system-ui, sans-serif; font-size: 0.75rem;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--accent); font-weight: 600; margin-bottom: 1.25rem;
+}
+.narrative-title {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  line-height: 1.2; font-weight: 700;
+  margin-bottom: 1.75rem; letter-spacing: -0.01em;
+}
+.narrative-body p {
+  font-family: Georgia, serif; font-size: 1.15rem;
+  line-height: 1.7; margin-bottom: 1.4rem; color: #2a2a2a;
+}
+.narrative-body p:first-child::first-letter {
+  font-family: Georgia, serif; font-weight: 700;
+  font-size: 3.6em; float: left; line-height: 0.85;
+  margin: 0.05em 0.12em 0 0; color: var(--accent);
+}
+.narrative-body strong { font-weight: 700; color: #1a1a1a; }
+@media (max-width: 640px) {
+  .narrative-section { padding: 3.5rem 1.25rem; }
+  .narrative-body p { font-size: 1.05rem; }
+  .narrative-body p:first-child::first-letter { font-size: 3em; }
+}

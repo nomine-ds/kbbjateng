@@ -16,7 +16,7 @@
 <body>
 <div id="progress-bar"></div>
 
-<header class="hero">
+<header class="hero hero-with-img">
   <div class="hero-inner">
     <p class="kicker">Investigasi Data &middot; KBB Jawa Tengah 2016&ndash;2024</p>
     <h1>Negara Sebagai Penghalang</h1>
@@ -41,10 +41,37 @@
     <p class="kicker">01 &middot; Peta</p>
     <h2>Bukan tentang intoleransi, tapi tentang jangkauan pemantauan</h2>
     <p class="lead">
-      Kota Semarang dan Surakarta mendominasi &mdash; tapi itu karena kantor
+      Kota Semarang dan Surakarta mendominasi, tapi itu karena kantor
       eLSA ada di sana, bukan karena paling intoleran. Tiga kabupaten bernilai
       nol karena tidak tercatat, bukan karena tidak ada kasus.
     </p>
+    <div class="map-controls">
+      <div class="filter-group">
+        <label for="filter-jenis">Jenis wilayah</label>
+        <select id="filter-jenis">
+          <option value="">Semua</option>
+          <option value="Kabupaten">Kabupaten</option>
+          <option value="Kota">Kota</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label for="filter-kategori">Kategori terbanyak</label>
+        <select id="filter-kategori">
+          <option value="">Semua</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label for="filter-jumlah">Jumlah kasus</label>
+        <select id="filter-jumlah">
+          <option value="">Semua</option>
+          <option value="0">0 kasus</option>
+          <option value="1-4">1 sampai 4 kasus</option>
+          <option value="5-14">5 sampai 14 kasus</option>
+          <option value="15+">15 kasus atau lebih</option>
+        </select>
+      </div>
+      <div class="filter-count" id="filter-count"></div>
+    </div>
     <div id="map" class="map"></div>
     <p class="caption">
       Ukuran &amp; warna lingkaran sebanding dengan jumlah kasus unik per
@@ -70,6 +97,21 @@
   </div>
 </section>
 
+<section class="section narrative-section" data-narrative="1">
+  <div class="narrative-inner">
+    <p class="narrative-kicker">Empat dari Sepuluh</p>
+    <h2 class="narrative-title">Negara tidak selalu hadir sebagai pelindung. Sering ia yang menjadi pelaku.</h2>
+    <div class="narrative-body">
+      <p>Dari 141 kasus pelanggaran di Jawa Tengah yang tercatat eLSA antara 2016 sampai 2024, 58 kasus melibatkan negara. Dalam empat dari sepuluh kasus, negara hadir bukan sebagai pelindung hak, melainkan sebagai pihak yang membatasi atau membiarkan pembatasan.</p>
+      <p>Angka itu bisa dipecah menjadi tiga. Tiga puluh dua kasus berupa aksi langsung. Tujuh belas kasus berupa pembiaran. Sembilan kasus berupa campuran. Rasio 32 berbanding 17 menunjukkan bahwa negara lebih sering bertindak aktif daripada hanya membiarkan. Tetapi kedua bentuk itu sama-sama melanggar kewajiban negara.</p>
+      <p>Aksi langsung bisa dilihat pada 2018. Bupati Banjarnegara mengeluarkan Surat Peringatan III agar Jemaat Ahmadiyah Indonesia menghentikan seluruh aktivitasnya, merujuk pada SKB 3 Menteri 2008. Surat itu bukan sekadar imbauan. Ia menjadi legitimasi bagi tekanan sosial terhadap JAI, sekaligus pembatasan atas wilayah ekspresi yang tidak melalui undang-undang sebagaimana disyaratkan Pasal 18 ayat 3 ICCPR.</p>
+      <p>Pembiaran bisa dilihat pada kasus Gereja Injili di Tanah Jawa Dermolo, Jepara. Sejak 2002 sampai 2021, Pemkab Jepara tidak memutuskan status IMB gereja tersebut. Sembilan belas tahun jemaat tidak bisa beribadah di gedung yang secara hukum sudah memiliki izin. Baru pada 27 Januari 2021, surat keputusan bupati terbit. Sembilan belas tahun pembiaran bukan sekadar kelalaian administratif. Ia adalah pelanggaran kewajiban melindungi dan memenuhi terhadap warga negara yang memiliki hak konstitusional untuk beribadah.</p>
+      <p><strong>Mengapa negara begitu sering hadir sebagai pelaku?</strong> Setidaknya ada tiga penjelasan. Pertama, regulasi diskriminatif. Data Wahid Foundation yang dikutip dalam laporan eLSA 2023 mencatat setidaknya 88 regulasi diskriminatif di 8 provinsi dan 55 kabupaten atau kota di Indonesia. Lima di antaranya berasal dari lima kabupaten atau kota di Jawa Tengah. Kedua, birokrasi yang normatif. Ketiga, ketiadaan akuntabilitas. Sampai hari ini, tidak ada satu pun pejabat di Jawa Tengah yang dituntut secara hukum karena membiarkan pelanggaran kebebasan beragama.</p>
+    </div>
+  </div>
+</section>
+
+
 <section class="section">
   <div class="section-inner">
     <p class="kicker">03 &middot; Yang Terdampak</p>
@@ -77,7 +119,7 @@
     <p class="lead">
       Dari semua kelompok agama di Jawa Tengah, penghayat kepercayaan adalah
       yang paling sering berhadapan dengan negara. Bukan karena mereka lebih
-      rentan terhadap ormas &mdash; tapi karena jalur administratif lebih
+      rentan terhadap ormas, tapi karena jalur administratif lebih
       mudah dihambat.
     </p>
     <div class="chart-wrap"><canvas id="agama-chart"></canvas></div>
@@ -95,6 +137,21 @@
   </div>
 </section>
 
+<section class="section narrative-section" data-narrative="2">
+  <div class="narrative-inner">
+    <p class="narrative-kicker">Yang Paling Sering Ditolak</p>
+    <h2 class="narrative-title">Pada penghayat, negara bukan pelindung. Ia adalah tembok yang harus dilalui setiap hari.</h2>
+    <div class="narrative-body">
+      <p>Pada level kelompok, temuan yang lebih spesifik muncul. Dari 21 kasus pelanggaran terhadap penghayat kepercayaan, 14 melibatkan negara. Enam puluh enam koma tujuh persen. Pada umat Islam, kelompok dengan kasus terbanyak, proporsi itu hanya 27,5 persen. Pada umat Kristen, 32,3 persen. Pada Katolik, 16,7 persen. Median semua agama lain berada di angka 33,3 persen. Selisih penghayat dari median itu: 33,4 poin persentase.</p>
+      <p>Penghayat adalah outlier yang sangat jelas. Dengan 21 kasus, penghayat bukan kelompok dengan kasus terbanyak. Tetapi pada penghayat, proporsi keterlibatan negara mencapai dua pertiga. Pada kelompok lain, pelanggaran yang dilakukan non-negara mendominasi. Pada penghayat, justru negara yang mendominasi.</p>
+      <p>Di Cilacap, Sudiyono Aji bolak-balik antara desa, kecamatan, dan UPT Catatan Sipil selama berbulan-bulan. Di Surakarta, seorang siswa penghayat di SDN Gambirsari mengikuti pelajaran agama Hindu di kelas satu, lalu agama Kristen sejak kelas dua. Di Kendal, Kartini, penyuluh pendidikan kepercayaan Sapta Darma, mengaku harus melewati jalan terjal untuk bisa mengajar di sekolah.</p>
+      <p>Kegagalan negara memenuhi hak administratif penghayat adalah pelanggaran atas wilayah batin. Pencatatan keyakinan di dokumen kependudukan bukan urusan administratif semata. Ia adalah bentuk pengakuan atas keyakinan itu sendiri. Ketika negara memaksa warga mencatatkan agama yang bukan keyakinannya, ia sedang memasuki wilayah yang seharusnya tidak boleh diintervensi.</p>
+      <p><strong>Pada kelompok lain, pelanggaran yang dilakukan non-negara mendominasi.</strong> Ketika kita berbicara tentang pelanggaran terhadap umat Islam di Jawa Tengah, sebagian besar pelanggaran dilakukan oleh ormas atau massa. Tetapi ketika kita berbicara tentang pelanggaran terhadap penghayat, negara adalah pelaku utamanya. Bukan kekerasan, bukan sweeping. Tetapi pengabaian administratif yang berdampak pada kehidupan sehari-hari.</p>
+    </div>
+  </div>
+</section>
+
+
 
 <section class="section section-pullquote">
   <div class="section-inner">
@@ -111,6 +168,21 @@
     <div class="cases" id="cases"></div>
   </div>
 </section>
+
+<section class="section narrative-section" data-narrative="3">
+  <div class="narrative-inner">
+    <p class="narrative-kicker">Pemuda yang Berhenti Melamar Kerja</p>
+    <h2 class="narrative-title">Di luar sana, mungkin ada ratusan Denny lain yang tidak masuk laporan tahunan.</h2>
+    <div class="narrative-body">
+      <p>Di Kota Semarang, seorang pemuda bernama Denny Wahyudi, alumnus Unisbank dan penganut Sapta Darma, mendaftar pekerjaan di beberapa perusahaan. Di masa pandemi, pendaftaran dilakukan secara online. Di formulir pendaftaran, ada kolom agama yang wajib diisi. Tetapi tidak ada pilihan Penghayat Kepercayaan. Tidak ada pilihan lainnya. Tidak ada pilihan tanda strip.</p>
+      <p>Di salah satu perusahaan, Denny mengadu ke pihak kantor. Ia diminta mengisi kolom agama sesuai pilihan yang ada. Ketika itu, ia isi dengan agama Kong Hu Chu. Di hati rasanya ada yang mengganjal, tetapi dengan berat hati ia mengisikan dengan agama yang ada. Di perusahaan lain, ia mengurungkan niat melamar.</p>
+      <p>Denny tidak mengalami kekerasan. Ia tidak mengalami sweeping. Ia tidak mengalami penyegelan. Ia hanya ingin bekerja. Tetapi negara, melalui ketiadaan aturan, ketiadaan sosialisasi, ketiadaan pengakuan, tidak menyediakan ruang bagi Denny untuk melakukannya tanpa berbohong tentang siapa dirinya.</p>
+      <p>Di Cilacap, Sudiyono Aji masih berjuang dengan KK-nya. Di Kudus, Budi Santoso dan 15 pasangan Sedulur Sikep sudah mendapatkan akta nikah mereka. Bukan karena aturan berubah, tetapi karena ada satu pejabat yang mau menandatangani. Di Semarang, Denny Wahyudi masih menganggur.</p>
+      <p><strong>Tiga orang. Tiga manifestasi berbeda dari masalah yang sama.</strong> Negara tidak hadir sebagai pelindung yang seharusnya.</p>
+    </div>
+  </div>
+</section>
+
 
 <footer class="footer">
   <div class="footer-inner">
