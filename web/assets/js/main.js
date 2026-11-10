@@ -45,6 +45,28 @@ async function initMap() {
 async function initTimeline() {
   const data = await loadJSON("timeline.json");
   const ctx = document.getElementById("timeline-chart").getContext("2d");
+  let mi = 0;
+  data.forEach((d, i) => { if (d.total > data[mi].total) mi = i; });
+  const pk = data[mi];
+  const i22 = data.findIndex((d) => d.tahun === 2022);
+  const anns = {
+    puncak: {
+      type: "label", xValue: mi, yValue: pk.total,
+      content: ["Puncak: " + pk.total + " kasus"],
+      color: "#fff", backgroundColor: "rgba(193,39,45,0.9)",
+      font: { size: 11, weight: "bold", family: "system-ui" },
+      padding: 6, cornerRadius: 3, yAdjust: -20,
+    },
+  };
+  if (i22 >= 0) {
+    anns.format = {
+      type: "label", xValue: i22, yValue: data[i22].total,
+      content: ["Laporan 2022 mengakui", "keterbatasan pemantauan"],
+      color: "#ccc", backgroundColor: "rgba(60,60,60,0.85)",
+      font: { size: 10, family: "system-ui", style: "italic" },
+      padding: 5, cornerRadius: 3, yAdjust: 40,
+    };
+  }
   new Chart(ctx, {
     type: "bar",
     data: {
@@ -57,12 +79,16 @@ async function initTimeline() {
     },
     options: {
       responsive: true, maintainAspectRatio: false,
+      layout: { padding: { top: 30, bottom: 20 } },
       scales: {
         x: { stacked: true, ticks: { color: "#ccc" }, grid: { display: false } },
         y: { stacked: true, ticks: { color: "#ccc" }, grid: { color: "#333" } },
       },
-      plugins: { legend: { labels: { color: "#eee" } },
-        tooltip: { mode: "index", intersect: false } },
+      plugins: {
+        legend: { labels: { color: "#eee" } },
+        tooltip: { mode: "index", intersect: false },
+        annotation: { annotations: anns },
+      },
     },
   });
 }
@@ -70,6 +96,8 @@ async function initTimeline() {
 async function initAgamaChart() {
   const data = await loadJSON("agama_vs_negara.json");
   const ctx = document.getElementById("agama-chart").getContext("2d");
+  // median pct_negara dari 12 kelompok agama lain (lihat ANALYSIS.md)
+  const med = 33.3;
   new Chart(ctx, {
     type: "bar",
     data: {
@@ -82,23 +110,37 @@ async function initAgamaChart() {
     },
     options: {
       indexAxis: "y", responsive: true, maintainAspectRatio: false,
+      layout: { padding: { right: 100 } },
       plugins: {
         legend: { display: false },
         tooltip: {
           callbacks: {
-            label: (ctx) => {
-              const d = data[ctx.dataIndex];
-              return d.pct_negara + "% (" + d.negara_terlibat +
-                " dari " + d.kasus_unik + " kasus)";
+            label: (c) => {
+              const d = data[c.dataIndex];
+              return d.pct_negara + "% (" + d.negara_terlibat + " dari " + d.kasus_unik + " kasus)";
+            },
+          },
+        },
+        annotation: {
+          annotations: {
+            median: {
+              type: "line", xMin: med, xMax: med,
+              borderColor: "#888", borderWidth: 1.5, borderDash: [5, 5],
+              label: {
+                display: true,
+                content: "Median semua agama lain: " + med.toFixed(1) + "%",
+                position: "end", color: "#333",
+                backgroundColor: "rgba(255,255,255,0.95)",
+                font: { size: 10, family: "system-ui", weight: "600" },
+                padding: 5, borderRadius: 2,
+              },
             },
           },
         },
       },
       scales: {
-        x: { ticks: { color: "#666", callback: (v) => v + "%" }, max: 80,
-          grid: { color: "#e5e5e5" } },
-        y: { ticks: { color: "#1a1a1a", font: { size: 14, weight: "600" } },
-          grid: { display: false } },
+        x: { ticks: { color: "#666", callback: (v) => v + "%" }, max: 80, grid: { color: "#e5e5e5" } },
+        y: { ticks: { color: "#1a1a1a", font: { size: 14, weight: "600" } }, grid: { display: false } },
       },
     },
   });
