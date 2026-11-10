@@ -197,19 +197,24 @@ async function initCases() {
     C118: "PEMBUKA", C116: "KASUS 2",
     C119: "KASUS 3", C089: "RESOLUSI",
   };
-  document.getElementById("cases").innerHTML = data.map((d, i) =>
-    '<article class="case">' +
-      '<div class="case-num">' + String(i + 1).padStart(2, "0") + "</div>" +
-      '<div class="case-body">' +
-        '<p class="case-label">' + (labels[d.id_kasus] || "") + "</p>" +
-        '<p class="case-meta">' + d.nama_wilayah + " · " + d.tahun +
-          " · " + d.peran_negara_ringkas + "</p>" +
-        "<h3>" + d.judul_baku + "</h3>" +
-        '<p class="case-ringkasan">' + d.ringkasan_sesuai_laporan + "</p>" +
-        '<p class="case-status"><strong>Status:</strong> ' + d.status + "</p>" +
-      "</div>" +
-    "</article>"
-  ).join("");
+  document.getElementById("cases").innerHTML = data.map((d, i) => {
+    const sama = d.ringkasan_sesuai_laporan && d.judul_baku &&
+      d.ringkasan_sesuai_laporan.trim() === d.judul_baku.trim();
+    const ringkasanHtml = sama ? "" : '<p class="case-ringkasan">' + d.ringkasan_sesuai_laporan + "</p>";
+    return (
+      '<article class="case">' +
+        '<div class="case-num">' + String(i + 1).padStart(2, "0") + "</div>" +
+        '<div class="case-body">' +
+          '<p class="case-label">' + (labels[d.id_kasus] || "") + "</p>" +
+          '<p class="case-meta">' + d.nama_wilayah + " · " + d.tahun +
+            " · " + d.peran_negara_ringkas + "</p>" +
+          "<h3>" + d.judul_baku + "</h3>" +
+          ringkasanHtml +
+          '<p class="case-status"><strong>Status:</strong> ' + d.status + "</p>" +
+        "</div>" +
+      "</article>"
+    );
+  }).join("");
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
