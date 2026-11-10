@@ -59,9 +59,6 @@ let mapInstance = null;
 let allMarkers = [];
 let allMapData = [];
 
-let mapInstance = null;
-let allMarkers = [];
-let allMapData = [];
 let activeMarker = null;
 let lastHashKode = null;
 
@@ -72,7 +69,12 @@ async function initMap() {
     return;
   }
   allMapData = await loadJSON("choropleth.json");
-  window.kasusByWilayah = await loadJSON("kasus_per_wilayah.json");
+  try {
+    window.kasusByWilayah = await loadJSON("kasus_per_wilayah.json");
+  } catch (e) {
+    console.warn("kasus_per_wilayah.json tidak ditemukan. Panel detail tidak akan bekerja.");
+    window.kasusByWilayah = {};
+  }
 
   mapInstance = L.map("map", {
     scrollWheelZoom: false,
