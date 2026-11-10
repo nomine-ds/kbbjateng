@@ -9,17 +9,21 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <link rel="stylesheet" href="assets/css/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400&display=swap" rel="stylesheet">
 </head>
 <body>
+<div id="progress-bar"></div>
 
 <header class="hero">
   <div class="hero-inner">
     <p class="kicker">Investigasi Data &middot; KBB Jawa Tengah 2016&ndash;2024</p>
-    <h1>Bagi Penghayat Kepercayaan, Negara Adalah Penghalang Pertama</h1>
+    <h1>Negara Sebagai Penghalang</h1>
     <p class="dek">
-      Dari 21 kasus pelanggaran terhadap penghayat di Jawa Tengah, 14 melibatkan
-      negara &mdash; mulai dari KK yang tak bisa diubah hingga izin ibadah yang
-      tak kunjung terbit.
+      Dari 141 kasus pelanggaran kebebasan beragama di Jawa Tengah, 58 di
+      antaranya melibatkan negara. Pada kelompok penghayat kepercayaan,
+      proporsinya melompat menjadi dua pertiga.
     </p>
     <div class="stats" id="hero-stats"></div>
     <p class="byline">Berdasarkan 9 laporan tahunan eLSA Semarang, 2016&ndash;2024</p>
@@ -27,7 +31,7 @@
 </header>
 <section class="section section-intro">
   <div class="section-inner">
-    <p class="intro-body">Sudiyono Aji hanya ingin satu hal: kolom agama di Kartu Keluarga-nya diperbaiki. Warga Kabupaten Cilacap itu sudah bertahun-tahun tercatat beragama Islam di dokumen kependudukannya. Padahal, kata Sudiyono, keyakinannya bukan Islam. Ia sudah berulang kali meminta perubahan data ke pemerintah desa, kecamatan, dan Dinas Kependudukan dan Pencatatan Sipil. Tidak ada yang mau menandatangani.</p>
+    <p class="intro-body">Pada 18 Desember 2023, Sudiyono Aji menyerahkan berkas permohonan penggabungan Kartu Keluarga di kantor Desa Karangbenda, Kecamatan Adipala, Kabupaten Cilacap. Di kolom agama, ia menulis "Kepercayaan Terhadap Tuhan YME". Aparat desa menyarankan agar kolom itu diisi "Islam" saja, dengan alasan pengurusan akan lebih mudah. Sudiyono menolak.</p>
   </div>
 </section>
 
@@ -55,7 +59,7 @@
     <h2>Negara terlibat di 41% pelanggaran</h2>
     <p class="lead">
       Dari 141 kasus pelanggaran (2016&ndash;2024), 58 melibatkan negara.
-      Mayoritas berupa aksi langsung &mdash; bukan sekadar pembiaran.
+      Mayoritas berupa aksi langsung, bukan sekadar pembiaran.
     </p>
     <div class="chart-wrap"><canvas id="timeline-chart"></canvas></div>
     <p class="caption">
@@ -86,7 +90,7 @@
     <div class="breakdown" id="breakdown"></div>
     <p class="caption">
       Tidak satu pun berupa kekerasan fisik. Sebelas dari 14 (79%) lewat jalur
-      administratif &mdash; pendidikan, kependudukan, atau perizinan.
+      administratif: pendidikan, kependudukan, atau perizinan.
     </p>
   </div>
 </section>
@@ -95,7 +99,7 @@
 <section class="section section-pullquote">
   <div class="section-inner">
     <blockquote class="pullquote">
-      <p>Bagi penghayat, negara bukan pelindung. Negara adalah penghalang pertama.</p>
+      <p>Negara tidak secara aktif melarang penghayat. Tetapi ia hadir sebagai penghalang administratif.</p>
       <cite>Temuan utama investigasi &middot; 9 laporan eLSA, 2016&ndash;2024</cite>
     </blockquote>
   </div>
@@ -116,7 +120,7 @@
       <li>&ldquo;Negara&rdquo; termasuk aksi langsung (kepolisian, Pemkab, Disdukcapil, Kemenag) dan pembiaran (IMB tidak diputuskan, dll).</li>
       <li>Data = kasus yang dilaporkan eLSA, bukan seluruh pelanggaran KBB di Jateng.</li>
       <li>Dominasi Semarang &amp; Surakarta mencerminkan jangkauan pemantauan, bukan tingkat intoleransi.</li>
-      <li>Format laporan eLSA berubah tiap tahun &mdash; jangan dibaca sebagai tren linier.</li>
+      <li>Format laporan eLSA berubah tiap tahun, jangan dibaca sebagai tren linier.</li>
     </ul>
     <p class="credit">
       Sumber: eLSA Semarang, <em>Laporan Tahunan Kebebasan Beragama dan
