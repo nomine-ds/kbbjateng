@@ -1,0 +1,1278 @@
+{
+  "3372": {
+    "nama_wilayah": "Kota Surakarta",
+    "kasus": [
+      {
+        "id_kasus": "C001",
+        "tahun": 2016,
+        "judul": "Dugaan perobekan Al-Qur'an di Solo (menurut investigasi eLSA yang dirobek bukan Al-Qur'an)",
+        "kategori": "Penodaan agama & ujaran kebencian",
+        "ringkasan": "Dugaan perobekan Al-Qur'an di Solo (menurut investigasi eLSA yang dirobek bukan Al-Qur'an)",
+        "peran_negara": "Negara",
+        "status": "Tidak jelas"
+      },
+      {
+        "id_kasus": "C010",
+        "tahun": 2016,
+        "judul": "Pembubaran paksa misa arwah/sembayangan 1.000 hari di Pendapa Kelurahan Penumping",
+        "kategori": "Pembatasan kegiatan keagamaan",
+        "ringkasan": "Pembubaran paksa misa arwah/sembayangan 1.000 hari di Pendapa Kelurahan Penumping",
+        "peran_negara": "Non-negara",
+        "status": "Selesai"
+      },
+      {
+        "id_kasus": "C018",
+        "tahun": 2016,
+        "judul": "Desakan penutupan GIDI Joyotakan",
+        "kategori": "Rumah ibadah",
+        "ringkasan": "Ratusan umat Islam mendesak penutupan GIDI Joyotakan",
+        "peran_negara": "Non-negara",
+        "status": "Tidak jelas"
+      },
+      {
+        "id_kasus": "C023",
+        "tahun": 2016,
+        "judul": "Sweeping dan perusakan Restoran Social Kitchen",
+        "kategori": "Kekerasan, perusakan & intimidasi",
+        "ringkasan": "Sweeping dan perusakan Restoran Social Kitchen",
+        "peran_negara": "Non-negara",
+        "status": "Selesai"
+      },
+      {
+        "id_kasus": "C030",
+        "tahun": 2017,
+        "judul": "Aksi ormas menolak peresmian GKI Mojosongo",
+        "kategori": "Rumah ibadah",
+        "ringkasan": "Aksi ormas menolak peresmian GKI Mojosongo",
+        "peran_negara": "Non-negara",
+        "status": "Tidak jelas"
+      },
+      {
+        "id_kasus": "C035",
+        "tahun": 2017,
+        "judul": "Penolakan bedah buku 'Islam Tuhan Islam Manusia' di IAIN Surakarta",
+        "kategori": "Pembatasan kegiatan keagamaan",
+        "ringkasan": "Penolakan bedah buku 'Islam Tuhan Islam Manusia' di IAIN Surakarta",
+        "peran_negara": "Non-negara",
+        "status": "Selesai"
+      },
+      {
+        "id_kasus": "C074",
+        "tahun": 2019,
+        "judul": "Aksi 'Tolak Salibisasi' atas renovasi paving Titik Nol Kota Solo",
+        "kategori": "Peristiwa bernuansa agama lainnya",
+        "ringkasan": "Aksi 'Tolak Salibisasi' atas renovasi paving Titik Nol Kota Solo",
+        "peran_negara": "Non-negara",
+        "status": "Tidak jelas"
+      },
+      {
+        "id_kasus": "C076",
+        "tahun": 2019,
+        "judul": "Kantor PCNU Solo didemo massa (nyaris bentrok DSKS-NU)",
+        "kategori": "Kekerasan, perusakan & intimidasi",
+        "ringkasan": "Kantor PCNU Solo didemo massa (nyaris bentrok DSKS-NU)",
+        "peran_negara": "Non-negara",
+        "status": "Selesai"
+      },
+      {
+        "id_kasus": "C079",
+        "tahun": 2020,
+        "judul": "DSKS mempersoalkan logo HUT RI ke-75 'mirip salib'",
+        "kategori": "Peristiwa bernuansa agama lainnya",
+        "ringkasan": "DSKS mempersoalkan logo HUT RI ke-75 'mirip salib'",
+        "peran_negara": "Non-negara",
+        "status": "Tidak jelas"
+      },
+      {
+        "id_kasus": "C083",
+        "tahun": 2020,
+        "judul": "Penyerangan acara midodareni keluarga Syiah, Solo 2020",
+        "kategori": "Kekerasan, perusakan & intimidasi",
+        "ringkasan": "Penyerangan acara midodareni keluarga Syiah (8 Agustus 2020)",
+        "peran_negara": "Non-negara",
+        "status": "Selesai"
+      },
+      {
+        "id_kasus": "C091",
+        "tahun": 2021,
+        "judul": "Warga menolak pembangunan Gereja GVI Efata di Manahan",
+        "kategori": "Rumah ibadah",
+        "ringkasan": "Warga menolak pembangunan Gereja GVI Efata di Manahan",
+        "peran_negara": "Non-negara",
+        "status": "Tidak jelas"
+      },
+      {
+        "id_kasus": "C095",
+        "tahun": 2021,
+        "judul": "Sekitar 10 siswa merusak makam Kristen (16 Juni 2021)",
+        "kategori": "Pemakaman & makam",
+        "ringkasan": "Sekitar 10 siswa merusak makam Kristen (16 Juni 2021)",
+        "peran_negara": "Non-negara",
+        "status": "Tidak jelas"
+      },
+      {
+        "id_kasus": "C108",
+        "tahun": 2023,
+        "judul": "Penolakan bangunan untuk ibadah sementara GKJ Nusukan (disegel; 15 anak sekolah minggu)",
+        "kategori": "Rumah ibadah",
+        "ringkasan": "Penolakan bangunan untuk ibadah sementara GKJ Nusukan (disegel; 15 anak sekolah minggu)",
+        "peran_negara": "Non-negara",
+        "status": "Selesai"
+      },
+      {
+        "id_kasus": "C116",
+        "tahun": 2023,
+        "judul": "Pendidikan penghayat di Surakarta: guru belum tersedia, siswa dipaksa ikut agama lain",
+        "kategori": "Layanan publik & hak sipil",
+        "ringkasan": "Pendidikan penghayat di Surakarta: guru belum tersedia, siswa dipaksa ikut agama lain",
+        "peran_negara": "Negara",
+        "status": "Berlanjut"
+      },
+      {
+        "id_kasus": "C117",
+        "tahun": 2023,
+        "judul": "Penghayat Pangestu/Sapta Darma dicap sesat atau dukun",
+        "kategori": "Peristiwa bernuansa agama lainnya",
+        "ringkasan": "Penghayat Pangestu/Sapta Darma dicap sesat atau dukun",
+        "peran_negara": "Non-negara",
+        "status": "Berlanjut"
+      }
+    ]
+  },
+  "3325": {
+    "nama_wilayah": "Kab. Batang",
+    "kasus": [
+      {
+        "id_kasus": "C003",
+        "tahun": 2016,
+        "judul": "Penolakan Tablig Akbar Al Irsyad Pekalongan di Pendopo",
+        "kategori": "Pembatasan kegiatan keagamaan",
+        "ringkasan": "Penolakan Tablig Akbar Al Irsyad Pekalongan di Pendopo",
+        "peran_negara": "Non-negara",
+        "status": "Tidak jelas"
+      },
+      {
+        "id_kasus": "C022",
+        "tahun": 2016,
+        "judul": "SE Bupati Batang: imbauan salat berjamaah bagi ASN",
+        "kategori": "Kebijakan & tata kelola",
+        "ringkasan": "SE Bupati Batang: imbauan salat berjamaah bagi ASN",
+        "peran_negara": "Negara",
+        "status": "Tidak jelas"
+      },
+      {
+        "id_kasus": "C098",
+        "tahun": 2022,
+        "judul": "Polemik pembangunan masjid di Batang 2022",
+        "kategori": "Rumah ibadah",
+        "ringkasan": "Penolakan pembangunan masjid di Batang karena diisukan aliran sesat",
+        "peran_negara": "Non-negara",
+        "status": "Selesai"
+      }
+    ]
+  },
+  "3318": {
+    "nama_wilayah": "Kab. Pati",
+    "kasus": [
+      {
+        "id_kasus": "C004",
+        "tahun": 2016,
+        "judul": "Penolakan pengajian HTI di Kec. Kayen",
+        "kategori": "Pembatasan kegiatan keagamaan",
+        "ringkasan": "Penolakan pengajian HTI di Kec. Kayen",
+        "peran_negara": "Non-negara",
+        "status": "Tidak jelas"
+      },
+      {
+        "id_kasus": "C096",
+        "tahun": 2021,
+        "judul": "Kolom agama Baha'i di KTP: kosong, strip, atau kepercayaan",
+        "kategori": "Layanan publik & hak sipil",
+        "ringkasan": "Kolom agama Baha'i di KTP: kosong, strip, atau kepercayaan",
+        "peran_negara": "Negara",
+        "status": "Berlanjut"
+      }
+    ]
+  },
+  "3374": {
+    "nama_wilayah": "Kota Semarang",
+    "kasus": [
+      {
+        "id_kasus": "C005",
+        "tahun": 2016,
+        "judul": "Penolakan pengajian Ust. Syafiq Reza Bassalamah di Mijen",
+        "kategori": "Pembatasan kegiatan keagamaan",
+        "ringkasan": "Penolakan pengajian Ust. Syafiq Reza Bassalamah di Mijen",
+        "peran_negara": "Non-negara",
+        "status": "Tidak jelas"
+      },
+      {
+        "id_kasus": "C008",
+        "tahun": 2016,
+        "judul": "Penolakan peringatan Asyuro",
+        "kategori": "Pembatasan kegiatan keagamaan",
+        "ringkasan": "Penolakan peringatan Asyuro",
+        "peran_negara": "Non-negara",
+        "status": "Berlanjut"
+      },
+      {
+        "id_kasus": "C009",
+        "tahun": 2016,
+        "judul": "Penolakan buka puasa bersama Sinta Nuriyah Wahid di Gereja Yakobus",
+        "kategori": "Pembatasan kegiatan keagamaan",
+        "ringkasan": "Penolakan buka puasa bersama Sinta Nuriyah Wahid di Gereja Yakobus",
+        "peran_negara": "Non-negara",
+        "status": "Selesai"
+      },
+      {
+        "id_kasus": "C021",
+        "tahun": 2016,
+        "judul": "Pemeriksaan penulis buku Ahmad Fauzi (dugaan penghinaan agama)",
+        "kategori": "Penodaan agama & ujaran kebencian",
+        "ringkasan": "Pemeriksaan penulis buku Ahmad Fauzi (dugaan penghinaan agama)",
+        "peran_negara": "Negara",
+        "status": "Tidak jelas"
+      },
+      {
+        "id_kasus": "C024",
+        "tahun": 2016,
+        "judul": "Siswa SMKN 7 Semarang tak naik kelas karena menolak pelajaran agama Islam",
+        "kategori": "Layanan publik & hak sipil",
+        "ringkasan": "Siswa SMKN 7 Semarang tak naik kelas karena menolak pelajaran agama Islam",
+        "peran_negara": "Negara",
+        "status": "Tidak jelas"
+      },
+      {
+        "id_kasus": "C037",
+        "tahun": 2017,
+        "judul": "Penolakan pengajian Asyura di Gedung UTC (1 Okt 2017)",
+        "kategori": "Pembatasan kegiatan keagamaan",
+        "ringkasan": "Penolakan pengajian Asyura di Gedung UTC (1 Okt 2017)",
+        "peran_negara": "Non-negara",
+        "status": "Berlanjut"
+      },
+      {
+        "id_kasus": "C038",
+        "tahun": 2017,
+        "judul": "Penolakan perayaan Cap Go Meh di halaman Masjid Agung Jawa Tengah",
+        "kategori": "Pembatasan kegiatan keagamaan",
+        "ringkasan": "Penolakan perayaan Cap Go Meh di halaman Masjid Agung Jawa Tengah",
+        "peran_negara": "Non-negara",
+        "status": "Tidak jelas"
+      },
+      {
+        "id_kasus": "C039",
+        "tahun": 2017,
+        "judul": "Penolakan Pork Festival (diubah jadi Festival Kuliner Imlek)",
+        "kategori": "Pembatasan kegiatan keagamaan",
+        "ringkasan": "Penolakan Pork Festival (diubah jadi Festival Kuliner Imlek)",
+        "peran_negara": "Non-negara",
+        "status": "Selesai"
+      },
+      {
+        "id_kasus": "C040",
+        "tahun": 2017,
+        "judul": "Pembubaran acara Masyirah HTI di Hotel Grasia oleh Polrestabes",
+        "kategori": "Pembatasan kegiatan keagamaan",
+        "ringkasan": "Pembubaran acara Masyirah HTI di Hotel Grasia oleh Polrestabes",
+        "peran_negara": "Negara",
+        "status": "Selesai"
+      },
+      {
+        "id_kasus": "C041",
+        "tahun": 2017,
+        "judul": "Penggagalan diskusi publik 'Islam, Indonesia dan Khilafah' (HTI)",
+        "kategori": "Pembatasan kegiatan keagamaan",
+        "ringkasan": "Penggagalan diskusi publik 'Islam, Indonesia dan Khilafah' (HTI)",
+        "peran_negara": "Campuran",
+        "status": "Selesai"
+      },
+      {
+        "id_kasus": "C042",
+        "tahun": 2017,
+        "judul": "Pembatalan undangan Felix Siauw di Unissula (didukung DPRD)",
+        "kategori": "Pembatasan kegiatan keagamaan",
+        "ringkasan": "Pembatalan undangan Felix Siauw di Unissula (didukung DPRD)",
+        "peran_negara": "Campuran",
+        "status": "Selesai"
+      },
+      {
+        "id_kasus": "C044",
+        "tahun": 2017,
+        "judul": "Perselisihan GP Ansor dengan Gus Nur; penolakan pengajian",
+        "kategori": "Pembatasan kegiatan keagamaan",
+        "ringkasan": "Perselisihan GP Ansor dengan Gus Nur; penolakan pengajian",
+        "peran_negara": "Non-negara",
+        "status": "Tidak jelas"
+      },
+      {
+        "id_kasus": "C045",
+        "tahun": 2017,
+        "judul": "Pembubaran deklarasi FPI di kediaman komisioner KIP (Bulu Lor)",
+        "kategori": "Pembatasan kegiatan keagamaan",
+        "ringkasan": "Pembubaran deklarasi FPI di kediaman komisioner KIP (Bulu Lor)",
+        "peran_negara": "Non-negara",
+        "status": "Selesai"
+      },
+      {
+        "id_kasus": "C047",
+        "tahun": 2017,
+        "judul": "Larangan perayaan Valentine Day bagi pelajar",
+        "kategori": "Kebijakan & tata kelola",
+        "ringkasan": "Larangan perayaan Valentine Day bagi pelajar",
+        "peran_negara": "Negara",
+        "status": "Selesai"
+      },
+      {
+        "id_kasus": "C054",
+        "tahun": 2018,
+        "judul": "43 orang (11 keluarga) 'aliran keagamaan' diamankan Polsek Pedurungan",
+        "kategori": "Peristiwa bernuansa agama lainnya",
+        "ringkasan": "43 orang (11 keluarga) 'aliran keagamaan' diamankan Polsek Pedurungan",
+        "peran_negara": "Negara",
+        "status": "Tidak jelas"
+      },
+      {
+        "id_kasus": "C059",
+        "tahun": 2018,
+        "judul": "Pasal ujaran kebencian menjerat Suprayitno (Tlogosari Kulon)",
+        "kategori": "Penodaan agama & ujaran kebencian",
+        "ringkasan": "Pasal ujaran kebencian menjerat Suprayitno (Tlogosari Kulon)",
+        "peran_negara": "Negara",
+        "status": "Berlanjut"
+      },
+      {
+        "id_kasus": "C064",
+        "tahun": 2018,
+        "judul": "Penolakan kedatangan Ustadz Abdul Somad",
+        "kategori": "Pembatasan kegiatan keagamaan",
+        "ringkasan": "Penolakan kedatangan Ustadz Abdul Somad",
+        "peran_negara": "Non-negara",
+        "status": "Tidak jelas"
+      },
+      {
+        "id_kasus": "C069",
+        "tahun": 2018,
+        "judul": "Penolakan peringatan Asyuro (Yayasan Nurutstsaqolain)",
+        "kategori": "Pembatasan kegiatan keagamaan",
+        "ringkasan": "Penolakan peringatan Asyuro (Yayasan Nurutstsaqolain)",
+        "peran_negara": "Non-negara",
+        "status": "Berlanjut"
+      },
+      {
+        "id_kasus": "C075",
+        "tahun": 2019,
+        "judul": "FPI menolak pemutaran film 'Kucumbu Tubuh Indahku' di Pasar Sentiling",
+        "kategori": "Pembatasan kegiatan keagamaan",
+        "ringkasan": "FPI menolak pemutaran film 'Kucumbu Tubuh Indahku' di Pasar Sentiling",
+        "peran_negara": "Non-negara",
+        "status": "Tidak jelas"
+      },
+      {
+        "id_kasus": "C078",
+        "tahun": 2019,
+        "judul": "Penolakan dan IMB GBI Tlogosari, Semarang",
+        "kategori": "Rumah ibadah",
+        "ringkasan": "Penolakan pembangunan GBI Tlogosari Kulon meski ber-IMB (rekomendasi FKUB)",
+        "peran_negara": "Campuran",
+        "status": "Berlanjut"
+      },
+      {
+        "id_kasus": "C081",
+        "tahun": 2020,
+        "judul": "Penolakan peringatan Asyuro Semarang 2020",
+        "kategori": "Pembatasan kegiatan keagamaan",
+        "ringkasan": "Penolakan peringatan Asyuro (Yayasan Nuruts-Tsaqolain)",
+        "peran_negara": "Non-negara",
+        "status": "Selesai"
+      },
+      {
+        "id_kasus": "C093",
+        "tahun": 2021,
+        "judul": "Perwali Semarang No. 46/2021 tentang izin rumah ibadat (birokratisasi)",
+        "kategori": "Kebijakan & tata kelola",
+        "ringkasan": "Perwali Semarang No. 46/2021 tentang izin rumah ibadat (birokratisasi)",
+        "peran_negara": "Negara",
+        "status": "Berlanjut"
+      },
+      {
+        "id_kasus": "C103",
+        "tahun": 2022,
+        "judul": "Pembangunan krematorium umat Hindu terkendala perizinan",
+        "kategori": "Rumah ibadah",
+        "ringkasan": "Pembangunan krematorium umat Hindu terkendala perizinan",
+        "peran_negara": "Negara",
+        "status": "Berlanjut"
+      },
+      {
+        "id_kasus": "C106",
+        "tahun": 2023,
+        "judul": "Konser 'cinta' History Maker Impact (undangan ke OSIS) dibatalkan setelah keberatan Mualaf Center",
+        "kategori": "Pembatasan kegiatan keagamaan",
+        "ringkasan": "Konser 'cinta' History Maker Impact (undangan ke OSIS) dibatalkan setelah keberatan Mualaf Center",
+        "peran_negara": "Non-negara",
+        "status": "Selesai"
+      },
+      {
+        "id_kasus": "C107",
+        "tahun": 2023,
+        "judul": "Postingan FB 'Palestina musnah' dipersoalkan; pemilik akun dibawa ke Polsek Gajahmungkur",
+        "kategori": "Penodaan agama & ujaran kebencian",
+        "ringkasan": "Postingan FB 'Palestina musnah' dipersoalkan; pemilik akun dibawa ke Polsek Gajahmungkur",
+        "peran_negara": "Non-negara",
+        "status": "Selesai"
+      },
+      {
+        "id_kasus": "C109",
+        "tahun": 2023,
+        "judul": "Penolakan pendirian Gereja Manunggal Kasih Pancasila (surat 8 RT, 25 Jan 2023)",
+        "kategori": "Rumah ibadah",
+        "ringkasan": "Penolakan pendirian Gereja Manunggal Kasih Pancasila (surat 8 RT, 25 Jan 2023)",
+        "peran_negara": "Non-negara",
+        "status": "Berlanjut"
+      },
+      {
+        "id_kasus": "C110",
+        "tahun": 2023,
+        "judul": "Penolakan gereja JKI Plamongan (sejak 2018, meski ada rekomendasi FKUB)",
+        "kategori": "Rumah ibadah",
+        "ringkasan": "Penolakan gereja JKI Plamongan (sejak 2018, meski ada rekomendasi FKUB)",
+        "peran_negara": "Non-negara",
+        "status": "Berlanjut"
+      },
+      {
+        "id_kasus": "C111",
+        "tahun": 2023,
+        "judul": "Konflik pengeras suara murotal Masjid Ar Rohman (pensiunan polisi mencabut kontak)",
+        "kategori": "Peristiwa bernuansa agama lainnya",
+        "ringkasan": "Konflik pengeras suara murotal Masjid Ar Rohman (pensiunan polisi mencabut kontak)",
+        "peran_negara": "Non-negara",
+        "status": "Selesai"
+      },
+      {
+        "id_kasus": "C112",
+        "tahun": 2023,
+        "judul": "Keberatan kremasi jenazah Herman Setyabudi karena KTP beragama Islam",
+        "kategori": "Pemakaman & makam",
+        "ringkasan": "Keberatan kremasi jenazah Herman Setyabudi karena KTP beragama Islam",
+        "peran_negara": "Non-negara",
+        "status": "Tidak jelas"
+      },
+      {
+        "id_kasus": "C113",
+        "tahun": 2023,
+        "judul": "Penolakan pembangunan krematorium di TPU Malon (1.000 m2 dari 8,2 ha)",
+        "kategori": "Pemakaman & makam",
+        "ringkasan": "Penolakan pembangunan krematorium di TPU Malon (1.000 m2 dari 8,2 ha)",
+        "peran_negara": "Non-negara",
+        "status": "Selesai"
+      },
+      {
+        "id_kasus": "C125",
+        "tahun": 2024,
+        "judul": "UIN Walisongo membatalkan seminar 'Migrasi Agama dan Peran Sosial Klan Ba'alwi' (10 Sept 2024)",
+        "kategori": "Pembatasan kegiatan keagamaan",
+        "ringkasan": "UIN Walisongo membatalkan seminar 'Migrasi Agama dan Peran Sosial Klan Ba'alwi' (10 Sept 2024)",
+        "peran_negara": "Non-negara",
+        "status": "Selesai"
+      },
+      {
+        "id_kasus": "C130",
+        "tahun": 2024,
+        "judul": "Gereja Sidang Jemaat Kristus Tlogosari belum ber-IMB",
+        "kategori": "Rumah ibadah",
+        "ringkasan": "Gereja Sidang Jemaat Kristus Tlogosari belum ber-IMB",
+        "peran_negara": "Negara",
+        "status": "Berlanjut"
+      },
+      {
+        "id_kasus": "C131",
+        "tahun": 2024,
+        "judul": "Gereja Isa Al-Masih Karangroto dan GPdI Filadelfia Tlogomulyo tertunda",
+        "kategori": "Rumah ibadah",
+        "ringkasan": "Gereja Isa Al-Masih Karangroto dan GPdI Filadelfia Tlogomulyo tertunda",
+        "peran_negara": "Negara",
+        "status": "Berlanjut"
+      }
+    ]
+  },
+  "3376": {
+    "nama_wilayah": "Kota Tegal",
+    "kasus": [
+      {
+        "id_kasus": "C006",
+        "tahun": 2016,
+        "judul": "Penolakan ceramah Ust. Khalid Basalamah (batal hadir) di Masjid al-Irsyad",
+        "kategori": "Pembatasan kegiatan keagamaan",
+        "ringkasan": "Penolakan ceramah Ust. Khalid Basalamah (batal hadir) di Masjid al-Irsyad",
+        "peran_negara": "Non-negara",
+        "status": "Selesai"
+      },
+      {
+        "id_kasus": "C013",
+        "tahun": 2016,
+        "judul": "Penolakan kebaktian Kelompok Yehuwa",
+        "kategori": "Pembatasan kegiatan keagamaan",
+        "ringkasan": "Penolakan kebaktian Kelompok Yehuwa",
+        "peran_negara": "Non-negara",
+        "status": "Tidak jelas"
+      }
+    ]
+  },
+  "3302": {
+    "nama_wilayah": "Kab. Banyumas",
+    "kasus": [
+      {
+        "id_kasus": "C007",
+        "tahun": 2016,
+        "judul": "15 ormas menolak rencana deklarasi FPI",
+        "kategori": "Pembatasan kegiatan keagamaan",
+        "ringkasan": "15 ormas menolak rencana deklarasi FPI",
+        "peran_negara": "Non-negara",
+        "status": "Tidak jelas"
+      }
+    ]
+  },
+  "3310": {
+    "nama_wilayah": "Kab. Klaten",
+    "kasus": [
+      {
+        "id_kasus": "C011",
+        "tahun": 2016,
+        "judul": "Perusakan dua patung rohani di Gereja Katolik St. Yusuf Pekerja",
+        "kategori": "Kekerasan, perusakan & intimidasi",
+        "ringkasan": "Perusakan dua patung rohani di Gereja Katolik St. Yusuf Pekerja",
+        "peran_negara": "Non-negara",
+        "status": "Selesai"
+      },
+      {
+        "id_kasus": "C099",
+        "tahun": 2022,
+        "judul": "Gereja di Gantiwarno dijual & beralih fungsi jadi masjid",
+        "kategori": "Rumah ibadah",
+        "ringkasan": "Gereja di Gantiwarno dijual & beralih fungsi jadi masjid",
+        "peran_negara": "Non-negara",
+        "status": "Tidak jelas"
+      }
+    ]
+  },
+  "3329": {
+    "nama_wilayah": "Kab. Brebes",
+    "kasus": [
+      {
+        "id_kasus": "C012",
+        "tahun": 2016,
+        "judul": "Rehabilitasi/IMB GKJ Tanjung",
+        "kategori": "Rumah ibadah",
+        "ringkasan": "Penolakan rehabilitasi GKJ Tanjung; IMB tak ditandatangani Pemkab",
+        "peran_negara": "Campuran",
+        "status": "Berlanjut"
+      },
+      {
+        "id_kasus": "C014",
+        "tahun": 2016,
+        "judul": "Warga Sapta Darma dipersulit izin sujudan (Losari Lor)",
+        "kategori": "Pembatasan kegiatan keagamaan",
+        "ringkasan": "Warga Sapta Darma dipersulit izin sujudan (Losari Lor)",
+        "peran_negara": "Negara",
+        "status": "Berlanjut"
+      },
+      {
+        "id_kasus": "C019",
+        "tahun": 2016,
+        "judul": "Penolakan pemakaman warga Sapta Darma di TPU (2007 & 2012)",
+        "kategori": "Pemakaman & makam",
+        "ringkasan": "Penolakan pemakaman warga Sapta Darma di TPU (2007 & 2012)",
+        "peran_negara": "Non-negara",
+        "status": "Berlanjut"
+      },
+      {
+        "id_kasus": "C050",
+        "tahun": 2017,
+        "judul": "Pengislaman 4 anak penganut Sapta Darma tanpa sepengetahuan ayahnya",
+        "kategori": "Pemaksaan keyakinan & konversi",
+        "ringkasan": "Pengislaman 4 anak penganut Sapta Darma tanpa sepengetahuan ayahnya",
+        "peran_negara": "Non-negara",
+        "status": "Tidak jelas"
+      },
+      {
+        "id_kasus": "C056",
+        "tahun": 2018,
+        "judul": "Penolakan pemakaman jenazah terduga teroris di Desa Lemahabang",
+        "kategori": "Pemakaman & makam",
+        "ringkasan": "Penolakan pemakaman jenazah terduga teroris di Desa Lemahabang",
+        "peran_negara": "Non-negara",
+        "status": "Tidak jelas"
+      },
+      {
+        "id_kasus": "C101",
+        "tahun": 2022,
+        "judul": "Penangkapan pentolan Khilafatul Muslimin 2022",
+        "kategori": "Radikalisme & ormas terlarang",
+        "ringkasan": "Penangkapan pentolan Khilafatul Muslimin (konvoi Brebes; 13 orang)",
+        "peran_negara": "Negara",
+        "status": "Selesai"
+      },
+      {
+        "id_kasus": "C120",
+        "tahun": 2023,
+        "judul": "Penolakan pemakaman warga penghayat (belum ada titik temu)",
+        "kategori": "Pemakaman & makam",
+        "ringkasan": "Penolakan pemakaman warga penghayat (belum ada titik temu)",
+        "peran_negara": "Non-negara",
+        "status": "Berlanjut"
+      }
+    ]
+  },
+  "3314": {
+    "nama_wilayah": "Kab. Sragen",
+    "kasus": [
+      {
+        "id_kasus": "C015",
+        "tahun": 2016,
+        "judul": "Penolakan rumah ibadah GIDI di Sragen",
+        "kategori": "Rumah ibadah",
+        "ringkasan": "Penolakan 2 rumah yang dipakai ibadah GIDI",
+        "peran_negara": "Non-negara",
+        "status": "Tidak jelas"
+      },
+      {
+        "id_kasus": "C043",
+        "tahun": 2017,
+        "judul": "Penolakan kedatangan Felix Siauw di Masjid Raya Al Falah",
+        "kategori": "Pembatasan kegiatan keagamaan",
+        "ringkasan": "Penolakan kedatangan Felix Siauw di Masjid Raya Al Falah",
+        "peran_negara": "Non-negara",
+        "status": "Tidak jelas"
+      },
+      {
+        "id_kasus": "C071",
+        "tahun": 2019,
+        "judul": "Foto siswa SMKN 2 Sragen memegang bendera HTI saat pelantikan Rohis",
+        "kategori": "Peristiwa bernuansa agama lainnya",
+        "ringkasan": "Foto siswa SMKN 2 Sragen memegang bendera HTI saat pelantikan Rohis",
+        "peran_negara": "Negara",
+        "status": "Tidak jelas"
+      },
+      {
+        "id_kasus": "C080",
+        "tahun": 2020,
+        "judul": "Teror jilbab terhadap siswi SMAN 1 Gemolong",
+        "kategori": "Pemaksaan keyakinan & konversi",
+        "ringkasan": "Teror jilbab terhadap siswi SMAN 1 Gemolong",
+        "peran_negara": "Non-negara",
+        "status": "Selesai"
+      },
+      {
+        "id_kasus": "C102",
+        "tahun": 2022,
+        "judul": "Pemaksaan hijab di SMAN 1 Sumberlawang, Sragen 2022",
+        "kategori": "Pemaksaan keyakinan & konversi",
+        "ringkasan": "Siswi SMAN 1 Sumberlawang dibully karena tak berhijab",
+        "peran_negara": "Negara",
+        "status": "Selesai"
+      }
+    ]
+  },
+  "3327": {
+    "nama_wilayah": "Kab. Pemalang",
+    "kasus": [
+      {
+        "id_kasus": "C016",
+        "tahun": 2016,
+        "judul": "Larangan pendirian GBI Karangasem, Petarukan (SK Bupati 2004)",
+        "kategori": "Rumah ibadah",
+        "ringkasan": "GBI Karangasem: SK Bupati 2004 melarang pendirian gereja",
+        "peran_negara": "Negara",
+        "status": "Berlanjut"
+      },
+      {
+        "id_kasus": "C127",
+        "tahun": 2024,
+        "judul": "Pembongkaran makam Habib Amir bin Yahya di Rowosari",
+        "kategori": "Pemakaman & makam",
+        "ringkasan": "Pembongkaran makam Habib Amir bin Yahya di Rowosari",
+        "peran_negara": "Non-negara",
+        "status": "Selesai"
+      }
+    ]
+  },
+  "3320": {
+    "nama_wilayah": "Kab. Jepara",
+    "kasus": [
+      {
+        "id_kasus": "C017",
+        "tahun": 2016,
+        "judul": "Sengketa status/IMB GITJ Dermolo, Kembang",
+        "kategori": "Rumah ibadah",
+        "ringkasan": "GITJ Dermolo: nasib gereja 'digantung' sejak 2002",
+        "peran_negara": "Negara",
+        "status": "Berlanjut"
+      },
+      {
+        "id_kasus": "C061",
+        "tahun": 2018,
+        "judul": "Penolakan pemakaman Ibu Panutan Sapta Darma (Sunikah) di TPU Mayong Lor",
+        "kategori": "Pemakaman & makam",
+        "ringkasan": "Penolakan pemakaman Ibu Panutan Sapta Darma (Sunikah) di TPU Mayong Lor",
+        "peran_negara": "Non-negara",
+        "status": "Tidak jelas"
+      },
+      {
+        "id_kasus": "C065",
+        "tahun": 2018,
+        "judul": "Penolakan kedatangan UAS di Ponpes Alhusna Mayong",
+        "kategori": "Pembatasan kegiatan keagamaan",
+        "ringkasan": "Penolakan kedatangan UAS di Ponpes Alhusna Mayong",
+        "peran_negara": "Non-negara",
+        "status": "Tidak jelas"
+      },
+      {
+        "id_kasus": "C121",
+        "tahun": 2023,
+        "judul": "Penolakan pemakaman warga penghayat di Mayong",
+        "kategori": "Pemakaman & makam",
+        "ringkasan": "Penolakan pemakaman warga penghayat di Mayong",
+        "peran_negara": "Non-negara",
+        "status": "Tidak jelas"
+      }
+    ]
+  },
+  "3308": {
+    "nama_wilayah": "Kab. Magelang",
+    "kasus": [
+      {
+        "id_kasus": "C020",
+        "tahun": 2016,
+        "judul": "Konflik spanduk SMP IT/Boarding School Yayasan Umar bin Khattab di Grabag",
+        "kategori": "Peristiwa bernuansa agama lainnya",
+        "ringkasan": "Konflik spanduk SMP IT/Boarding School Yayasan Umar bin Khattab di Grabag",
+        "peran_negara": "Non-negara",
+        "status": "Tidak jelas"
+      },
+      {
+        "id_kasus": "C062",
+        "tahun": 2018,
+        "judul": "Perusakan gereja, sekolah Kristen & NU Center di Kec. Salam",
+        "kategori": "Kekerasan, perusakan & intimidasi",
+        "ringkasan": "Perusakan gereja, sekolah Kristen & NU Center di Kec. Salam",
+        "peran_negara": "Non-negara",
+        "status": "Selesai"
+      },
+      {
+        "id_kasus": "C088",
+        "tahun": 2021,
+        "judul": "Ratusan siswa penghayat terpaksa ikut pelajaran agama",
+        "kategori": "Layanan publik & hak sipil",
+        "ringkasan": "Ratusan siswa penghayat terpaksa ikut pelajaran agama",
+        "peran_negara": "Negara",
+        "status": "Berlanjut"
+      },
+      {
+        "id_kasus": "C100",
+        "tahun": 2022,
+        "judul": "Masjid Al Mahfudz di Salaman dirusak berkali-kali",
+        "kategori": "Kekerasan, perusakan & intimidasi",
+        "ringkasan": "Masjid Al Mahfudz di Salaman dirusak berkali-kali",
+        "peran_negara": "Non-negara",
+        "status": "Tidak jelas"
+      }
+    ]
+  },
+  "3326": {
+    "nama_wilayah": "Kab. Pekalongan",
+    "kasus": [
+      {
+        "id_kasus": "C025",
+        "tahun": 2016,
+        "judul": "Pengakuan 'utusan Tuhan' (Sri Hartati) lalu masuk Islam disaksikan Forkominda",
+        "kategori": "Pemaksaan keyakinan & konversi",
+        "ringkasan": "Pengakuan 'utusan Tuhan' (Sri Hartati) lalu masuk Islam disaksikan Forkominda",
+        "peran_negara": "Negara",
+        "status": "Selesai"
+      }
+    ]
+  },
+  "3324": {
+    "nama_wilayah": "Kab. Kendal",
+    "kasus": [
+      {
+        "id_kasus": "C026",
+        "tahun": 2016,
+        "judul": "Hambatan dan perusakan Masjid Ahmadiyah Al Kautsar, Kendal",
+        "kategori": "Rumah ibadah",
+        "ringkasan": "Perusakan Masjid Ahmadiyah Al Kautsar; Bupati minta pembangunan dihentikan",
+        "peran_negara": "Campuran",
+        "status": "Berlanjut"
+      },
+      {
+        "id_kasus": "C053",
+        "tahun": 2018,
+        "judul": "Penganiayaan KH Ahmad Zaenuri (mantan Ketua NU Kec. Kangkung)",
+        "kategori": "Kekerasan, perusakan & intimidasi",
+        "ringkasan": "Penganiayaan KH Ahmad Zaenuri (mantan Ketua NU Kec. Kangkung)",
+        "peran_negara": "Non-negara",
+        "status": "Berlanjut"
+      },
+      {
+        "id_kasus": "C087",
+        "tahun": 2021,
+        "judul": "Penghayat Kendal: penolakan pemakaman & sulit masuk sekolah",
+        "kategori": "Pemakaman & makam",
+        "ringkasan": "Penghayat Kendal: penolakan pemakaman & sulit masuk sekolah",
+        "peran_negara": "Campuran",
+        "status": "Tidak jelas"
+      }
+    ]
+  },
+  "3313": {
+    "nama_wilayah": "Kab. Karanganyar",
+    "kasus": [
+      {
+        "id_kasus": "C027",
+        "tahun": 2016,
+        "judul": "Surat penghentian pembangunan Gereja Pantekosta (setelah audiensi FUIG-LUIS)",
+        "kategori": "Rumah ibadah",
+        "ringkasan": "Surat penghentian pembangunan Gereja Pantekosta (setelah audiensi FUIG-LUIS)",
+        "peran_negara": "Campuran",
+        "status": "Berlanjut"
+      },
+      {
+        "id_kasus": "C031",
+        "tahun": 2017,
+        "judul": "Penolakan rencana pendirian Gereja Utusan Pantekosta Colomadu",
+        "kategori": "Rumah ibadah",
+        "ringkasan": "Penolakan rencana pendirian Gereja Utusan Pantekosta Colomadu",
+        "peran_negara": "Non-negara",
+        "status": "Berlanjut"
+      }
+    ]
+  },
+  "3311": {
+    "nama_wilayah": "Kab. Sukoharjo",
+    "kasus": [
+      {
+        "id_kasus": "C028",
+        "tahun": 2017,
+        "judul": "Kapel St. Ignasius Ngrayapan disegel dua kali (2015 & April 2017)",
+        "kategori": "Rumah ibadah",
+        "ringkasan": "Kapel St. Ignasius Ngrayapan disegel dua kali (2015 & April 2017)",
+        "peran_negara": "Non-negara",
+        "status": "Berlanjut"
+      },
+      {
+        "id_kasus": "C036",
+        "tahun": 2017,
+        "judul": "Penggagalan diskusi 'Dharma Talk Show' umat Buddha (imbas isu Rohingya)",
+        "kategori": "Pembatasan kegiatan keagamaan",
+        "ringkasan": "Penggagalan diskusi 'Dharma Talk Show' umat Buddha (imbas isu Rohingya)",
+        "peran_negara": "Non-negara",
+        "status": "Selesai"
+      },
+      {
+        "id_kasus": "C046",
+        "tahun": 2017,
+        "judul": "Penghentian pentas dangdut oleh Ketua RW dengan dalih haram",
+        "kategori": "Pembatasan kegiatan keagamaan",
+        "ringkasan": "Penghentian pentas dangdut oleh Ketua RW dengan dalih haram",
+        "peran_negara": "Non-negara",
+        "status": "Selesai"
+      },
+      {
+        "id_kasus": "C048",
+        "tahun": 2017,
+        "judul": "Penyerangan hajatan HUT RI di Desa Siwal (19 Agustus 2017)",
+        "kategori": "Kekerasan, perusakan & intimidasi",
+        "ringkasan": "Penyerangan hajatan HUT RI di Desa Siwal (19 Agustus 2017)",
+        "peran_negara": "Non-negara",
+        "status": "Tidak jelas"
+      },
+      {
+        "id_kasus": "C082",
+        "tahun": 2020,
+        "judul": "Polemik pembangunan gereja di Dukuh Jetis, Gadingan, Mojolaban",
+        "kategori": "Rumah ibadah",
+        "ringkasan": "Polemik pembangunan gereja di Dukuh Jetis, Gadingan, Mojolaban",
+        "peran_negara": "Non-negara",
+        "status": "Tidak jelas"
+      },
+      {
+        "id_kasus": "C132",
+        "tahun": 2024,
+        "judul": "JKI-Millenium Damai tertunda pembangunannya",
+        "kategori": "Rumah ibadah",
+        "ringkasan": "JKI-Millenium Damai tertunda pembangunannya",
+        "peran_negara": "Negara",
+        "status": "Berlanjut"
+      }
+    ]
+  },
+  "3375": {
+    "nama_wilayah": "Kota Pekalongan",
+    "kasus": [
+      {
+        "id_kasus": "C029",
+        "tahun": 2017,
+        "judul": "Penghentian pembangunan Masjid al-Arqom oleh Satpol PP",
+        "kategori": "Rumah ibadah",
+        "ringkasan": "Penghentian pembangunan Masjid al-Arqom oleh Satpol PP",
+        "peran_negara": "Campuran",
+        "status": "Berlanjut"
+      },
+      {
+        "id_kasus": "C114",
+        "tahun": 2023,
+        "judul": "Wali Kota tidak mengizinkan Lapangan Mataram untuk Salat Id Muhammadiyah (21 April 2023)",
+        "kategori": "Pembatasan kegiatan keagamaan",
+        "ringkasan": "Wali Kota tidak mengizinkan Lapangan Mataram untuk Salat Id Muhammadiyah (21 April 2023)",
+        "peran_negara": "Negara",
+        "status": "Selesai"
+      }
+    ]
+  },
+  "3328": {
+    "nama_wilayah": "Kab. Tegal",
+    "kasus": [
+      {
+        "id_kasus": "C032",
+        "tahun": 2017,
+        "judul": "GKJ Mejasem: jemaat menumpang di gereja Katolik",
+        "kategori": "Rumah ibadah",
+        "ringkasan": "GKJ Mejasem: jemaat menumpang di gereja Katolik",
+        "peran_negara": "Non-negara",
+        "status": "Berlanjut"
+      },
+      {
+        "id_kasus": "C070",
+        "tahun": 2019,
+        "judul": "Penolakan Musda ke-2 DPD FPI Jateng di kediaman Habib Baghir (Talang)",
+        "kategori": "Pembatasan kegiatan keagamaan",
+        "ringkasan": "Penolakan Musda ke-2 DPD FPI Jateng di kediaman Habib Baghir (Talang)",
+        "peran_negara": "Non-negara",
+        "status": "Tidak jelas"
+      },
+      {
+        "id_kasus": "C084",
+        "tahun": 2020,
+        "judul": "Video 'azan jihad' meresahkan warga",
+        "kategori": "Radikalisme & ormas terlarang",
+        "ringkasan": "Video 'azan jihad' meresahkan warga",
+        "peran_negara": "Non-negara",
+        "status": "Selesai"
+      }
+    ]
+  },
+  "3309": {
+    "nama_wilayah": "Kab. Boyolali",
+    "kasus": [
+      {
+        "id_kasus": "C033",
+        "tahun": 2017,
+        "judul": "Mushola Ahmadiyah Kragilan: pembangunan dihentikan (~10 bulan)",
+        "kategori": "Rumah ibadah",
+        "ringkasan": "Mushola Ahmadiyah Kragilan: pembangunan dihentikan (~10 bulan)",
+        "peran_negara": "Negara",
+        "status": "Berlanjut"
+      },
+      {
+        "id_kasus": "C115",
+        "tahun": 2023,
+        "judul": "Kanwil Kemenag Jateng menolak rekomendasi Ijtima Majelis Ansharullah (JAI) di Donohudan",
+        "kategori": "Kebijakan & tata kelola",
+        "ringkasan": "Kanwil Kemenag Jateng menolak rekomendasi Ijtima Majelis Ansharullah (JAI) di Donohudan",
+        "peran_negara": "Negara",
+        "status": "Selesai"
+      }
+    ]
+  },
+  "3317": {
+    "nama_wilayah": "Kab. Rembang",
+    "kasus": [
+      {
+        "id_kasus": "C034",
+        "tahun": 2017,
+        "judul": "Sanggar Sapta Darma 'Candi Busono' dibakar massa (10 Nov 2015)",
+        "kategori": "Rumah ibadah",
+        "ringkasan": "Sanggar Sapta Darma 'Candi Busono' dibakar massa (10 Nov 2015)",
+        "peran_negara": "Non-negara",
+        "status": "Berlanjut"
+      }
+    ]
+  },
+  "3373": {
+    "nama_wilayah": "Kota Salatiga",
+    "kasus": [
+      {
+        "id_kasus": "C049",
+        "tahun": 2017,
+        "judul": "Pelarangan/antisipasi aksi 1000 Lilin; Kapolsek mendatangi Romo",
+        "kategori": "Pembatasan kegiatan keagamaan",
+        "ringkasan": "Pelarangan/antisipasi aksi 1000 Lilin; Kapolsek mendatangi Romo",
+        "peran_negara": "Negara",
+        "status": "Selesai"
+      },
+      {
+        "id_kasus": "C057",
+        "tahun": 2018,
+        "judul": "Pro-kontra mahasiswa IAIN menyanyi di GKJ Sidomukti saat Paskah",
+        "kategori": "Peristiwa bernuansa agama lainnya",
+        "ringkasan": "Pro-kontra mahasiswa IAIN menyanyi di GKJ Sidomukti saat Paskah",
+        "peran_negara": "Non-negara",
+        "status": "Selesai"
+      },
+      {
+        "id_kasus": "C124",
+        "tahun": 2024,
+        "judul": "Jalan santai GBI Karangalit gagal dilaksanakan (dugaan muatan intoleransi)",
+        "kategori": "Pembatasan kegiatan keagamaan",
+        "ringkasan": "Jalan santai GBI Karangalit gagal dilaksanakan (dugaan muatan intoleransi)",
+        "peran_negara": "Non-negara",
+        "status": "Selesai"
+      }
+    ]
+  },
+  "3371": {
+    "nama_wilayah": "Kota Magelang",
+    "kasus": [
+      {
+        "id_kasus": "C051",
+        "tahun": 2018,
+        "judul": "Perusakan belasan nisan salib di TPU Giriloyo",
+        "kategori": "Pemakaman & makam",
+        "ringkasan": "Perusakan belasan nisan salib di TPU Giriloyo",
+        "peran_negara": "Non-negara",
+        "status": "Berlanjut"
+      }
+    ]
+  },
+  "3316": {
+    "nama_wilayah": "Kab. Blora",
+    "kasus": [
+      {
+        "id_kasus": "C052",
+        "tahun": 2018,
+        "judul": "Pemuda merusak kantor PCNU Blora",
+        "kategori": "Kekerasan, perusakan & intimidasi",
+        "ringkasan": "Pemuda merusak kantor PCNU Blora",
+        "peran_negara": "Non-negara",
+        "status": "Selesai"
+      }
+    ]
+  },
+  "3323": {
+    "nama_wilayah": "Kab. Temanggung",
+    "kasus": [
+      {
+        "id_kasus": "C055",
+        "tahun": 2018,
+        "judul": "Warga 12 desa menolak imunisasi (dianggap haram)",
+        "kategori": "Peristiwa bernuansa agama lainnya",
+        "ringkasan": "Warga 12 desa menolak imunisasi (dianggap haram)",
+        "peran_negara": "Non-negara",
+        "status": "Berlanjut"
+      },
+      {
+        "id_kasus": "C063",
+        "tahun": 2018,
+        "judul": "Penolakan Peace Train Indonesia 5 (dipindah ke Wonosobo)",
+        "kategori": "Pembatasan kegiatan keagamaan",
+        "ringkasan": "Penolakan Peace Train Indonesia 5 (dipindah ke Wonosobo)",
+        "peran_negara": "Non-negara",
+        "status": "Selesai"
+      }
+    ]
+  },
+  "3304": {
+    "nama_wilayah": "Kab. Banjarnegara",
+    "kasus": [
+      {
+        "id_kasus": "C058",
+        "tahun": 2018,
+        "judul": "Surat Peringatan III Bupati Banjarnegara: hentikan aktivitas JAI",
+        "kategori": "Kebijakan & tata kelola",
+        "ringkasan": "Surat Peringatan III Bupati Banjarnegara: hentikan aktivitas JAI",
+        "peran_negara": "Negara",
+        "status": "Berlanjut"
+      }
+    ]
+  },
+  "3322": {
+    "nama_wilayah": "Kab. Semarang",
+    "kasus": [
+      {
+        "id_kasus": "C060",
+        "tahun": 2018,
+        "judul": "Vonis ujaran kebencian terhadap Pendeta Julius Heri Sarwono (3 tahun)",
+        "kategori": "Penodaan agama & ujaran kebencian",
+        "ringkasan": "Vonis ujaran kebencian terhadap Pendeta Julius Heri Sarwono (3 tahun)",
+        "peran_negara": "Negara",
+        "status": "Selesai"
+      },
+      {
+        "id_kasus": "C094",
+        "tahun": 2021,
+        "judul": "Kesulitan IMB gereja GBT/Beth-El Leyangan, Ungaran",
+        "kategori": "Rumah ibadah",
+        "ringkasan": "Gereja Beth-El Tabernakel Alfa Omega Leyangan kesulitan IMB",
+        "peran_negara": "Negara",
+        "status": "Berlanjut"
+      },
+      {
+        "id_kasus": "C122",
+        "tahun": 2023,
+        "judul": "Kendala pelayanan publik & hak sipil penghayat serta multidiskriminasi perempuan penghayat",
+        "kategori": "Layanan publik & hak sipil",
+        "ringkasan": "Kendala pelayanan publik & hak sipil penghayat serta multidiskriminasi perempuan penghayat",
+        "peran_negara": "Negara",
+        "status": "Berlanjut"
+      },
+      {
+        "id_kasus": "C129",
+        "tahun": 2024,
+        "judul": "Intimidasi terhadap penganut Hindu (Puri Asmorojati)",
+        "kategori": "Kekerasan, perusakan & intimidasi",
+        "ringkasan": "Intimidasi terhadap penganut Hindu (Puri Asmorojati)",
+        "peran_negara": "Non-negara",
+        "status": "Berlanjut"
+      }
+    ]
+  },
+  "3305": {
+    "nama_wilayah": "Kab. Kebumen",
+    "kasus": [
+      {
+        "id_kasus": "C066",
+        "tahun": 2018,
+        "judul": "Penolakan pendirian gedung MTA di Adimulyo",
+        "kategori": "Rumah ibadah",
+        "ringkasan": "Penolakan pendirian gedung MTA di Adimulyo",
+        "peran_negara": "Non-negara",
+        "status": "Berlanjut"
+      },
+      {
+        "id_kasus": "C073",
+        "tahun": 2019,
+        "judul": "Kemunculan aliran 'Islam Sejati' di Kebumen",
+        "kategori": "Peristiwa bernuansa agama lainnya",
+        "ringkasan": "Kemunculan aliran 'Islam Sejati' di Kebumen",
+        "peran_negara": "Non-negara",
+        "status": "Tidak jelas"
+      }
+    ]
+  },
+  "3307": {
+    "nama_wilayah": "Kab. Wonosobo",
+    "kasus": [
+      {
+        "id_kasus": "C067",
+        "tahun": 2018,
+        "judul": "Penolakan keberadaan MTA oleh warga Nahdliyin",
+        "kategori": "Pembatasan kegiatan keagamaan",
+        "ringkasan": "Penolakan keberadaan MTA oleh warga Nahdliyin",
+        "peran_negara": "Non-negara",
+        "status": "Berlanjut"
+      },
+      {
+        "id_kasus": "C126",
+        "tahun": 2024,
+        "judul": "Pembongkaran 78 makam diduga habib/wali palsu di Wadaslintang",
+        "kategori": "Pemakaman & makam",
+        "ringkasan": "Pembongkaran 78 makam diduga habib/wali palsu di Wadaslintang",
+        "peran_negara": "Non-negara",
+        "status": "Selesai"
+      }
+    ]
+  },
+  "3301": {
+    "nama_wilayah": "Kab. Cilacap",
+    "kasus": [
+      {
+        "id_kasus": "C068",
+        "tahun": 2018,
+        "judul": "FUI menolak ritual Sedekah Laut (banner larangan larung sesaji)",
+        "kategori": "Pembatasan kegiatan keagamaan",
+        "ringkasan": "FUI menolak ritual Sedekah Laut (banner larangan larung sesaji)",
+        "peran_negara": "Non-negara",
+        "status": "Tidak jelas"
+      },
+      {
+        "id_kasus": "C104",
+        "tahun": 2022,
+        "judul": "Layanan pendidikan kepercayaan di Cilacap masih terkendala",
+        "kategori": "Layanan publik & hak sipil",
+        "ringkasan": "Layanan pendidikan kepercayaan di Cilacap masih terkendala",
+        "peran_negara": "Negara",
+        "status": "Berlanjut"
+      },
+      {
+        "id_kasus": "C118",
+        "tahun": 2023,
+        "judul": "Sudiyono Aji dipersulit: KK bertuliskan Islam, perubahan data dilempar antar instansi",
+        "kategori": "Layanan publik & hak sipil",
+        "ringkasan": "Sudiyono Aji dipersulit: KK bertuliskan Islam, perubahan data dilempar antar instansi",
+        "peran_negara": "Negara",
+        "status": "Berlanjut"
+      },
+      {
+        "id_kasus": "C119",
+        "tahun": 2023,
+        "judul": "Penyuluh penghayat Sri Rahayu dimintai SK/ijazah di SMPN 2 Adipala",
+        "kategori": "Layanan publik & hak sipil",
+        "ringkasan": "Penyuluh penghayat Sri Rahayu dimintai SK/ijazah di SMPN 2 Adipala",
+        "peran_negara": "Negara",
+        "status": "Selesai"
+      }
+    ]
+  },
+  "3319": {
+    "nama_wilayah": "Kab. Kudus",
+    "kasus": [
+      {
+        "id_kasus": "C072",
+        "tahun": 2019,
+        "judul": "Tabligh akbar Ustadz Abdul Somad di Pesantren Al Achsaniyyah dibatalkan",
+        "kategori": "Pembatasan kegiatan keagamaan",
+        "ringkasan": "Tabligh akbar Ustadz Abdul Somad di Pesantren Al Achsaniyyah dibatalkan",
+        "peran_negara": "Non-negara",
+        "status": "Selesai"
+      },
+      {
+        "id_kasus": "C089",
+        "tahun": 2021,
+        "judul": "Pencatatan perkawinan dan adminduk Sedulur Sikep, Kudus 2021",
+        "kategori": "Layanan publik & hak sipil",
+        "ringkasan": "Sedulur Sikep: kolom agama anak di KK & akta perkawinan tertunda",
+        "peran_negara": "Negara",
+        "status": "Selesai"
+      }
+    ]
+  },
+  "3312": {
+    "nama_wilayah": "Kab. Wonogiri",
+    "kasus": [
+      {
+        "id_kasus": "C090",
+        "tahun": 2021,
+        "judul": "Penghayat Wonogiri: kendala sanggar & penolakan tes kesehatan",
+        "kategori": "Layanan publik & hak sipil",
+        "ringkasan": "Penghayat Wonogiri: kendala sanggar & penolakan tes kesehatan",
+        "peran_negara": "Negara",
+        "status": "Tidak jelas"
+      }
+    ]
+  },
+  "3306": {
+    "nama_wilayah": "Kab. Purworejo",
+    "kasus": [
+      {
+        "id_kasus": "C092",
+        "tahun": 2021,
+        "judul": "Penolakan GKJ di Dusun Sibentar, Tlogoguwo (21 Des 2021)",
+        "kategori": "Rumah ibadah",
+        "ringkasan": "Penolakan GKJ di Dusun Sibentar, Tlogoguwo (21 Des 2021)",
+        "peran_negara": "Non-negara",
+        "status": "Tidak jelas"
+      }
+    ]
+  }
+}

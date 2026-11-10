@@ -72,7 +72,27 @@
       </div>
       <div class="filter-count" id="filter-count"></div>
     </div>
-    <div id="map" class="map"></div>
+    <div class="map-wrap">
+      <div id="map" class="map"></div>
+      <div class="map-legend" id="map-legend" aria-label="Legenda jumlah kasus">
+        <p class="legend-title">Jumlah kasus</p>
+        <button type="button" class="legend-item" data-tier="0"><span class="legend-swatch" style="background:#bbb"></span>0</button>
+        <button type="button" class="legend-item" data-tier="1-4"><span class="legend-swatch" style="background:#e37a7e"></span>1 sampai 4</button>
+        <button type="button" class="legend-item" data-tier="5-14"><span class="legend-swatch" style="background:#c1272d"></span>5 sampai 14</button>
+        <button type="button" class="legend-item" data-tier="15+"><span class="legend-swatch" style="background:#7a1a1e"></span>15 atau lebih</button>
+      </div>
+      <button class="map-reset-btn" id="map-reset-btn" type="button" title="Kembali ke tampilan awal" aria-label="Reset filter dan tampilan peta">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+        <span>Reset</span>
+      </button>
+      <div class="map-empty" id="map-empty" style="display:none">
+        <p>Tidak ada wilayah yang cocok dengan filter ini.</p>
+        <button type="button" id="empty-reset-btn" class="btn-reset">Reset filter</button>
+      </div>
+    </div>
+    <div id="map-detail" class="map-detail">
+      <p class="detail-hint">Klik wilayah di peta untuk melihat daftar kasus di wilayah tersebut.</p>
+    </div>
     <p class="caption">
       Ukuran &amp; warna lingkaran sebanding dengan jumlah kasus unik per
       kab/kota. Tiga kabupaten bernilai nol ditandai abu-abu.

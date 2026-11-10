@@ -165,6 +165,37 @@ def main():
     breakdown_list.sort(key=lambda x: (x["jenis"] == "Lainnya", -x["jumlah"]))
     save_json(breakdown_list, "penghayat_breakdown.json")
 
+    # --- Kasus per wilayah (untuk detail panel) ---
+    kasus_per_wilayah = {}
+    for _, row in pel.iterrows():
+        kode_raw = row.get("kode_kabkota_bps")
+        if pd.isna(kode_raw) or row.get("dapat_dipetakan") != "ya":
+            continue
+        try:
+            kode = str(int(kode_raw))
+        except (ValueError, TypeError):
+            continue
+        if kode not in kasus_per_wilayah:
+            kasus_per_wilayah[kode] = {
+                "nama_wilayah": str(row["nama_wilayah"]),
+                "kasus": [],
+            }
+        sudah = any(k["id_kasus"] == str(row["id_kasus"])
+                    for k in kasus_per_wilayah[kode]["kasus"])
+        if not sudah:
+            kasus_per_wilayah[kode]["kasus"].append({
+                "id_kasus": str(row["id_kasus"]),
+                "tahun": int(row["tahun"]),
+                "judul": str(row["judul_baku"]),
+                "kategori": str(row["kategori_utama"]),
+                "ringkasan": str(row.get("ringkasan_sesuai_laporan", "")),
+                "peran_negara": str(row["peran_negara_ringkas"]),
+                "status": str(row.get("status", "")),
+            })
+    for kode in kasus_per_wilayah:
+        kasus_per_wilayah[kode]["kasus"].sort(key=lambda x: x["tahun"])
+    save_json(kasus_per_wilayah, "kasus_per_wilayah.json")
+
     print("=" * 60)
     print(f"Selesai. {len(list(OUT.glob('*.json')))} file JSON tersimpan.")
     print(f"Lokasi: {OUT}")

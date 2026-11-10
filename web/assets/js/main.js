@@ -59,6 +59,12 @@ let mapInstance = null;
 let allMarkers = [];
 let allMapData = [];
 
+let mapInstance = null;
+let allMarkers = [];
+let allMapData = [];
+let activeMarker = null;
+let lastHashKode = null;
+
 async function initMap() {
   if (typeof L === "undefined") {
     document.getElementById("map").innerHTML =
@@ -66,9 +72,16 @@ async function initMap() {
     return;
   }
   allMapData = await loadJSON("choropleth.json");
-  mapInstance = L.map("map", { scrollWheelZoom: false }).setView([-7.3, 110.3], 8);
+  window.kasusByWilayah = await loadJSON("kasus_per_wilayah.json");
+
+  mapInstance = L.map("map", {
+    scrollWheelZoom: false,
+    minZoom: 7,
+    maxZoom: 13,
+  }).setView([-7.3, 110.3], 8);
+
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-    { attribution: "OpenStreetMap / CartoDB", maxZoom: 18 }).addTo(mapInstance);
+    { attribution: "OpenStreetMap", maxZoom: 19 }).addTo(mapInstance);
 
   const kategoriSet = new Set();
   allMapData.forEach((d) => {
@@ -83,15 +96,83 @@ async function initMap() {
   });
 
   renderMarkers();
-  document.getElementById("filter-jenis").addEventListener("change", renderMarkers);
-  document.getElementById("filter-kategori").addEventListener("change", renderMarkers);
-  document.getElementById("filter-jumlah").addEventListener("change", renderMarkers);
+
+  ["filter-jenis", "filter-kategori", "filter-jumlah"].forEach((id) => {
+    document.getElementById(id).addEventListener("change", () => renderMarkers({ fit: true }));
+  });
+
+  document.querySelectorAll(".legend-item").forEach((el) => {
+    el.addEventListener("click", () => {
+      document.getElementById("filter-jumlah").value = el.dataset.tier;
+      renderMarkers({ fit: true });
+    });
+  });
+
+  const resetBtn = document.getElementById("map-reset-btn");
+  if (resetBtn) resetBtn.addEventListener("click", resetView);
+  const emptyResetBtn = document.getElementById("empty-reset-btn");
+  if (emptyResetBtn) emptyResetBtn.addEventListener("click", resetView);
+
+  window.addEventListener("hashchange", handleHash);
+  handleHash();
 }
 
-function renderMarkers() {
+function fitToMarkers(markers) {
+  if (markers.length === 0) return;
+  const bounds = L.featureGroup(markers).getBounds();
+  if (bounds.isValid()) {
+    mapInstance.fitBounds(bounds.pad(0.15), { maxZoom: 10, animate: true, duration: 0.5 });
+  }
+}
+
+function setActiveMarker(marker) {
+  if (activeMarker && activeMarker !== marker) {
+    activeMarker.setStyle({ weight: 1.5, color: "#fff", fillOpacity: 0.8 });
+  }
+  if (marker) {
+    marker.setStyle({ weight: 3, color: "#1a1a1a", fillOpacity: 0.95 });
+    marker.bringToFront();
+  }
+  activeMarker = marker;
+}
+
+function handleHash() {
+  const hash = window.location.hash;
+  if (!hash.startsWith("#wilayah-")) return;
+  const kode = hash.replace("#wilayah-", "");
+  if (kode === lastHashKode) return;
+  lastHashKode = kode;
+  const marker = allMarkers.find((m) => m._wilayahKode === kode);
+  if (marker) {
+    setActiveMarker(marker);
+    if (marker.getLatLng) mapInstance.panTo(marker.getLatLng(), { animate: true, duration: 0.5 });
+    showDetail(kode);
+  }
+}
+
+function resetView() {
+  ["filter-jenis", "filter-kategori", "filter-jumlah"].forEach((id) => {
+    document.getElementById(id).value = "";
+  });
+  lastHashKode = null;
+  setActiveMarker(null);
+  if (window.location.hash.startsWith("#wilayah-")) {
+    history.replaceState(null, "", window.location.pathname + window.location.search);
+  }
+  renderMarkers({ fit: true });
+  const detail = document.getElementById("map-detail");
+  if (detail) {
+    detail.innerHTML = '<p class="detail-hint">Klik wilayah di peta untuk melihat daftar kasus di wilayah tersebut.</p>';
+  }
+}
+
+function renderMarkers(options = {}) {
+  const { fit = false } = options;
   if (!mapInstance) return;
+
   allMarkers.forEach((m) => mapInstance.removeLayer(m));
   allMarkers = [];
+  activeMarker = null;
 
   const fJenis = document.getElementById("filter-jenis").value;
   const fKategori = document.getElementById("filter-kategori").value;
@@ -109,23 +190,71 @@ function renderMarkers() {
     if (fJumlah === "5-14" && (n < 5 || n > 14)) return;
     if (fJumlah === "15+" && n < 15) return;
 
-    const radius = n === 0 ? 4 : 6 + Math.sqrt(n) * 6;
+    const baseRadius = n === 0 ? 6 : 6 + Math.sqrt(n) * 6;
     const color = n === 0 ? "#bbb" : n >= 15 ? "#7a1a1e" : n >= 5 ? RED : "#e37a7e";
 
     const marker = L.circleMarker([d.lat_perkiraan, d.lon_perkiraan], {
-      radius: radius, fillColor: color, color: "#fff", weight: 1.5, fillOpacity: 0.8,
-    }).bindPopup(
-      "<strong>" + d.nama_wilayah + "</strong><br>" +
-      n + " kasus unik" +
-      (d.catatan ? "<br><em>" + d.catatan + "</em>" : "")
-    ).addTo(mapInstance);
+      radius: baseRadius, fillColor: color, color: "#fff", weight: 1.5,
+      fillOpacity: 0.8, bubblingMouseEvents: false,
+    }).addTo(mapInstance);
+
+    marker._wilayahKode = String(d.kode_kabkota_bps);
+
+    marker.bindTooltip(
+      "<strong>" + d.nama_wilayah + "</strong>" + n + " kasus unik",
+      { direction: "top", offset: [0, -6], className: "custom-tooltip" }
+    );
+
+    marker.on("mouseover", function () {
+      this.setRadius(baseRadius * 1.2);
+      this.setStyle({ fillOpacity: 1, weight: 2.5 });
+      this.bringToFront();
+    });
+    marker.on("mouseout", function () {
+      this.setRadius(baseRadius);
+      this.setStyle({ fillOpacity: 0.8, weight: 1.5 });
+    });
+
+    function activate() {
+      lastHashKode = String(d.kode_kabkota_bps);
+      history.replaceState(null, "", "#wilayah-" + d.kode_kabkota_bps);
+      setActiveMarker(marker);
+      showDetail(d.kode_kabkota_bps);
+    }
+    marker.on("click", activate);
+    marker.on("add", function () {
+      const el = this.getElement();
+      if (el) {
+        el.setAttribute("tabindex", "0");
+        el.setAttribute("role", "button");
+        el.setAttribute("aria-label", d.nama_wilayah + ": " + n + " kasus");
+        el.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") { e.preventDefault(); activate(); }
+        });
+      }
+    });
 
     allMarkers.push(marker);
     visible += 1;
   });
 
-  document.getElementById("filter-count").innerHTML =
-    "Menampilkan <strong>" + visible + "</strong> dari " + mappable.length + " wilayah";
+  const counter = document.getElementById("filter-count");
+  if (counter) {
+    counter.innerHTML = "Menampilkan <strong>" + visible + "</strong> dari " + mappable.length + " wilayah";
+  }
+
+  const emptyEl = document.getElementById("map-empty");
+  if (emptyEl) emptyEl.style.display = visible === 0 ? "flex" : "none";
+
+  document.querySelectorAll(".legend-item").forEach((el) => {
+    el.classList.toggle("active", el.dataset.tier === fJumlah);
+  });
+
+  if (fit) {
+    const hasFilter = fJenis || fKategori || fJumlah;
+    if (hasFilter && allMarkers.length > 0) fitToMarkers(allMarkers);
+    else if (!hasFilter) mapInstance.setView([-7.3, 110.3], 8, { animate: true });
+  }
 }
 
 async function initTimeline() {
@@ -298,3 +427,44 @@ document.addEventListener("DOMContentLoaded", async () => {
       e.message + ". Jalankan via local server.</div>");
   }
 });
+
+
+/* Detail panel: tampilkan kasus per wilayah */
+function showDetail(kode) {
+  const detail = document.getElementById("map-detail");
+  if (!detail) return;
+
+  const data = window.kasusByWilayah && window.kasusByWilayah[String(kode)];
+  if (!data || !data.kasus || data.kasus.length === 0) {
+    detail.innerHTML =
+      '<p class="detail-empty">Tidak ada kasus terpetakan di wilayah ini.</p>';
+    return;
+  }
+
+  let html = '<div class="detail-header">';
+  html += '<h3>' + data.nama_wilayah + '</h3>';
+  html += '<p class="detail-count">' + data.kasus.length + ' kasus</p>';
+  html += '</div><ul class="detail-list">';
+
+  data.kasus.forEach((k) => {
+    html += '<li>';
+    html += '<div class="detail-meta">' + k.tahun + ' \u00b7 ' + k.peran_negara +
+            (k.status ? ' \u00b7 ' + k.status : '') + '</div>';
+    html += '<div class="detail-judul">' + k.judul + '</div>';
+    if (k.ringkasan && k.ringkasan !== k.judul) {
+      html += '<div class="detail-ringkasan">' + k.ringkasan + '</div>';
+    }
+    html += '</li>';
+  });
+
+  html += '</ul>';
+  detail.innerHTML = html;
+
+  detail.classList.remove("flash");
+  void detail.offsetWidth;
+  detail.classList.add("flash");
+
+  setTimeout(() => {
+    detail.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }, 300);
+}
