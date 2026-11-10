@@ -532,3 +532,44 @@ h3.sub-head { font-size: 1.15rem; margin: 3rem 0 1.5rem;
   justify-content: center; padding: 0; transition: background 0.15s ease;
 }
 .filter-badge button:hover { background: rgba(255, 255, 255, 0.35); }
+
+
+/* Toggle tabel */
+.chart-toggle { margin: -0.5rem 0 1rem; }
+.chart-toggle-btn {
+  font-family: system-ui, sans-serif;
+  font-size: 0.78rem;
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  padding: 0.35rem 0.7rem;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.chart-toggle-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.section-dark .chart-toggle-btn { border-color: #444; color: #999; }
+.section-dark .chart-toggle-btn:hover { border-color: var(--accent); color: #e89ba0; }
+.chart-table { margin: 1rem 0; overflow-x: auto; }
+.data-table {
+  width: 100%; border-collapse: collapse;
+  font-family: system-ui, sans-serif; font-size: 0.9rem;
+}
+.data-table th {
+  text-align: left; padding: 0.6rem 0.75rem;
+  border-bottom: 2px solid var(--ink);
+  font-weight: 600; font-size: 0.72rem;
+  text-transform: uppercase; letter-spacing: 0.05em;
+}
+.data-table td { padding: 0.55rem 0.75rem; border-bottom: 1px solid var(--border); }
+.data-table tr:last-child td { border-bottom: none; }
+.section-dark .data-table th { border-bottom-color: #555; color: #ddd; }
+.section-dark .data-table td { border-bottom-color: #333; color: #ccc; }
+.section-dark .data-table strong { color: #fff; }
+@media (max-width: 640px) {
+  .data-table { font-size: 0.8rem; }
+  .data-table th, .data-table td { padding: 0.4rem 0.5rem; }
+}

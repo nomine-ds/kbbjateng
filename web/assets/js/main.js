@@ -268,6 +268,7 @@ function renderMarkers(options = {}) {
 
 async function initTimeline() {
   const data = await loadJSON("timeline.json");
+  window.timelineData = data;
   const ctx = document.getElementById("timeline-chart").getContext("2d");
   let mi = 0;
   data.forEach((d, i) => { if (d.total > data[mi].total) mi = i; });
@@ -319,10 +320,11 @@ async function initTimeline() {
 
 async function initAgamaChart() {
   const data = await loadJSON("agama_vs_negara.json");
+  window.agamaData = data;
   const ctx = document.getElementById("agama-chart").getContext("2d");
   // median pct_negara dari 12 kelompok agama lain (lihat ANALYSIS.md)
   const med = 33.3;
-  new Chart(ctx, {
+  window.agamaChart = new Chart(ctx, {
     type: "bar",
     data: {
       labels: data.map((d) => d.agama),
@@ -515,4 +517,61 @@ function initTimelineClick() {
     const tahun = parseInt(labels[idx], 10);
     if (!isNaN(tahun)) setFilterTahun(tahun);
   });
+}
+
+
+/* Toggle tabel untuk chart */
+function initChartToggles() {
+  document.querySelectorAll(".chart-toggle-btn").forEach((btn) => {
+    btn.addEventListener("click", () => toggleChartTable(btn.dataset.chart));
+  });
+}
+
+function toggleChartTable(id) {
+  const tableEl = document.getElementById("table-" + id);
+  const btn = document.querySelector('.chart-toggle-btn[data-chart="' + id + '"]');
+  const chart = id === "timeline" ? window.timelineChart : window.agamaChart;
+  if (!tableEl || !btn || !chart) return;
+  const wrap = chart.canvas ? chart.canvas.closest(".chart-wrap") : null;
+
+  const isHidden = tableEl.style.display === "none" || !tableEl.style.display;
+  if (isHidden) {
+    tableEl.innerHTML = buildTableHTML(id);
+    tableEl.style.display = "block";
+    if (wrap) wrap.style.display = "none";
+    btn.textContent = "Lihat sebagai grafik";
+  } else {
+    tableEl.style.display = "none";
+    if (wrap) wrap.style.display = "block";
+    btn.textContent = "Lihat angkanya sebagai tabel";
+  }
+}
+
+function buildTableHTML(id) {
+  if (id === "timeline") {
+    const data = window.timelineData || [];
+    let html = '<table class="data-table"><thead><tr>' +
+      '<th>Tahun</th><th>Negara</th><th>Campuran</th><th>Non-negara</th><th>Total</th>' +
+      '</tr></thead><tbody>';
+    data.forEach((d) => {
+      const total = d.negara + d.campuran + d.non_negara;
+      html += '<tr><td>' + d.tahun + '</td><td>' + d.negara +
+              '</td><td>' + d.campuran + '</td><td>' + d.non_negara +
+              '</td><td><strong>' + total + '</strong></td></tr>';
+    });
+    return html + '</tbody></table>';
+  }
+  if (id === "agama") {
+    const data = window.agamaData || [];
+    let html = '<table class="data-table"><thead><tr>' +
+      '<th>Kelompok</th><th>Kasus unik</th><th>Negara terlibat</th><th>% negara</th>' +
+      '</tr></thead><tbody>';
+    data.forEach((d) => {
+      html += '<tr><td>' + d.agama + '</td><td>' + d.kasus_unik +
+              '</td><td>' + d.negara_terlibat + '</td><td><strong>' +
+              d.pct_negara + '%</strong></td></tr>';
+    });
+    return html + '</tbody></table>';
+  }
+  return "";
 }
