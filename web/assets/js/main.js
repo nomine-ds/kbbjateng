@@ -61,6 +61,7 @@ let allMapData = [];
 
 let activeMarker = null;
 let lastHashKode = null;
+let filterTahun = null;
 
 async function initMap() {
   if (typeof L === "undefined") {
@@ -184,7 +185,13 @@ function renderMarkers(options = {}) {
   let visible = 0;
 
   mappable.forEach((d) => {
-    const n = d.jumlah_kasus_unik;
+    let n = d.jumlah_kasus_unik;
+    if (filterTahun) {
+      const _d = window.kasusByWilayah && window.kasusByWilayah[String(d.kode_kabkota_bps)];
+      if (!_d || !_d.kasus) return;
+      n = _d.kasus.filter((k) => k.tahun === filterTahun).length;
+      if (n === 0) return;
+    }
     if (fJenis && d.jenis_kabkota !== fJenis) return;
     if (fKategori && d.kategori_terbanyak !== fKategori) return;
     if (fJumlah === "0" && n !== 0) return;
@@ -284,7 +291,7 @@ async function initTimeline() {
       padding: 5, cornerRadius: 3, yAdjust: 40,
     };
   }
-  new Chart(ctx, {
+  window.timelineChart = new Chart(ctx, {
     type: "bar",
     data: {
       labels: data.map((d) => d.tahun),
@@ -419,6 +426,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     await initHero();
     await initMap();
     await initTimeline();
+    initTimelineClick();
     await initAgamaChart();
     await initPenghayatBreakdown();
     await initCases();
@@ -469,4 +477,42 @@ function showDetail(kode) {
   setTimeout(() => {
     detail.scrollIntoView({ behavior: "smooth", block: "nearest" });
   }, 300);
+}
+
+
+/* Cross-filter timeline -> peta */
+function setFilterTahun(tahun) {
+  if (filterTahun === tahun) filterTahun = null;
+  else filterTahun = tahun;
+  updateFilterBadge();
+  renderMarkers({ fit: true });
+}
+
+function updateFilterBadge() {
+  const badge = document.getElementById("filter-badge");
+  if (!badge) return;
+  if (filterTahun === null) {
+    badge.style.display = "none";
+    badge.innerHTML = "";
+    return;
+  }
+  badge.style.display = "inline-flex";
+  badge.innerHTML = 'Filter: Tahun <strong>' + filterTahun +
+    '</strong> <button type="button" aria-label="Hapus filter tahun">&times;</button>';
+  const btn = badge.querySelector("button");
+  if (btn) btn.addEventListener("click", () => setFilterTahun(filterTahun));
+}
+
+function initTimelineClick() {
+  if (!window.timelineChart) return;
+  const chart = window.timelineChart;
+  chart.canvas.style.cursor = "pointer";
+  chart.canvas.addEventListener("click", (evt) => {
+    const points = chart.getElementsAtEventForMode(evt, "nearest", { intersect: true }, false);
+    if (points.length === 0) return;
+    const idx = points[0].index;
+    const labels = chart.data.labels;
+    const tahun = parseInt(labels[idx], 10);
+    if (!isNaN(tahun)) setFilterTahun(tahun);
+  });
 }
