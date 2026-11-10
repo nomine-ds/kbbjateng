@@ -7,17 +7,52 @@ async function loadJSON(name) {
   return r.json();
 }
 
+function animateValue(el, target, format, duration) {
+  const start = performance.now();
+  const isPct = format === "pct";
+  function tick(now) {
+    const p = Math.min((now - start) / duration, 1);
+    const eased = 1 - Math.pow(1 - p, 3);
+    const current = target * eased;
+    el.textContent = isPct ? current.toFixed(1) + "%" : Math.round(current);
+    if (p < 1) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
+
 async function initHero() {
   const r = await loadJSON("ringkasan.json");
   const stats = [
-    { num: r.total_pelanggaran, label: "Kasus pelanggaran" },
-    { num: r.pct_negara + "%", label: "Melibatkan negara" },
-    { num: r.pct_penghayat_negara + "%", label: "Kasus penghayat melibatkan negara" },
+    { num: r.total_pelanggaran, label: "Kasus pelanggaran", format: "int" },
+    { num: r.pct_negara, label: "Melibatkan negara", format: "pct" },
+    { num: r.pct_penghayat_negara, label: "Kasus penghayat melibatkan negara", format: "pct" },
   ];
-  document.getElementById("hero-stats").innerHTML = stats.map(
-    (s) => '<div class="stat"><div class="stat-number">' + s.num +
-      '</div><div class="stat-label">' + s.label + "</div></div>"
+  const container = document.getElementById("hero-stats");
+  container.innerHTML = stats.map(
+    (s) => '<div class="stat"><div class="stat-number" data-target="' + s.num +
+      '" data-format="' + s.format + '">0</div><div class="stat-label">' + s.label + "</div></div>"
   ).join("");
+
+  const nums = container.querySelectorAll(".stat-number");
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduced) {
+    nums.forEach((el) => {
+      const t = parseFloat(el.dataset.target);
+      el.textContent = el.dataset.format === "pct" ? t.toFixed(1) + "%" : Math.round(t);
+    });
+    return;
+  }
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const t = parseFloat(el.dataset.target);
+      const f = el.dataset.format;
+      setTimeout(() => animateValue(el, t, f, 1400), 300);
+      obs.unobserve(el);
+    });
+  }, { threshold: 0.3 });
+  nums.forEach((el) => obs.observe(el));
 }
 
 async function initMap() {
