@@ -67,7 +67,7 @@ async function initMap() {
   }
   allMapData = await loadJSON("choropleth.json");
   mapInstance = L.map("map", { scrollWheelZoom: false }).setView([-7.3, 110.3], 8);
-  L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
     { attribution: "OpenStreetMap / CartoDB", maxZoom: 18 }).addTo(mapInstance);
 
   const kategoriSet = new Set();
