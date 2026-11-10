@@ -1,11 +1,13 @@
 ﻿"""03 -- Export data ke JSON untuk visualisasi web.
 
 Output ke web/assets/data/:
-  - ringkasan.json       : angka kunci untuk hero section
-  - choropleth.json      : 35 kab/kota, highlight 3 nol
-  - timeline.json        : 141 pelanggaran per tahun, breakdown negara
-  - penghayat.json       : 21 kasus penghayat detail
-  - kasus_kunci.json     : 4 kasus untuk scrollytelling
+  - ringkasan.json            : angka kunci hero
+  - choropleth.json           : 35 kab/kota
+  - timeline.json             : 141 pelanggaran per tahun
+  - penghayat.json            : 21 kasus penghayat detail
+  - kasus_kunci.json          : 4 kasus scrollytelling
+  - agama_vs_negara.json      : perbandingan 4 agama
+  - penghayat_breakdown.json  : breakdown 14 kasus penghayat negara
 """
 import sys
 import json
@@ -22,7 +24,6 @@ OUT = ROOT / "web" / "assets" / "data"
 
 
 def clean_records(df):
-    """Konversi DataFrame ke records, NaN jadi None (valid JSON)."""
     records = df.to_dict(orient="records")
     cleaned = []
     for rec in records:
@@ -30,7 +31,7 @@ def clean_records(df):
         for k, v in rec.items():
             if pd.isna(v):
                 clean[k] = None
-            elif hasattr(v, "item"):  # numpy scalar
+            elif hasattr(v, "item"):
                 clean[k] = v.item()
             else:
                 clean[k] = v
@@ -44,7 +45,7 @@ def save_json(obj, name):
     with open(path, "w", encoding="utf-8") as f:
         json.dump(obj, f, ensure_ascii=False, indent=2)
     size_kb = path.stat().st_size // 1024
-    print(f"  - {name:<25} ({size_kb} KB)")
+    print(f"  - {name:<28} ({size_kb} KB)")
 
 
 def main():
@@ -53,14 +54,12 @@ def main():
     kk = d["viz_kabkota"]
     kl = d["viz_kelompok_long"]
 
-    # Basis pelanggaran
     pel = t[(t["hitung_kasus_unik_tahun"] == 1) & (t["arah"] != "Positif")]
 
     print("=" * 60)
     print("EXPORT JSON UNTUK WEB")
     print("=" * 60)
 
-    # --- 1. Ringkasan hero ---
     n_pelanggaran = len(pel)
     n_negara = int(pel["peran_negara_ringkas"].isin(["Negara", "Campuran"]).sum())
     pct_negara = round(n_negara / n_pelanggaran * 100, 1)
@@ -93,7 +92,6 @@ def main():
     }
     save_json(ringkasan, "ringkasan.json")
 
-    # --- 2. Choropleth per kab/kota ---
     choropleth = clean_records(kk[[
         "kode_kabkota_bps", "nama_wilayah", "jenis_kabkota",
         "lat_perkiraan", "lon_perkiraan",
@@ -101,7 +99,6 @@ def main():
     ]])
     save_json(choropleth, "choropleth.json")
 
-    # --- 3. Timeline per tahun (pelanggaran saja) ---
     timeline = []
     for tahun in sorted(pel["tahun"].unique()):
         sub = pel[pel["tahun"] == tahun]
@@ -114,7 +111,6 @@ def main():
         })
     save_json(timeline, "timeline.json")
 
-    # --- 4. Penghayat detail (untuk tooltip & chart) ---
     penghayat_detail = clean_records(
         penghayat[[
             "id_kasus", "tahun", "kelompok_baku", "nama_wilayah",
@@ -124,7 +120,6 @@ def main():
     )
     save_json(penghayat_detail, "penghayat.json")
 
-    # --- 5. Kasus kunci untuk scrollytelling ---
     kandidat = ["C118", "C116", "C119", "C089"]
     kasus_df = (
         t[t["id_kasus"].isin(kandidat)]
@@ -138,6 +133,37 @@ def main():
         "bentuk_peran_negara", "status"
     ]])
     save_json(kasus_kunci, "kasus_kunci.json")
+
+    rows = []
+    for agama, grp in kl_uniq.groupby("agama_induk_baku"):
+        cases = grp["id_kasus"].unique()
+        total = len(cases)
+        if total < 5:
+            continue
+        negara_cases = grp[grp["peran_negara_ringkas"].isin(["Negara", "Campuran"])]["id_kasus"].unique()
+        rows.append({
+            "agama": agama,
+            "kasus_unik": total,
+            "negara_terlibat": len(negara_cases),
+            "pct_negara": round(len(negara_cases) / total * 100, 1),
+            "highlight": agama == "Penghayat kepercayaan",
+        })
+    rows.sort(key=lambda r: -r["pct_negara"])
+    save_json(rows, "agama_vs_negara.json")
+
+    pen_negara = penghayat[penghayat["peran_negara_ringkas"].isin(["Negara", "Campuran"])]
+    kategori_map = {
+        "Pendidikan agama/kepercayaan di sekolah": "Pendidikan agama",
+        "Administrasi kependudukan & layanan sipil": "Administrasi kependudukan",
+        "Hambatan pendirian/izin rumah ibadah": "Perizinan rumah ibadah",
+    }
+    breakdown = {}
+    for j in pen_negara["jenis_kasus_baku"]:
+        key = kategori_map.get(j, "Lainnya")
+        breakdown[key] = breakdown.get(key, 0) + 1
+    breakdown_list = [{"jenis": k, "jumlah": v} for k, v in breakdown.items()]
+    breakdown_list.sort(key=lambda x: (x["jenis"] == "Lainnya", -x["jumlah"]))
+    save_json(breakdown_list, "penghayat_breakdown.json")
 
     print("=" * 60)
     print(f"Selesai. {len(list(OUT.glob('*.json')))} file JSON tersimpan.")

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bagi Penghayat, Negara Adalah Penghalang Pertama</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <p class="kicker">Investigasi Data &middot; KBB Jawa Tengah 2016&ndash;2024</p>
+    <h1>Bagi Penghayat Kepercayaan, Negara Adalah Penghalang Pertama</h1>
+    <p class="dek">
+      Dari 21 kasus pelanggaran terhadap penghayat di Jawa Tengah, 14 melibatkan
+      negara &mdash; mulai dari KK yang tak bisa diubah hingga izin ibadah yang
+      tak kunjung terbit.
+    </p>
+    <div class="stats" id="hero-stats"></div>
+    <p class="byline">Berdasarkan 9 laporan tahunan eLSA Semarang, 2016&ndash;2024</p>
+  </div>
+</header>
+
+<section class="section">
+  <div class="section-inner">
+    <p class="kicker">01 &middot; Peta</p>
+    <h2>Bukan tentang intoleransi, tapi tentang jangkauan pemantauan</h2>
+    <p class="lead">
+      Kota Semarang dan Surakarta mendominasi &mdash; tapi itu karena kantor
+      eLSA ada di sana, bukan karena paling intoleran. Tiga kabupaten bernilai
+      nol karena tidak tercatat, bukan karena tidak ada kasus.
+    </p>
+    <div id="map" class="map"></div>
+    <p class="caption">
+      Ukuran &amp; warna lingkaran sebanding dengan jumlah kasus unik per
+      kab/kota. Tiga kabupaten bernilai nol ditandai abu-abu.
+    </p>
+  </div>
+</section>
+
+<section class="section section-dark">
+  <div class="section-inner">
+    <p class="kicker">02 &middot; Waktu</p>
+    <h2>Negara terlibat di 41% pelanggaran</h2>
+    <p class="lead">
+      Dari 141 kasus pelanggaran (2016&ndash;2024), 58 melibatkan negara.
+      Mayoritas berupa aksi langsung &mdash; bukan sekadar pembiaran.
+    </p>
+    <div class="chart-wrap"><canvas id="timeline-chart"></canvas></div>
+    <p class="caption">
+      Per tahun. &ldquo;Negara&rdquo; termasuk aparat, pemkab, disdukcapil,
+      kemenag. &ldquo;Campuran&rdquo; = negara &amp; non-negara terlibat dalam
+      kasus yang sama.
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-inner">
+    <p class="kicker">03 &middot; Yang Terdampak</p>
+    <h2>Penghayat: dua kali lipat lebih sering berhadapan dengan negara</h2>
+    <p class="lead">
+      Dari semua kelompok agama di Jawa Tengah, penghayat kepercayaan adalah
+      yang paling sering berhadapan dengan negara. Bukan karena mereka lebih
+      rentan terhadap ormas &mdash; tapi karena jalur administratif lebih
+      mudah dihambat.
+    </p>
+    <div class="chart-wrap"><canvas id="agama-chart"></canvas></div>
+    <p class="caption">
+      Persentase kasus yang melibatkan negara, per agama/keyakinan terdampak.
+      Hanya kelompok dengan &ge;5 kasus yang ditampilkan.
+    </p>
+
+    <h3 class="sub-head">Dari 14 kasus penghayat yang melibatkan negara:</h3>
+    <div class="breakdown" id="breakdown"></div>
+    <p class="caption">
+      Tidak satu pun berupa kekerasan fisik. Sebelas dari 14 (79%) lewat jalur
+      administratif &mdash; pendidikan, kependudukan, atau perizinan.
+    </p>
+  </div>
+</section>
+
+<section class="section section-dark">
+  <div class="section-inner">
+    <p class="kicker">04 &middot; Suara dari Lapangan</p>
+    <h2>Empat kasus yang menjelaskan pola</h2>
+    <div class="cases" id="cases"></div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <h3>Metodologi &amp; Disclaimer</h3>
+    <ul>
+      <li>Basis analisis: 141 kasus pelanggaran (dari 145 kasus-tahun; 4 positif &amp; 6 respons dikeluarkan).</li>
+      <li>&ldquo;Negara&rdquo; termasuk aksi langsung (kepolisian, Pemkab, Disdukcapil, Kemenag) dan pembiaran (IMB tidak diputuskan, dll).</li>
+      <li>Data = kasus yang dilaporkan eLSA, bukan seluruh pelanggaran KBB di Jateng.</li>
+      <li>Dominasi Semarang &amp; Surakarta mencerminkan jangkauan pemantauan, bukan tingkat intoleransi.</li>
+      <li>Format laporan eLSA berubah tiap tahun &mdash; jangan dibaca sebagai tren linier.</li>
+    </ul>
+    <p class="credit">
+      Sumber: eLSA Semarang, <em>Laporan Tahunan Kebebasan Beragama dan
+      Berkeyakinan di Jawa Tengah</em>, 2016&ndash;2024.
+    </p>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

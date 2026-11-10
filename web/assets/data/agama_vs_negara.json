@@ -1,0 +1,37 @@
+[
+  {
+    "agama": "Penghayat kepercayaan",
+    "kasus_unik": 21,
+    "negara_terlibat": 14,
+    "pct_negara": 66.7,
+    "highlight": true
+  },
+  {
+    "agama": "Tidak spesifik",
+    "kasus_unik": 25,
+    "negara_terlibat": 9,
+    "pct_negara": 36.0,
+    "highlight": false
+  },
+  {
+    "agama": "Kristen",
+    "kasus_unik": 31,
+    "negara_terlibat": 10,
+    "pct_negara": 32.3,
+    "highlight": false
+  },
+  {
+    "agama": "Islam",
+    "kasus_unik": 40,
+    "negara_terlibat": 11,
+    "pct_negara": 27.5,
+    "highlight": false
+  },
+  {
+    "agama": "Katolik",
+    "kasus_unik": 6,
+    "negara_terlibat": 1,
+    "pct_negara": 16.7,
+    "highlight": false
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "jenis": "Pendidikan agama",
+    "jumlah": 6
+  },
+  {
+    "jenis": "Administrasi kependudukan",
+    "jumlah": 4
+  },
+  {
+    "jenis": "Perizinan rumah ibadah",
+    "jumlah": 1
+  },
+  {
+    "jenis": "Lainnya",
+    "jumlah": 3
+  }
+]

@@ -19,7 +19,7 @@ Dari 141 kasus pelanggaran (2016-2024):
 | Non-negara | 83 | 58.9% |
 | **Negara** | **49** | **34.8%** |
 | Campuran | 9 | 6.4% |
-| **Total negara terlibat** | **58** | **41.2%** |
+| **Total negara terlibat** | **58** | **41.1%** |
 
 Bentuk keterlibatan:
 - Aksi langsung: **32 kasus**
