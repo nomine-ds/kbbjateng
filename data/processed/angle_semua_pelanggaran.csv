@@ -1,0 +1,142 @@
+id_kemunculan,id_kasus,tahun,nama_wilayah,kategori_utama,peran_negara_ringkas,bentuk_peran_negara
+M001,C001,2016,Kota Surakarta,Penodaan agama & ujaran kebencian,Negara,Aksi langsung
+M002,C002,2016,Jawa Tengah (lintas wilayah),Layanan publik & hak sipil,Negara,Aksi langsung
+M003,C003,2016,Kab. Batang,Pembatasan kegiatan keagamaan,Non-negara,—
+M004,C004,2016,Kab. Pati,Pembatasan kegiatan keagamaan,Non-negara,—
+M005,C005,2016,Kota Semarang,Pembatasan kegiatan keagamaan,Non-negara,—
+M006,C006,2016,Kota Tegal,Pembatasan kegiatan keagamaan,Non-negara,—
+M007,C007,2016,Kab. Banyumas,Pembatasan kegiatan keagamaan,Non-negara,—
+M008,C008,2016,Kota Semarang,Pembatasan kegiatan keagamaan,Non-negara,—
+M009,C009,2016,Kota Semarang,Pembatasan kegiatan keagamaan,Non-negara,—
+M010,C010,2016,Kota Surakarta,Pembatasan kegiatan keagamaan,Non-negara,—
+M011,C011,2016,Kab. Klaten,"Kekerasan, perusakan & intimidasi",Non-negara,—
+M012,C012,2016,Kab. Brebes,Rumah ibadah,Campuran,Campuran
+M013,C013,2016,Kota Tegal,Pembatasan kegiatan keagamaan,Non-negara,—
+M014,C014,2016,Kab. Brebes,Pembatasan kegiatan keagamaan,Negara,Aksi langsung
+M015,C015,2016,Kab. Sragen,Rumah ibadah,Non-negara,—
+M016,C016,2016,Kab. Pemalang,Rumah ibadah,Negara,Aksi langsung
+M017,C017,2016,Kab. Jepara,Rumah ibadah,Negara,Pembiaran/tidak memutuskan
+M018,C018,2016,Kota Surakarta,Rumah ibadah,Non-negara,—
+M019,C019,2016,Kab. Brebes,Pemakaman & makam,Non-negara,—
+M020,C020,2016,Kab. Magelang,Peristiwa bernuansa agama lainnya,Non-negara,—
+M021,C021,2016,Kota Semarang,Penodaan agama & ujaran kebencian,Negara,Aksi langsung
+M022,C022,2016,Kab. Batang,Kebijakan & tata kelola,Negara,Aksi langsung
+M023,C023,2016,Kota Surakarta,"Kekerasan, perusakan & intimidasi",Non-negara,—
+M024,C024,2016,Kota Semarang,Layanan publik & hak sipil,Negara,Aksi langsung
+M025,C025,2016,Kab. Pekalongan,Pemaksaan keyakinan & konversi,Negara,Aksi langsung
+M026,C026,2016,Kab. Kendal,Rumah ibadah,Campuran,Campuran
+M027,C027,2016,Kab. Karanganyar,Rumah ibadah,Campuran,Campuran
+M028,C028,2017,Kab. Sukoharjo,Rumah ibadah,Non-negara,—
+M029,C029,2017,Kota Pekalongan,Rumah ibadah,Campuran,Campuran
+M030,C030,2017,Kota Surakarta,Rumah ibadah,Non-negara,—
+M031,C031,2017,Kab. Karanganyar,Rumah ibadah,Non-negara,—
+M032,C012,2017,Kab. Brebes,Rumah ibadah,Negara,Pembiaran/tidak memutuskan
+M033,C015,2017,Kab. Sragen,Rumah ibadah,Non-negara,—
+M034,C016,2017,Kab. Pemalang,Rumah ibadah,Negara,Aksi langsung
+M035,C017,2017,Kab. Jepara,Rumah ibadah,Negara,Pembiaran/tidak memutuskan
+M036,C018,2017,Kota Surakarta,Rumah ibadah,Non-negara,—
+M037,C032,2017,Kab. Tegal,Rumah ibadah,Non-negara,—
+M038,C026,2017,Kab. Kendal,Rumah ibadah,Campuran,Campuran
+M039,C033,2017,Kab. Boyolali,Rumah ibadah,Negara,Aksi langsung
+M040,C034,2017,Kab. Rembang,Rumah ibadah,Non-negara,—
+M041,C035,2017,Kota Surakarta,Pembatasan kegiatan keagamaan,Non-negara,—
+M042,C036,2017,Kab. Sukoharjo,Pembatasan kegiatan keagamaan,Non-negara,—
+M043,C037,2017,Kota Semarang,Pembatasan kegiatan keagamaan,Non-negara,—
+M044,C038,2017,Kota Semarang,Pembatasan kegiatan keagamaan,Non-negara,—
+M045,C039,2017,Kota Semarang,Pembatasan kegiatan keagamaan,Non-negara,—
+M046,C040,2017,Kota Semarang,Pembatasan kegiatan keagamaan,Negara,Aksi langsung
+M047,C041,2017,Kota Semarang,Pembatasan kegiatan keagamaan,Campuran,Campuran
+M048,C042,2017,Kota Semarang,Pembatasan kegiatan keagamaan,Campuran,Campuran
+M049,C043,2017,Kab. Sragen,Pembatasan kegiatan keagamaan,Non-negara,—
+M050,C044,2017,Kota Semarang,Pembatasan kegiatan keagamaan,Non-negara,—
+M051,C045,2017,Kota Semarang,Pembatasan kegiatan keagamaan,Non-negara,—
+M052,C046,2017,Kab. Sukoharjo,Pembatasan kegiatan keagamaan,Non-negara,—
+M053,C047,2017,Kota Semarang,Kebijakan & tata kelola,Negara,Aksi langsung
+M054,C048,2017,Kab. Sukoharjo,"Kekerasan, perusakan & intimidasi",Non-negara,—
+M055,C049,2017,Kota Salatiga,Pembatasan kegiatan keagamaan,Negara,Aksi langsung
+M056,C050,2017,Kab. Brebes,Pemaksaan keyakinan & konversi,Non-negara,—
+M057,C051,2018,Kota Magelang,Pemakaman & makam,Non-negara,—
+M058,C052,2018,Kab. Blora,"Kekerasan, perusakan & intimidasi",Non-negara,—
+M059,C053,2018,Kab. Kendal,"Kekerasan, perusakan & intimidasi",Non-negara,—
+M060,C054,2018,Kota Semarang,Peristiwa bernuansa agama lainnya,Negara,Aksi langsung
+M061,C055,2018,Kab. Temanggung,Peristiwa bernuansa agama lainnya,Non-negara,—
+M062,C056,2018,Kab. Brebes,Pemakaman & makam,Non-negara,—
+M063,C057,2018,Kota Salatiga,Peristiwa bernuansa agama lainnya,Non-negara,—
+M064,C058,2018,Kab. Banjarnegara,Kebijakan & tata kelola,Negara,Aksi langsung
+M065,C059,2018,Kota Semarang,Penodaan agama & ujaran kebencian,Negara,Aksi langsung
+M066,C060,2018,Kab. Semarang,Penodaan agama & ujaran kebencian,Negara,Aksi langsung
+M067,C061,2018,Kab. Jepara,Pemakaman & makam,Non-negara,—
+M068,C062,2018,Kab. Magelang,"Kekerasan, perusakan & intimidasi",Non-negara,—
+M069,C063,2018,Kab. Temanggung,Pembatasan kegiatan keagamaan,Non-negara,—
+M070,C064,2018,Kota Semarang,Pembatasan kegiatan keagamaan,Non-negara,—
+M071,C065,2018,Kab. Jepara,Pembatasan kegiatan keagamaan,Non-negara,—
+M072,C066,2018,Kab. Kebumen,Rumah ibadah,Non-negara,—
+M073,C067,2018,Kab. Wonosobo,Pembatasan kegiatan keagamaan,Non-negara,—
+M074,C068,2018,Kab. Cilacap,Pembatasan kegiatan keagamaan,Non-negara,—
+M075,C069,2018,Kota Semarang,Pembatasan kegiatan keagamaan,Non-negara,—
+M076,C017,2018,Kab. Jepara,Rumah ibadah,Negara,Pembiaran/tidak memutuskan
+M077,C026,2018,Kab. Kendal,Rumah ibadah,Negara,Aksi langsung
+M078,C070,2019,Kab. Tegal,Pembatasan kegiatan keagamaan,Non-negara,—
+M079,C071,2019,Kab. Sragen,Peristiwa bernuansa agama lainnya,Negara,Aksi langsung
+M080,C072,2019,Kab. Kudus,Pembatasan kegiatan keagamaan,Non-negara,—
+M081,C073,2019,Kab. Kebumen,Peristiwa bernuansa agama lainnya,Non-negara,—
+M082,C074,2019,Kota Surakarta,Peristiwa bernuansa agama lainnya,Non-negara,—
+M083,C075,2019,Kota Semarang,Pembatasan kegiatan keagamaan,Non-negara,—
+M084,C076,2019,Kota Surakarta,"Kekerasan, perusakan & intimidasi",Non-negara,—
+M085,C077,2019,Jawa Tengah (wilayah belum diverifikasi),Layanan publik & hak sipil,Negara,Aksi langsung
+M086,C078,2019,Kota Semarang,Rumah ibadah,Campuran,Campuran
+M087,C079,2020,Kota Surakarta,Peristiwa bernuansa agama lainnya,Non-negara,—
+M088,C080,2020,Kab. Sragen,Pemaksaan keyakinan & konversi,Non-negara,—
+M089,C081,2020,Kota Semarang,Pembatasan kegiatan keagamaan,Non-negara,—
+M090,C082,2020,Kab. Sukoharjo,Rumah ibadah,Non-negara,—
+M091,C083,2020,Kota Surakarta,"Kekerasan, perusakan & intimidasi",Non-negara,—
+M092,C084,2020,Kab. Tegal,Radikalisme & ormas terlarang,Non-negara,—
+M093,C017,2020,Kab. Jepara,Rumah ibadah,Negara,Pembiaran/tidak memutuskan
+M095,C085,2020,Jawa Tengah (lintas wilayah),Layanan publik & hak sipil,Negara,Pembiaran/tidak memutuskan
+M098,C086,2021,Jawa Tengah (wilayah belum diverifikasi),Layanan publik & hak sipil,Negara,Pembiaran/tidak memutuskan
+M099,C087,2021,Kab. Kendal,Pemakaman & makam,Campuran,Campuran
+M100,C088,2021,Kab. Magelang,Layanan publik & hak sipil,Negara,Pembiaran/tidak memutuskan
+M101,C089,2021,Kab. Kudus,Layanan publik & hak sipil,Negara,Aksi langsung
+M102,C090,2021,Kab. Wonogiri,Layanan publik & hak sipil,Negara,Aksi langsung
+M103,C091,2021,Kota Surakarta,Rumah ibadah,Non-negara,—
+M104,C092,2021,Kab. Purworejo,Rumah ibadah,Non-negara,—
+M105,C093,2021,Kota Semarang,Kebijakan & tata kelola,Negara,Aksi langsung
+M106,C094,2021,Kab. Semarang,Rumah ibadah,Negara,Aksi langsung
+M107,C095,2021,Kota Surakarta,Pemakaman & makam,Non-negara,—
+M108,C096,2021,Kab. Pati,Layanan publik & hak sipil,Negara,Pembiaran/tidak memutuskan
+M112,C098,2022,Kab. Batang,Rumah ibadah,Non-negara,—
+M113,C099,2022,Kab. Klaten,Rumah ibadah,Non-negara,—
+M114,C100,2022,Kab. Magelang,"Kekerasan, perusakan & intimidasi",Non-negara,—
+M115,C101,2022,Kab. Brebes,Radikalisme & ormas terlarang,Negara,Aksi langsung
+M116,C102,2022,Kab. Sragen,Pemaksaan keyakinan & konversi,Negara,Aksi langsung
+M117,C103,2022,Kota Semarang,Rumah ibadah,Negara,Pembiaran/tidak memutuskan
+M118,C104,2022,Kab. Cilacap,Layanan publik & hak sipil,Negara,Pembiaran/tidak memutuskan
+M123,C106,2023,Kota Semarang,Pembatasan kegiatan keagamaan,Non-negara,—
+M124,C107,2023,Kota Semarang,Penodaan agama & ujaran kebencian,Non-negara,—
+M125,C108,2023,Kota Surakarta,Rumah ibadah,Non-negara,—
+M126,C109,2023,Kota Semarang,Rumah ibadah,Non-negara,—
+M127,C110,2023,Kota Semarang,Rumah ibadah,Non-negara,—
+M128,C094,2023,Kab. Semarang,Rumah ibadah,Negara,Aksi langsung
+M129,C111,2023,Kota Semarang,Peristiwa bernuansa agama lainnya,Non-negara,—
+M130,C112,2023,Kota Semarang,Pemakaman & makam,Non-negara,—
+M131,C113,2023,Kota Semarang,Pemakaman & makam,Non-negara,—
+M132,C114,2023,Kota Pekalongan,Pembatasan kegiatan keagamaan,Negara,Aksi langsung
+M133,C115,2023,Kab. Boyolali,Kebijakan & tata kelola,Negara,Aksi langsung
+M134,C116,2023,Kota Surakarta,Layanan publik & hak sipil,Negara,Pembiaran/tidak memutuskan
+M135,C117,2023,Kota Surakarta,Peristiwa bernuansa agama lainnya,Non-negara,—
+M136,C118,2023,Kab. Cilacap,Layanan publik & hak sipil,Negara,Aksi langsung
+M137,C119,2023,Kab. Cilacap,Layanan publik & hak sipil,Negara,Aksi langsung
+M138,C120,2023,Kab. Brebes,Pemakaman & makam,Non-negara,—
+M139,C121,2023,Kab. Jepara,Pemakaman & makam,Non-negara,—
+M140,C122,2023,Kab. Semarang,Layanan publik & hak sipil,Negara,Pembiaran/tidak memutuskan
+M141,C123,2024,Jawa Tengah (lintas wilayah),Kebijakan & tata kelola,Negara,Aksi langsung
+M142,C124,2024,Kota Salatiga,Pembatasan kegiatan keagamaan,Non-negara,—
+M143,C125,2024,Kota Semarang,Pembatasan kegiatan keagamaan,Non-negara,—
+M144,C126,2024,Kab. Wonosobo,Pemakaman & makam,Non-negara,—
+M145,C127,2024,Kab. Pemalang,Pemakaman & makam,Non-negara,—
+M146,C128,2024,Jawa Tengah (lintas wilayah),Peristiwa bernuansa agama lainnya,Non-negara,—
+M147,C129,2024,Kab. Semarang,"Kekerasan, perusakan & intimidasi",Non-negara,—
+M148,C130,2024,Kota Semarang,Rumah ibadah,Negara,Pembiaran/tidak memutuskan
+M149,C131,2024,Kota Semarang,Rumah ibadah,Negara,Pembiaran/tidak memutuskan
+M150,C094,2024,Kab. Semarang,Rumah ibadah,Negara,Pembiaran/tidak memutuskan
+M151,C132,2024,Kab. Sukoharjo,Rumah ibadah,Negara,Pembiaran/tidak memutuskan

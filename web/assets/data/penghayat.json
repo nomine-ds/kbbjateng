@@ -1,0 +1,212 @@
+[
+  {
+    "id_kasus": "C014",
+    "tahun": 2016,
+    "kelompok_baku": "Penghayat Sapta Darma",
+    "nama_wilayah": "Kab. Brebes",
+    "kategori_utama": "Pembatasan kegiatan keagamaan",
+    "jenis_kasus_baku": "Penolakan ibadah, perayaan & ritual",
+    "peran_negara_ringkas": "Negara",
+    "arah": "Negatif"
+  },
+  {
+    "id_kasus": "C019",
+    "tahun": 2016,
+    "kelompok_baku": "Penghayat Sapta Darma",
+    "nama_wilayah": "Kab. Brebes",
+    "kategori_utama": "Pemakaman & makam",
+    "jenis_kasus_baku": "Pemakaman, makam & krematorium",
+    "peran_negara_ringkas": "Non-negara",
+    "arah": "Negatif"
+  },
+  {
+    "id_kasus": "C024",
+    "tahun": 2016,
+    "kelompok_baku": "Penghayat kepercayaan (umum)",
+    "nama_wilayah": "Kota Semarang",
+    "kategori_utama": "Layanan publik & hak sipil",
+    "jenis_kasus_baku": "Pendidikan agama/kepercayaan di sekolah",
+    "peran_negara_ringkas": "Negara",
+    "arah": "Negatif"
+  },
+  {
+    "id_kasus": "C034",
+    "tahun": 2017,
+    "kelompok_baku": "Penghayat Sapta Darma",
+    "nama_wilayah": "Kab. Rembang",
+    "kategori_utama": "Rumah ibadah",
+    "jenis_kasus_baku": "Perusakan/pembakaran rumah ibadah & simbol agama",
+    "peran_negara_ringkas": "Non-negara",
+    "arah": "Negatif"
+  },
+  {
+    "id_kasus": "C050",
+    "tahun": 2017,
+    "kelompok_baku": "Penghayat Sapta Darma",
+    "nama_wilayah": "Kab. Brebes",
+    "kategori_utama": "Pemaksaan keyakinan & konversi",
+    "jenis_kasus_baku": "Pemaksaan keyakinan, konversi & busana",
+    "peran_negara_ringkas": "Non-negara",
+    "arah": "Negatif"
+  },
+  {
+    "id_kasus": "C054",
+    "tahun": 2018,
+    "kelompok_baku": "Penghayat kepercayaan (umum)",
+    "nama_wilayah": "Kota Semarang",
+    "kategori_utama": "Peristiwa bernuansa agama lainnya",
+    "jenis_kasus_baku": "Tuduhan sesat/simbol, stigma & lainnya",
+    "peran_negara_ringkas": "Negara",
+    "arah": "Negatif"
+  },
+  {
+    "id_kasus": "C061",
+    "tahun": 2018,
+    "kelompok_baku": "Penghayat Sapta Darma",
+    "nama_wilayah": "Kab. Jepara",
+    "kategori_utama": "Pemakaman & makam",
+    "jenis_kasus_baku": "Pemakaman, makam & krematorium",
+    "peran_negara_ringkas": "Non-negara",
+    "arah": "Negatif"
+  },
+  {
+    "id_kasus": "C085",
+    "tahun": 2020,
+    "kelompok_baku": "Penghayat kepercayaan (umum)",
+    "nama_wilayah": "Jawa Tengah (lintas wilayah)",
+    "kategori_utama": "Layanan publik & hak sipil",
+    "jenis_kasus_baku": "Pendidikan agama/kepercayaan di sekolah",
+    "peran_negara_ringkas": "Negara",
+    "arah": "Negatif"
+  },
+  {
+    "id_kasus": "C086",
+    "tahun": 2021,
+    "kelompok_baku": "Penghayat kepercayaan (umum)",
+    "nama_wilayah": "Jawa Tengah (wilayah belum diverifikasi)",
+    "kategori_utama": "Layanan publik & hak sipil",
+    "jenis_kasus_baku": "Administrasi kependudukan & layanan sipil",
+    "peran_negara_ringkas": "Negara",
+    "arah": "Negatif"
+  },
+  {
+    "id_kasus": "C087",
+    "tahun": 2021,
+    "kelompok_baku": "Penghayat Sapta Darma",
+    "nama_wilayah": "Kab. Kendal",
+    "kategori_utama": "Pemakaman & makam",
+    "jenis_kasus_baku": "Pemakaman, makam & krematorium",
+    "peran_negara_ringkas": "Campuran",
+    "arah": "Negatif"
+  },
+  {
+    "id_kasus": "C088",
+    "tahun": 2021,
+    "kelompok_baku": "Penghayat kepercayaan (umum)",
+    "nama_wilayah": "Kab. Magelang",
+    "kategori_utama": "Layanan publik & hak sipil",
+    "jenis_kasus_baku": "Pendidikan agama/kepercayaan di sekolah",
+    "peran_negara_ringkas": "Negara",
+    "arah": "Negatif"
+  },
+  {
+    "id_kasus": "C089",
+    "tahun": 2021,
+    "kelompok_baku": "Sedulur Sikep",
+    "nama_wilayah": "Kab. Kudus",
+    "kategori_utama": "Layanan publik & hak sipil",
+    "jenis_kasus_baku": "Administrasi kependudukan & layanan sipil",
+    "peran_negara_ringkas": "Negara",
+    "arah": "Negatif"
+  },
+  {
+    "id_kasus": "C090",
+    "tahun": 2021,
+    "kelompok_baku": "Penghayat kepercayaan (umum)",
+    "nama_wilayah": "Kab. Wonogiri",
+    "kategori_utama": "Layanan publik & hak sipil",
+    "jenis_kasus_baku": "Hambatan pendirian/izin rumah ibadah",
+    "peran_negara_ringkas": "Negara",
+    "arah": "Negatif"
+  },
+  {
+    "id_kasus": "C104",
+    "tahun": 2022,
+    "kelompok_baku": "Penghayat kepercayaan (umum)",
+    "nama_wilayah": "Kab. Cilacap",
+    "kategori_utama": "Layanan publik & hak sipil",
+    "jenis_kasus_baku": "Pendidikan agama/kepercayaan di sekolah",
+    "peran_negara_ringkas": "Negara",
+    "arah": "Negatif"
+  },
+  {
+    "id_kasus": "C116",
+    "tahun": 2023,
+    "kelompok_baku": "Penghayat kepercayaan (umum)",
+    "nama_wilayah": "Kota Surakarta",
+    "kategori_utama": "Layanan publik & hak sipil",
+    "jenis_kasus_baku": "Pendidikan agama/kepercayaan di sekolah",
+    "peran_negara_ringkas": "Negara",
+    "arah": "Negatif"
+  },
+  {
+    "id_kasus": "C117",
+    "tahun": 2023,
+    "kelompok_baku": "Penghayat Pangestu & Sapta Darma",
+    "nama_wilayah": "Kota Surakarta",
+    "kategori_utama": "Peristiwa bernuansa agama lainnya",
+    "jenis_kasus_baku": "Tuduhan sesat/simbol, stigma & lainnya",
+    "peran_negara_ringkas": "Non-negara",
+    "arah": "Negatif"
+  },
+  {
+    "id_kasus": "C118",
+    "tahun": 2023,
+    "kelompok_baku": "Penghayat kepercayaan (umum)",
+    "nama_wilayah": "Kab. Cilacap",
+    "kategori_utama": "Layanan publik & hak sipil",
+    "jenis_kasus_baku": "Administrasi kependudukan & layanan sipil",
+    "peran_negara_ringkas": "Negara",
+    "arah": "Negatif"
+  },
+  {
+    "id_kasus": "C119",
+    "tahun": 2023,
+    "kelompok_baku": "Penghayat kepercayaan (umum)",
+    "nama_wilayah": "Kab. Cilacap",
+    "kategori_utama": "Layanan publik & hak sipil",
+    "jenis_kasus_baku": "Pendidikan agama/kepercayaan di sekolah",
+    "peran_negara_ringkas": "Negara",
+    "arah": "Negatif"
+  },
+  {
+    "id_kasus": "C120",
+    "tahun": 2023,
+    "kelompok_baku": "Penghayat kepercayaan (umum)",
+    "nama_wilayah": "Kab. Brebes",
+    "kategori_utama": "Pemakaman & makam",
+    "jenis_kasus_baku": "Pemakaman, makam & krematorium",
+    "peran_negara_ringkas": "Non-negara",
+    "arah": "Negatif"
+  },
+  {
+    "id_kasus": "C121",
+    "tahun": 2023,
+    "kelompok_baku": "Penghayat kepercayaan (umum)",
+    "nama_wilayah": "Kab. Jepara",
+    "kategori_utama": "Pemakaman & makam",
+    "jenis_kasus_baku": "Pemakaman, makam & krematorium",
+    "peran_negara_ringkas": "Non-negara",
+    "arah": "Negatif"
+  },
+  {
+    "id_kasus": "C122",
+    "tahun": 2023,
+    "kelompok_baku": "Penghayat Puan Hayati",
+    "nama_wilayah": "Kab. Semarang",
+    "kategori_utama": "Layanan publik & hak sipil",
+    "jenis_kasus_baku": "Administrasi kependudukan & layanan sipil",
+    "peran_negara_ringkas": "Negara",
+    "arah": "Negatif"
+  }
+]

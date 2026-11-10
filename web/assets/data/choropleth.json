@@ -1,0 +1,352 @@
+[
+  {
+    "kode_kabkota_bps": 3301,
+    "nama_wilayah": "Kab. Cilacap",
+    "jenis_kabkota": "Kabupaten",
+    "lat_perkiraan": -7.7266,
+    "lon_perkiraan": 109.015,
+    "jumlah_kasus_unik": 4,
+    "jumlah_penyebutan": 4,
+    "catatan": null
+  },
+  {
+    "kode_kabkota_bps": 3302,
+    "nama_wilayah": "Kab. Banyumas",
+    "jenis_kabkota": "Kabupaten",
+    "lat_perkiraan": -7.4214,
+    "lon_perkiraan": 109.234,
+    "jumlah_kasus_unik": 1,
+    "jumlah_penyebutan": 1,
+    "catatan": null
+  },
+  {
+    "kode_kabkota_bps": 3303,
+    "nama_wilayah": "Kab. Purbalingga",
+    "jenis_kabkota": "Kabupaten",
+    "lat_perkiraan": -7.3881,
+    "lon_perkiraan": 109.3636,
+    "jumlah_kasus_unik": 0,
+    "jumlah_penyebutan": 0,
+    "catatan": "tidak tercatat di laporan eLSA (bukan berarti tidak ada kasus)"
+  },
+  {
+    "kode_kabkota_bps": 3304,
+    "nama_wilayah": "Kab. Banjarnegara",
+    "jenis_kabkota": "Kabupaten",
+    "lat_perkiraan": -7.3794,
+    "lon_perkiraan": 109.6934,
+    "jumlah_kasus_unik": 1,
+    "jumlah_penyebutan": 1,
+    "catatan": null
+  },
+  {
+    "kode_kabkota_bps": 3305,
+    "nama_wilayah": "Kab. Kebumen",
+    "jenis_kabkota": "Kabupaten",
+    "lat_perkiraan": -7.6681,
+    "lon_perkiraan": 109.6525,
+    "jumlah_kasus_unik": 2,
+    "jumlah_penyebutan": 2,
+    "catatan": null
+  },
+  {
+    "kode_kabkota_bps": 3306,
+    "nama_wilayah": "Kab. Purworejo",
+    "jenis_kabkota": "Kabupaten",
+    "lat_perkiraan": -7.7132,
+    "lon_perkiraan": 110.0087,
+    "jumlah_kasus_unik": 1,
+    "jumlah_penyebutan": 1,
+    "catatan": null
+  },
+  {
+    "kode_kabkota_bps": 3307,
+    "nama_wilayah": "Kab. Wonosobo",
+    "jenis_kabkota": "Kabupaten",
+    "lat_perkiraan": -7.3632,
+    "lon_perkiraan": 109.9009,
+    "jumlah_kasus_unik": 2,
+    "jumlah_penyebutan": 2,
+    "catatan": null
+  },
+  {
+    "kode_kabkota_bps": 3308,
+    "nama_wilayah": "Kab. Magelang",
+    "jenis_kabkota": "Kabupaten",
+    "lat_perkiraan": -7.4833,
+    "lon_perkiraan": 110.2167,
+    "jumlah_kasus_unik": 4,
+    "jumlah_penyebutan": 4,
+    "catatan": null
+  },
+  {
+    "kode_kabkota_bps": 3309,
+    "nama_wilayah": "Kab. Boyolali",
+    "jenis_kabkota": "Kabupaten",
+    "lat_perkiraan": -7.5311,
+    "lon_perkiraan": 110.5968,
+    "jumlah_kasus_unik": 2,
+    "jumlah_penyebutan": 2,
+    "catatan": null
+  },
+  {
+    "kode_kabkota_bps": 3310,
+    "nama_wilayah": "Kab. Klaten",
+    "jenis_kabkota": "Kabupaten",
+    "lat_perkiraan": -7.7055,
+    "lon_perkiraan": 110.6061,
+    "jumlah_kasus_unik": 2,
+    "jumlah_penyebutan": 2,
+    "catatan": null
+  },
+  {
+    "kode_kabkota_bps": 3311,
+    "nama_wilayah": "Kab. Sukoharjo",
+    "jenis_kabkota": "Kabupaten",
+    "lat_perkiraan": -7.6819,
+    "lon_perkiraan": 110.8428,
+    "jumlah_kasus_unik": 6,
+    "jumlah_penyebutan": 6,
+    "catatan": null
+  },
+  {
+    "kode_kabkota_bps": 3312,
+    "nama_wilayah": "Kab. Wonogiri",
+    "jenis_kabkota": "Kabupaten",
+    "lat_perkiraan": -7.8125,
+    "lon_perkiraan": 110.9232,
+    "jumlah_kasus_unik": 1,
+    "jumlah_penyebutan": 1,
+    "catatan": null
+  },
+  {
+    "kode_kabkota_bps": 3313,
+    "nama_wilayah": "Kab. Karanganyar",
+    "jenis_kabkota": "Kabupaten",
+    "lat_perkiraan": -7.5987,
+    "lon_perkiraan": 110.95,
+    "jumlah_kasus_unik": 2,
+    "jumlah_penyebutan": 2,
+    "catatan": null
+  },
+  {
+    "kode_kabkota_bps": 3314,
+    "nama_wilayah": "Kab. Sragen",
+    "jenis_kabkota": "Kabupaten",
+    "lat_perkiraan": -7.4269,
+    "lon_perkiraan": 111.0236,
+    "jumlah_kasus_unik": 5,
+    "jumlah_penyebutan": 6,
+    "catatan": null
+  },
+  {
+    "kode_kabkota_bps": 3315,
+    "nama_wilayah": "Kab. Grobogan",
+    "jenis_kabkota": "Kabupaten",
+    "lat_perkiraan": -7.0847,
+    "lon_perkiraan": 110.9158,
+    "jumlah_kasus_unik": 0,
+    "jumlah_penyebutan": 0,
+    "catatan": "tidak tercatat di laporan eLSA (bukan berarti tidak ada kasus)"
+  },
+  {
+    "kode_kabkota_bps": 3316,
+    "nama_wilayah": "Kab. Blora",
+    "jenis_kabkota": "Kabupaten",
+    "lat_perkiraan": -6.9695,
+    "lon_perkiraan": 111.4162,
+    "jumlah_kasus_unik": 1,
+    "jumlah_penyebutan": 1,
+    "catatan": null
+  },
+  {
+    "kode_kabkota_bps": 3317,
+    "nama_wilayah": "Kab. Rembang",
+    "jenis_kabkota": "Kabupaten",
+    "lat_perkiraan": -6.7089,
+    "lon_perkiraan": 111.3426,
+    "jumlah_kasus_unik": 1,
+    "jumlah_penyebutan": 1,
+    "catatan": null
+  },
+  {
+    "kode_kabkota_bps": 3318,
+    "nama_wilayah": "Kab. Pati",
+    "jenis_kabkota": "Kabupaten",
+    "lat_perkiraan": -6.7559,
+    "lon_perkiraan": 111.0381,
+    "jumlah_kasus_unik": 2,
+    "jumlah_penyebutan": 2,
+    "catatan": null
+  },
+  {
+    "kode_kabkota_bps": 3319,
+    "nama_wilayah": "Kab. Kudus",
+    "jenis_kabkota": "Kabupaten",
+    "lat_perkiraan": -6.8048,
+    "lon_perkiraan": 110.8405,
+    "jumlah_kasus_unik": 2,
+    "jumlah_penyebutan": 2,
+    "catatan": null
+  },
+  {
+    "kode_kabkota_bps": 3320,
+    "nama_wilayah": "Kab. Jepara",
+    "jenis_kabkota": "Kabupaten",
+    "lat_perkiraan": -6.589,
+    "lon_perkiraan": 110.668,
+    "jumlah_kasus_unik": 4,
+    "jumlah_penyebutan": 8,
+    "catatan": null
+  },
+  {
+    "kode_kabkota_bps": 3321,
+    "nama_wilayah": "Kab. Demak",
+    "jenis_kabkota": "Kabupaten",
+    "lat_perkiraan": -6.8909,
+    "lon_perkiraan": 110.6388,
+    "jumlah_kasus_unik": 0,
+    "jumlah_penyebutan": 0,
+    "catatan": "tidak tercatat di laporan eLSA (bukan berarti tidak ada kasus)"
+  },
+  {
+    "kode_kabkota_bps": 3322,
+    "nama_wilayah": "Kab. Semarang",
+    "jenis_kabkota": "Kabupaten",
+    "lat_perkiraan": -7.1397,
+    "lon_perkiraan": 110.405,
+    "jumlah_kasus_unik": 4,
+    "jumlah_penyebutan": 6,
+    "catatan": null
+  },
+  {
+    "kode_kabkota_bps": 3323,
+    "nama_wilayah": "Kab. Temanggung",
+    "jenis_kabkota": "Kabupaten",
+    "lat_perkiraan": -7.3167,
+    "lon_perkiraan": 110.1747,
+    "jumlah_kasus_unik": 2,
+    "jumlah_penyebutan": 2,
+    "catatan": null
+  },
+  {
+    "kode_kabkota_bps": 3324,
+    "nama_wilayah": "Kab. Kendal",
+    "jenis_kabkota": "Kabupaten",
+    "lat_perkiraan": -6.9226,
+    "lon_perkiraan": 110.2036,
+    "jumlah_kasus_unik": 4,
+    "jumlah_penyebutan": 6,
+    "catatan": null
+  },
+  {
+    "kode_kabkota_bps": 3325,
+    "nama_wilayah": "Kab. Batang",
+    "jenis_kabkota": "Kabupaten",
+    "lat_perkiraan": -6.9078,
+    "lon_perkiraan": 109.7295,
+    "jumlah_kasus_unik": 3,
+    "jumlah_penyebutan": 3,
+    "catatan": null
+  },
+  {
+    "kode_kabkota_bps": 3326,
+    "nama_wilayah": "Kab. Pekalongan",
+    "jenis_kabkota": "Kabupaten",
+    "lat_perkiraan": -7.0392,
+    "lon_perkiraan": 109.6103,
+    "jumlah_kasus_unik": 1,
+    "jumlah_penyebutan": 1,
+    "catatan": null
+  },
+  {
+    "kode_kabkota_bps": 3327,
+    "nama_wilayah": "Kab. Pemalang",
+    "jenis_kabkota": "Kabupaten",
+    "lat_perkiraan": -6.8918,
+    "lon_perkiraan": 109.3807,
+    "jumlah_kasus_unik": 2,
+    "jumlah_penyebutan": 3,
+    "catatan": null
+  },
+  {
+    "kode_kabkota_bps": 3328,
+    "nama_wilayah": "Kab. Tegal",
+    "jenis_kabkota": "Kabupaten",
+    "lat_perkiraan": -6.9769,
+    "lon_perkiraan": 109.1367,
+    "jumlah_kasus_unik": 3,
+    "jumlah_penyebutan": 3,
+    "catatan": null
+  },
+  {
+    "kode_kabkota_bps": 3329,
+    "nama_wilayah": "Kab. Brebes",
+    "jenis_kabkota": "Kabupaten",
+    "lat_perkiraan": -6.8723,
+    "lon_perkiraan": 109.0409,
+    "jumlah_kasus_unik": 7,
+    "jumlah_penyebutan": 8,
+    "catatan": null
+  },
+  {
+    "kode_kabkota_bps": 3371,
+    "nama_wilayah": "Kota Magelang",
+    "jenis_kabkota": "Kota",
+    "lat_perkiraan": -7.4797,
+    "lon_perkiraan": 110.2177,
+    "jumlah_kasus_unik": 1,
+    "jumlah_penyebutan": 1,
+    "catatan": null
+  },
+  {
+    "kode_kabkota_bps": 3372,
+    "nama_wilayah": "Kota Surakarta",
+    "jenis_kabkota": "Kota",
+    "lat_perkiraan": -7.5666,
+    "lon_perkiraan": 110.8283,
+    "jumlah_kasus_unik": 15,
+    "jumlah_penyebutan": 16,
+    "catatan": null
+  },
+  {
+    "kode_kabkota_bps": 3373,
+    "nama_wilayah": "Kota Salatiga",
+    "jenis_kabkota": "Kota",
+    "lat_perkiraan": -7.3305,
+    "lon_perkiraan": 110.4928,
+    "jumlah_kasus_unik": 3,
+    "jumlah_penyebutan": 3,
+    "catatan": null
+  },
+  {
+    "kode_kabkota_bps": 3374,
+    "nama_wilayah": "Kota Semarang",
+    "jenis_kabkota": "Kota",
+    "lat_perkiraan": -6.9667,
+    "lon_perkiraan": 110.4167,
+    "jumlah_kasus_unik": 33,
+    "jumlah_penyebutan": 34,
+    "catatan": null
+  },
+  {
+    "kode_kabkota_bps": 3375,
+    "nama_wilayah": "Kota Pekalongan",
+    "jenis_kabkota": "Kota",
+    "lat_perkiraan": -6.8886,
+    "lon_perkiraan": 109.6753,
+    "jumlah_kasus_unik": 2,
+    "jumlah_penyebutan": 2,
+    "catatan": null
+  },
+  {
+    "kode_kabkota_bps": 3376,
+    "nama_wilayah": "Kota Tegal",
+    "jenis_kabkota": "Kota",
+    "lat_perkiraan": -6.8694,
+    "lon_perkiraan": 109.1402,
+    "jumlah_kasus_unik": 2,
+    "jumlah_penyebutan": 2,
+    "catatan": null
+  }
+]

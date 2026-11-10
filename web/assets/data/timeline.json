@@ -1,0 +1,65 @@
+[
+  {
+    "tahun": 2016,
+    "total": 27,
+    "negara": 9,
+    "campuran": 3,
+    "non_negara": 15
+  },
+  {
+    "tahun": 2017,
+    "total": 29,
+    "negara": 7,
+    "campuran": 4,
+    "non_negara": 18
+  },
+  {
+    "tahun": 2018,
+    "total": 21,
+    "negara": 6,
+    "campuran": 0,
+    "non_negara": 15
+  },
+  {
+    "tahun": 2019,
+    "total": 9,
+    "negara": 2,
+    "campuran": 1,
+    "non_negara": 6
+  },
+  {
+    "tahun": 2020,
+    "total": 8,
+    "negara": 2,
+    "campuran": 0,
+    "non_negara": 6
+  },
+  {
+    "tahun": 2021,
+    "total": 11,
+    "negara": 7,
+    "campuran": 1,
+    "non_negara": 3
+  },
+  {
+    "tahun": 2022,
+    "total": 7,
+    "negara": 4,
+    "campuran": 0,
+    "non_negara": 3
+  },
+  {
+    "tahun": 2023,
+    "total": 18,
+    "negara": 7,
+    "campuran": 0,
+    "non_negara": 11
+  },
+  {
+    "tahun": 2024,
+    "total": 11,
+    "negara": 5,
+    "campuran": 0,
+    "non_negara": 6
+  }
+]

@@ -1,0 +1,42 @@
+[
+  {
+    "id_kasus": "C089",
+    "tahun": 2021,
+    "nama_wilayah": "Kab. Kudus",
+    "judul_baku": "Pencatatan perkawinan dan adminduk Sedulur Sikep, Kudus 2021",
+    "ringkasan_sesuai_laporan": "Sedulur Sikep: kolom agama anak di KK & akta perkawinan tertunda",
+    "peran_negara_ringkas": "Negara",
+    "bentuk_peran_negara": "Aksi langsung",
+    "status": "Selesai"
+  },
+  {
+    "id_kasus": "C116",
+    "tahun": 2023,
+    "nama_wilayah": "Kota Surakarta",
+    "judul_baku": "Pendidikan penghayat di Surakarta: guru belum tersedia, siswa dipaksa ikut agama lain",
+    "ringkasan_sesuai_laporan": "Pendidikan penghayat di Surakarta: guru belum tersedia, siswa dipaksa ikut agama lain",
+    "peran_negara_ringkas": "Negara",
+    "bentuk_peran_negara": "Pembiaran/tidak memutuskan",
+    "status": "Berlanjut"
+  },
+  {
+    "id_kasus": "C118",
+    "tahun": 2023,
+    "nama_wilayah": "Kab. Cilacap",
+    "judul_baku": "Sudiyono Aji dipersulit: KK bertuliskan Islam, perubahan data dilempar antar instansi",
+    "ringkasan_sesuai_laporan": "Sudiyono Aji dipersulit: KK bertuliskan Islam, perubahan data dilempar antar instansi",
+    "peran_negara_ringkas": "Negara",
+    "bentuk_peran_negara": "Aksi langsung",
+    "status": "Berlanjut"
+  },
+  {
+    "id_kasus": "C119",
+    "tahun": 2023,
+    "nama_wilayah": "Kab. Cilacap",
+    "judul_baku": "Penyuluh penghayat Sri Rahayu dimintai SK/ijazah di SMPN 2 Adipala",
+    "ringkasan_sesuai_laporan": "Penyuluh penghayat Sri Rahayu dimintai SK/ijazah di SMPN 2 Adipala",
+    "peran_negara_ringkas": "Negara",
+    "bentuk_peran_negara": "Aksi langsung",
+    "status": "Selesai"
+  }
+]
