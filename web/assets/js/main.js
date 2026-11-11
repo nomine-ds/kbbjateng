@@ -1,5 +1,10 @@
-// KBB Jateng -- hero + peta + timeline + agama + breakdown + kasus
-const RED = "#c1272d";
+﻿const RED = "#c1272d";
+let mapInstance = null;
+let geojsonLayer = null;
+let geojsonData = null;
+let allMapData = [];
+let selectedKodes = new Set();
+let filterTahun = null;
 
 async function loadJSON(name) {
   const r = await fetch("assets/data/" + name);
@@ -28,6 +33,7 @@ async function initHero() {
     { num: r.pct_penghayat_negara, label: "Kasus penghayat melibatkan negara", format: "pct" },
   ];
   const container = document.getElementById("hero-stats");
+  if (!container) return;
   container.innerHTML = stats.map(
     (s) => '<div class="stat"><div class="stat-number" data-target="' + s.num +
       '" data-format="' + s.format + '">0</div><div class="stat-label">' + s.label + "</div></div>"
@@ -55,296 +61,275 @@ async function initHero() {
   nums.forEach((el) => obs.observe(el));
 }
 
-let mapInstance = null;
-let geojsonLayer = null;
-let geojsonData = null;
-let allMarkers = [];
-let allMapData = [];
-
-let activeMarker = null;
-let lastHashKode = null;
-let filterTahun = null;
-
 async function initMap() {
   if (typeof L === "undefined") {
-    document.getElementById("map").innerHTML =
-      '<p style="padding:2rem;text-align:center;color:#888">Peta butuh koneksi internet.</p>';
+    document.getElementById("map").innerHTML = '<p style="padding:2rem;text-align:center;color:#888">Peta butuh koneksi internet.</p>';
     return;
   }
+  
+  const mapEl = document.getElementById("map");
+  mapEl.innerHTML = '<div class="map-loading"><div class="spinner"></div><p>Memuat data peta...</p></div>';
+
   allMapData = await loadJSON("choropleth.json");
-  try {
-    window.kasusByWilayah = await loadJSON("kasus_per_wilayah.json");
-  } catch (e) {
-    console.warn("kasus_per_wilayah.json tidak ditemukan. Panel detail tidak akan bekerja.");
-    window.kasusByWilayah = {};
-  }
+  try { window.kasusByWilayah = await loadJSON("kasus_per_wilayah.json"); } catch (e) { window.kasusByWilayah = {}; }
 
-  mapInstance = L.map("map", {
-    scrollWheelZoom: false,
-    minZoom: 7,
-    maxZoom: 13,
-  }).setView([-7.3, 110.3], 8);
+  mapEl.innerHTML = "";
+  mapInstance = L.map("map", { scrollWheelZoom: false, minZoom: 7, maxZoom: 13 }).setView([-7.3, 110.3], 8);
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", { attribution: "OpenStreetMap", maxZoom: 19 }).addTo(mapInstance);
 
-  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-    { attribution: "OpenStreetMap", maxZoom: 19 }).addTo(mapInstance);
+  initMultiSelect();
 
   const kategoriSet = new Set();
-  allMapData.forEach((d) => {
-    if (d.kategori_terbanyak) kategoriSet.add(d.kategori_terbanyak);
-  });
+  allMapData.forEach((d) => { if (d.kategori_terbanyak) kategoriSet.add(d.kategori_terbanyak); });
   const kategoriSelect = document.getElementById("filter-kategori");
-  Array.from(kategoriSet).sort().forEach((k) => {
-    const opt = document.createElement("option");
-    opt.value = k;
-    opt.textContent = k;
-    kategoriSelect.appendChild(opt);
-  });
+  if (kategoriSelect) {
+    Array.from(kategoriSet).sort().forEach((k) => {
+      const opt = document.createElement("option"); opt.value = k; opt.textContent = k; kategoriSelect.appendChild(opt);
+    });
+  }
 
-  renderChoropleth();
+  await renderChoropleth();
+
+  setTimeout(() => {
+    mapInstance.invalidateSize();
+    if (geojsonLayer) mapInstance.fitBounds(geojsonLayer.getBounds(), { padding: [20, 20] });
+  }, 300);
 
   ["filter-jenis", "filter-kategori", "filter-jumlah"].forEach((id) => {
-    document.getElementById(id).addEventListener("change", () => renderChoropleth({ fit: true }));
-  });
-
-  document.querySelectorAll(".legend-item").forEach((el) => {
-    el.addEventListener("click", () => {
-      document.getElementById("filter-jumlah").value = el.dataset.tier;
-      renderChoropleth({ fit: true });
-    });
+    const el = document.getElementById(id);
+    if (el) el.addEventListener("change", () => renderChoropleth({ fit: true }));
   });
 
   const resetBtn = document.getElementById("map-reset-btn");
   if (resetBtn) resetBtn.addEventListener("click", resetView);
   const emptyResetBtn = document.getElementById("empty-reset-btn");
   if (emptyResetBtn) emptyResetBtn.addEventListener("click", resetView);
-
-  window.addEventListener("hashchange", handleHash);
-  handleHash();
 }
 
-function fitToMarkers(markers) {
-  if (markers.length === 0) return;
-  const bounds = L.featureGroup(markers).getBounds();
-  if (bounds.isValid()) {
-    mapInstance.fitBounds(bounds.pad(0.15), { maxZoom: 10, animate: true, duration: 0.5 });
-  }
-}
+function initMultiSelect() {
+  const container = document.getElementById("multi-select-wilayah");
+  if (!container) return;
 
-function setActiveMarker(marker) {
-  if (activeMarker && activeMarker !== marker) {
-    activeMarker.setStyle({ weight: 1.5, color: "#fff", fillOpacity: 0.8 });
-  }
-  if (marker) {
-    marker.setStyle({ weight: 3, color: "#1a1a1a", fillOpacity: 0.95 });
-    marker.bringToFront();
-  }
-  activeMarker = marker;
-}
+  container.innerHTML = `
+    <div class="multi-select-header" id="ms-header">-- Pilih Wilayah --</div>
+    <div class="multi-select-options" id="ms-options">
+      <div class="ms-actions">
+        <button type="button" id="ms-select-all">Pilih Semua</button>
+        <button type="button" id="ms-clear-all">Hapus Semua</button>
+      </div>
+      <div id="ms-list"></div>
+    </div>
+  `;
 
-function handleHash() {
-  const hash = window.location.hash;
-  if (!hash.startsWith("#wilayah-")) return;
-  const kode = hash.replace("#wilayah-", "");
-  if (kode === lastHashKode) return;
-  lastHashKode = kode;
-  const marker = allMarkers.find((m) => m._wilayahKode === kode);
-  if (marker) {
-    setActiveMarker(marker);
-    if (marker.getLatLng) mapInstance.panTo(marker.getLatLng(), { animate: true, duration: 0.5 });
-    showDetail(kode);
-  }
-}
+  const header = document.getElementById("ms-header");
+  const optionsBox = document.getElementById("ms-options");
+  const msList = document.getElementById("ms-list");
 
-function resetView() {
-  ["filter-jenis", "filter-kategori", "filter-jumlah"].forEach((id) => {
-    document.getElementById(id).value = "";
+  header.addEventListener("click", (e) => {
+    e.stopPropagation();
+    optionsBox.style.display = optionsBox.style.display === "none" ? "block" : "none";
   });
-  lastHashKode = null;
-  setActiveMarker(null);
-  if (window.location.hash.startsWith("#wilayah-")) {
-    history.replaceState(null, "", window.location.pathname + window.location.search);
-  }
-  renderChoropleth({ fit: true });
-  const detail = document.getElementById("map-detail");
-  if (detail) {
-    detail.innerHTML = '<p class="detail-hint">Klik wilayah di peta untuk melihat daftar kasus di wilayah tersebut.</p>';
-  }
+  document.addEventListener("click", () => { optionsBox.style.display = "none"; });
+
+  const sortedData = [...allMapData].sort((a, b) => {
+    const nameA = a.nama_kabkota || a.nama_wilayah || a.shapeName || "";
+    const nameB = b.nama_kabkota || b.nama_wilayah || b.shapeName || "";
+    return nameA.localeCompare(nameB);
+  });
+
+  sortedData.forEach((d) => {
+    const namaWilayah = d.nama_kabkota || d.nama_wilayah || d.shapeName || ("Wilayah " + d.kode_kabkota_bps);
+    const label = document.createElement("label");
+    label.className = "ms-option";
+    label.innerHTML = `<input type="checkbox" value="${d.kode_kabkota_bps}"> <span>${namaWilayah}</span>`;
+    msList.appendChild(label);
+  });
+
+  document.getElementById("ms-select-all").addEventListener("click", (e) => {
+    e.stopPropagation();
+    document.querySelectorAll('#ms-list input[type="checkbox"]').forEach(cb => {
+      cb.checked = true;
+      selectedKodes.add(String(cb.value));
+    });
+    updateMultiSelectHeader(); applyMultiHighlight(); updateDetailPanel();
+  });
+
+  document.getElementById("ms-clear-all").addEventListener("click", (e) => {
+    e.stopPropagation();
+    document.querySelectorAll('#ms-list input[type="checkbox"]').forEach(cb => { cb.checked = false; });
+    selectedKodes.clear();
+    updateMultiSelectHeader(); applyMultiHighlight(); updateDetailPanel();
+  });
+
+  msList.addEventListener("change", (e) => {
+    if (e.target.tagName === "INPUT") {
+      const kode = String(e.target.value);
+      if (e.target.checked) selectedKodes.add(kode);
+      else selectedKodes.delete(kode);
+      updateMultiSelectHeader(); applyMultiHighlight(); updateDetailPanel();
+    }
+  });
+}
+
+function updateMultiSelectHeader() {
+  const header = document.getElementById("ms-header");
+  if (!header) return;
+  if (selectedKodes.size === 0) header.innerHTML = '<span style="color:#9ca3af">-- Pilih Wilayah --</span>';
+  else header.innerHTML = '<span style="font-weight:600; color:#c1272d;">' + selectedKodes.size + ' Wilayah Dipilih</span>';
+}
+
+function applyMultiHighlight() {
+  if (!geojsonLayer) return;
+  geojsonLayer.eachLayer((layer) => {
+    const kodeStr = String(layer.feature.properties.kode_bps);
+    if (selectedKodes.has(kodeStr)) {
+      layer.setStyle({ weight: 4, color: "#1a1a1a", dashArray: "4, 4", fillColor: layer._baseFillColor, fillOpacity: 0.9 });
+      layer.bringToFront();
+    } else {
+      geojsonLayer.resetStyle(layer);
+    }
+  });
 }
 
 async function renderChoropleth(options = {}) {
   const { fit = false } = options;
   if (!mapInstance) return;
 
-  if (geojsonLayer) {
-    mapInstance.removeLayer(geojsonLayer);
-    geojsonLayer = null;
-  }
+  if (geojsonLayer) mapInstance.removeLayer(geojsonLayer);
+  if (!geojsonData) geojsonData = await loadJSON("kabkota_jateng.geojson");
 
-  if (!geojsonData) {
-    try {
-      geojsonData = await loadJSON("kabkota_jateng.geojson");
-    } catch (e) {
-      console.error("Gagal memuat GeoJSON.", e);
-      return;
-    }
-  }
-
-  const fJenis = document.getElementById("filter-jenis").value;
-  const fKategori = document.getElementById("filter-kategori").value;
-  const fJumlah = document.getElementById("filter-jumlah").value;
+  const fJenis = document.getElementById("filter-jenis") ? document.getElementById("filter-jenis").value : "";
+  const fKategori = document.getElementById("filter-kategori") ? document.getElementById("filter-kategori").value : "";
+  const fJumlah = document.getElementById("filter-jumlah") ? document.getElementById("filter-jumlah").value : "";
 
   const kasusByKode = {};
-  allMapData.forEach(d => { kasusByKode[String(d.kode_kabkota_bps)] = d; });
+  allMapData.forEach((d) => { kasusByKode[String(d.kode_kabkota_bps)] = d; });
+
+  function computeN(d, kodeStr) {
+    let n = d ? d.jumlah_kasus_unik : 0;
+    if (filterTahun && window.kasusByWilayah && window.kasusByWilayah[kodeStr]) {
+      n = window.kasusByWilayah[kodeStr].kasus.filter((k) => k.tahun === filterTahun).length;
+    }
+    return n;
+  }
+
+  function passes(d, n) {
+    if (fJenis && (!d || d.jenis_kabkota !== fJenis)) return false;
+    if (fKategori && (!d || d.kategori_terbanyak !== fKategori)) return false;
+    if (fJumlah === "0" && n !== 0) return false;
+    if (fJumlah === "1-4" && (n < 1 || n > 4)) return false;
+    if (fJumlah === "5-14" && (n < 5 || n > 14)) return false;
+    if (fJumlah === "15+" && n < 15) return false;
+    if (filterTahun && n === 0) return false;
+    return true;
+  }
 
   let visible = 0;
 
   geojsonLayer = L.geoJSON(geojsonData, {
     style: function (feature) {
-      const kode = feature.properties.kode_bps;
-      const d = kasusByKode[kode];
-      const n = d ? d.jumlah_kasus_unik : 0;
+      const kodeStr = String(feature.properties.kode_bps);
+      const d = kasusByKode[kodeStr];
+      const n = computeN(d, kodeStr);
+      if (!passes(d, n)) return { opacity: 0, fillOpacity: 0 };
 
-      if (fJenis && d && d.jenis_kabkota !== fJenis) return { opacity: 0, fillOpacity: 0 };
-      if (fKategori && d && d.kategori_terbanyak !== fKategori) return { opacity: 0, fillOpacity: 0 };
-      if (fJumlah === "0" && n !== 0) return { opacity: 0, fillOpacity: 0 };
-      if (fJumlah === "1-4" && (n < 1 || n > 4)) return { opacity: 0, fillOpacity: 0 };
-      if (fJumlah === "5-14" && (n < 5 || n > 14)) return { opacity: 0, fillOpacity: 0 };
-      if (fJumlah === "15+" && n < 15) return { opacity: 0, fillOpacity: 0 };
-
-      let fillColor = "#e0e0e0";
+      let fillColor = "#d9d9d9";
       if (n >= 15) fillColor = "#7a1a1e";
       else if (n >= 5) fillColor = "#c1272d";
       else if (n >= 1) fillColor = "#e37a7e";
-      else if (n === 0) fillColor = "#d9d9d9";
 
       return { fillColor: fillColor, weight: 1, opacity: 1, color: "white", fillOpacity: 0.8 };
     },
     onEachFeature: function (feature, layer) {
-      const kode = feature.properties.kode_bps;
-      const nama = feature.properties.shapeName;
-      const d = kasusByKode[kode];
-      const n = d ? d.jumlah_kasus_unik : 0;
+      const kodeStr = String(feature.properties.kode_bps);
+      const nama = feature.properties.shapeName || "Wilayah " + kodeStr;
+      const d = kasusByKode[kodeStr];
+      const n = computeN(d, kodeStr);
+
+      let baseColor = "#d9d9d9";
+      if (n >= 15) baseColor = "#7a1a1e";
+      else if (n >= 5) baseColor = "#c1272d";
+      else if (n >= 1) baseColor = "#e37a7e";
+      layer._baseFillColor = baseColor;
 
       layer.bindTooltip("<strong>" + nama + "</strong><br>" + n + " kasus unik", { sticky: true, className: "custom-tooltip" });
-      layer.on("click", () => { if (d) showDetail(kode); });
+
+      layer.on("click", () => {
+        if (selectedKodes.has(kodeStr)) selectedKodes.delete(kodeStr);
+        else selectedKodes.add(kodeStr);
+        
+        const cb = document.querySelector('#ms-list input[value="' + kodeStr + '"]');
+        if (cb) cb.checked = selectedKodes.has(kodeStr);
+
+        updateMultiSelectHeader(); applyMultiHighlight(); updateDetailPanel();
+      });
+
       layer.on("mouseover", function () {
-        this.setStyle({ weight: 2.5, color: "#1a1a1a", fillOpacity: 0.95 });
+        if (!selectedKodes.has(kodeStr)) this.setStyle({ weight: 3, color: "#c1272d", fillOpacity: 0.95 });
         this.bringToFront();
       });
-      layer.on("mouseout", function () { geojsonLayer.resetStyle(this); });
-      visible++;
+
+      layer.on("mouseout", function () {
+        if (!selectedKodes.has(kodeStr)) geojsonLayer.resetStyle(this);
+      });
+
+      if (passes(d, n)) visible++;
     }
   }).addTo(mapInstance);
 
+  applyMultiHighlight();
   const counter = document.getElementById("filter-count");
   if (counter) counter.innerHTML = "Menampilkan <strong>" + visible + "</strong> dari " + allMapData.length + " wilayah";
-
-  const emptyEl = document.getElementById("map-empty");
-  if (emptyEl) emptyEl.style.display = visible === 0 ? "flex" : "none";
-
-  if (fit) {
-    const hasFilter = fJenis || fKategori || fJumlah;
-    if (hasFilter && geojsonLayer.getLayers().length > 0) {
-      mapInstance.fitBounds(geojsonLayer.getBounds().pad(0.1), { maxZoom: 10 });
-    } else if (!hasFilter) {
-      mapInstance.setView([-7.3, 110.3], 8, { animate: true });
-    }
+  
+  if (fit && visible > 0) {
+    const hasFilter = fJenis || fKategori || fJumlah || filterTahun;
+    if (hasFilter) mapInstance.flyToBounds(geojsonLayer.getBounds().pad(0.1), { maxZoom: 10, duration: 1 });
   }
-}) {
-  const { fit = false } = options;
-  if (!mapInstance) return;
+}
 
-  allMarkers.forEach((m) => mapInstance.removeLayer(m));
-  allMarkers = [];
-  activeMarker = null;
+function updateDetailPanel() {
+  const detail = document.getElementById("map-detail");
+  if (!detail) return;
 
-  const fJenis = document.getElementById("filter-jenis").value;
-  const fKategori = document.getElementById("filter-kategori").value;
-  const fJumlah = document.getElementById("filter-jumlah").value;
+  if (selectedKodes.size === 0) {
+    detail.innerHTML = '<p class="detail-hint">Klik wilayah di peta atau centang dari dropdown untuk melihat dan membandingkan kasus.</p>';
+    return;
+  }
 
-  const mappable = allMapData.filter((d) => d.lat_perkiraan && d.lon_perkiraan);
-  let visible = 0;
+  let html = '';
+  Array.from(selectedKodes).forEach(kode => {
+    const data = window.kasusByWilayah && window.kasusByWilayah[kode];
+    if (!data || !data.kasus || data.kasus.length === 0) return;
 
-  mappable.forEach((d) => {
-    let n = d.jumlah_kasus_unik;
-    if (filterTahun) {
-      const _d = window.kasusByWilayah && window.kasusByWilayah[String(d.kode_kabkota_bps)];
-      if (!_d || !_d.kasus) return;
-      n = _d.kasus.filter((k) => k.tahun === filterTahun).length;
-      if (n === 0) return;
-    }
-    if (fJenis && d.jenis_kabkota !== fJenis) return;
-    if (fKategori && d.kategori_terbanyak !== fKategori) return;
-    if (fJumlah === "0" && n !== 0) return;
-    if (fJumlah === "1-4" && (n < 1 || n > 4)) return;
-    if (fJumlah === "5-14" && (n < 5 || n > 14)) return;
-    if (fJumlah === "15+" && n < 15) return;
+    let filteredKasus = filterTahun ? data.kasus.filter(k => k.tahun === filterTahun) : data.kasus;
+    if (filteredKasus.length === 0) return;
 
-    const baseRadius = n === 0 ? 6 : 6 + Math.sqrt(n) * 6;
-    const color = n === 0 ? "#bbb" : n >= 15 ? "#7a1a1e" : n >= 5 ? RED : "#e37a7e";
-
-    const marker = L.circleMarker([d.lat_perkiraan, d.lon_perkiraan], {
-      radius: baseRadius, fillColor: color, color: "#fff", weight: 1.5,
-      fillOpacity: 0.8, bubblingMouseEvents: false,
-    }).addTo(mapInstance);
-
-    marker._wilayahKode = String(d.kode_kabkota_bps);
-
-    marker.bindTooltip(
-      "<strong>" + d.nama_wilayah + "</strong>" + n + " kasus unik",
-      { direction: "top", offset: [0, -6], className: "custom-tooltip" }
-    );
-
-    marker.on("mouseover", function () {
-      this.setRadius(baseRadius * 1.2);
-      this.setStyle({ fillOpacity: 1, weight: 2.5 });
-      this.bringToFront();
+    html += `<div class="detail-header" style="margin-top: 1.5rem; border-bottom: 2px solid #ccc; padding-bottom: 0.5rem;"><h3>${data.nama_wilayah} ${filterTahun ? '(Tahun '+filterTahun+')' : ''}</h3><p class="detail-count">${filteredKasus.length} kasus</p></div><ul class="detail-list" style="margin-top: 0.5rem;">`;
+    filteredKasus.forEach(k => {
+      html += `<li><div class="detail-meta">${k.tahun} · ${k.peran_negara} ${k.status ? '· '+k.status : ''}</div><div class="detail-judul">${k.judul}</div>`;
+      if (k.ringkasan && k.ringkasan !== k.judul) html += `<div class="detail-ringkasan">${k.ringkasan}</div>`;
+      html += `</li>`;
     });
-    marker.on("mouseout", function () {
-      this.setRadius(baseRadius);
-      this.setStyle({ fillOpacity: 0.8, weight: 1.5 });
-    });
-
-    function activate() {
-      lastHashKode = String(d.kode_kabkota_bps);
-      history.replaceState(null, "", "#wilayah-" + d.kode_kabkota_bps);
-      setActiveMarker(marker);
-      showDetail(d.kode_kabkota_bps);
-    }
-    marker.on("click", activate);
-    marker.on("add", function () {
-      const el = this.getElement();
-      if (el) {
-        el.setAttribute("tabindex", "0");
-        el.setAttribute("role", "button");
-        el.setAttribute("aria-label", d.nama_wilayah + ": " + n + " kasus");
-        el.addEventListener("keydown", (e) => {
-          if (e.key === "Enter" || e.key === " ") { e.preventDefault(); activate(); }
-        });
-      }
-    });
-
-    allMarkers.push(marker);
-    visible += 1;
+    html += `</ul>`;
   });
 
-  const counter = document.getElementById("filter-count");
-  if (counter) {
-    counter.innerHTML = "Menampilkan <strong>" + visible + "</strong> dari " + mappable.length + " wilayah";
-  }
+  detail.innerHTML = html !== '' ? html : '<p class="detail-empty">Tidak ada kasus terpetakan di wilayah terpilih.</p>';
+  detail.classList.remove("flash"); void detail.offsetWidth; detail.classList.add("flash");
+}
 
-  const emptyEl = document.getElementById("map-empty");
-  if (emptyEl) emptyEl.style.display = visible === 0 ? "flex" : "none";
-
-  document.querySelectorAll(".legend-item").forEach((el) => {
-    el.classList.toggle("active", el.dataset.tier === fJumlah);
+function resetView() {
+  ["filter-jenis", "filter-kategori", "filter-jumlah"].forEach(id => { 
+    const el = document.getElementById(id);
+    if(el) el.value = ""; 
   });
-
-  if (fit) {
-    const hasFilter = fJenis || fKategori || fJumlah;
-    if (hasFilter && allMarkers.length > 0) fitToMarkers(allMarkers);
-    else if (!hasFilter) mapInstance.setView([-7.3, 110.3], 8, { animate: true });
-  }
+  selectedKodes.clear();
+  document.querySelectorAll('#ms-list input[type="checkbox"]').forEach(cb => cb.checked = false);
+  updateMultiSelectHeader();
+  filterTahun = null;
+  updateFilterBadge();
+  if (geojsonLayer) mapInstance.flyToBounds(geojsonLayer.getBounds(), { padding: [20, 20], duration: 1 });
+  renderChoropleth();
+  updateDetailPanel();
 }
 
 async function initTimeline() {
@@ -355,24 +340,27 @@ async function initTimeline() {
   data.forEach((d, i) => { if (d.total > data[mi].total) mi = i; });
   const pk = data[mi];
   const i22 = data.findIndex((d) => d.tahun === 2022);
+
   const anns = {
     puncak: {
       type: "label", xValue: mi, yValue: pk.total,
       content: ["Puncak: " + pk.total + " kasus"],
-      color: "#fff", backgroundColor: "rgba(193,39,45,0.9)",
+      color: "#fff", backgroundColor: "rgba(193,39,45,0.95)",
       font: { size: 11, weight: "bold", family: "system-ui" },
-      padding: 6, cornerRadius: 3, yAdjust: -20,
+      padding: 6, cornerRadius: 4, yAdjust: -25,
     },
   };
+  
   if (i22 >= 0) {
     anns.format = {
       type: "label", xValue: i22, yValue: data[i22].total,
-      content: ["Laporan 2022 mengakui", "keterbatasan pemantauan"],
-      color: "#ccc", backgroundColor: "rgba(60,60,60,0.85)",
+      content: ["Laporan 2022 mengakui", "keterbatasan"],
+      color: "#fff", backgroundColor: "#333333", // Latar belakang gelap solid
       font: { size: 10, family: "system-ui", style: "italic" },
-      padding: 5, cornerRadius: 3, yAdjust: 40,
+      padding: 6, cornerRadius: 4, yAdjust: -45, // Digeser ke atas menjauhi batang
     };
   }
+
   window.timelineChart = new Chart(ctx, {
     type: "bar",
     data: {
@@ -384,14 +372,26 @@ async function initTimeline() {
       ],
     },
     options: {
-      responsive: true, maintainAspectRatio: false,
-      layout: { padding: { top: 30, bottom: 20 } },
+      responsive: true, 
+      maintainAspectRatio: false,
+      layout: { padding: { top: 50, bottom: 10, left: 10, right: 10 } },
       scales: {
-        x: { stacked: true, ticks: { color: "#ccc" }, grid: { display: false } },
-        y: { stacked: true, ticks: { color: "#ccc" }, grid: { color: "#333" } },
+        x: { 
+          stacked: true, 
+          ticks: { color: "#a3a3a3", font: { size: 13, weight: "500" } }, 
+          grid: { display: false } 
+        },
+        y: { 
+          stacked: true, 
+          ticks: { color: "#a3a3a3", font: { size: 13 } }, 
+          // TAMBAHAN: Gridlines halus putus-putus
+          grid: { color: "rgba(255, 255, 255, 0.08)", drawBorder: false, borderDash: [4, 4] } 
+        },
       },
       plugins: {
-        legend: { labels: { color: "#eee" } },
+        legend: { 
+          labels: { color: "#fff", font: { size: 13, weight: "600" }, usePointStyle: true, padding: 20 } 
+        },
         tooltip: { mode: "index", intersect: false },
         annotation: { annotations: anns },
       },
@@ -403,8 +403,34 @@ async function initAgamaChart() {
   const data = await loadJSON("agama_vs_negara.json");
   window.agamaData = data;
   const ctx = document.getElementById("agama-chart").getContext("2d");
-  // median pct_negara dari 12 kelompok agama lain (lihat ANALYSIS.md)
-  const med = 33.3;
+  
+  // Hitung Median dari seluruh data persentase
+  const pcts = data.map(d => d.pct_negara).sort((a, b) => a - b);
+  const mid = Math.floor(pcts.length / 2);
+  const median = pcts.length % 2 !== 0 ? pcts[mid] : (pcts[mid - 1] + pcts[mid]) / 2;
+
+  // Plugin kustom untuk menampilkan angka persen di ujung batang
+  const dataLabelsPlugin = {
+    id: 'dataLabels',
+    afterDatasetsDraw(chart, args, options) {
+      const { ctx } = chart;
+      ctx.save();
+      ctx.font = 'bold 12px system-ui';
+      ctx.fillStyle = '#1a1a1a';
+      ctx.textAlign = 'left';
+      ctx.textBaseline = 'middle';
+
+      chart.getDatasetMeta(0).data.forEach((bar, index) => {
+        const value = chart.data.datasets[0].data[index];
+        // Hanya tampilkan angka jika nilainya > 0
+        if (value > 0) {
+          ctx.fillText(value.toFixed(1) + '%', bar.x + 8, bar.y);
+        }
+      });
+      ctx.restore();
+    }
+  };
+
   window.agamaChart = new Chart(ctx, {
     type: "bar",
     data: {
@@ -412,12 +438,16 @@ async function initAgamaChart() {
       datasets: [{
         label: "% melibatkan negara",
         data: data.map((d) => d.pct_negara),
-        backgroundColor: data.map((d) => (d.highlight ? RED : "#c9c9c9")),
+        backgroundColor: data.map((d) => (d.highlight ? RED : "#e5e7eb")), // Warna abu dibuat lebih soft
+        borderRadius: 4, // Ujung batang membulat
+        barPercentage: 0.7, // Mengatur ketebalan batang
       }],
     },
     options: {
-      indexAxis: "y", responsive: true, maintainAspectRatio: false,
-      layout: { padding: { right: 100 } },
+      indexAxis: "y", 
+      responsive: true, 
+      maintainAspectRatio: false,
+      layout: { padding: { right: 60 } }, // Ruang ekstra di kanan untuk angka
       plugins: {
         legend: { display: false },
         tooltip: {
@@ -430,180 +460,60 @@ async function initAgamaChart() {
         },
         annotation: {
           annotations: {
-            median: {
-              type: "line", xMin: med, xMax: med,
-              borderColor: "#888", borderWidth: 1.5, borderDash: [5, 5],
+            medianLine: {
+              type: "line", xMin: median, xMax: median,
+              borderColor: "#888", borderWidth: 1.5, borderDash: [6, 4],
               label: {
                 display: true,
-                content: "Median semua agama lain: " + med.toFixed(1) + "%",
-                position: "end", color: "#333",
-                backgroundColor: "rgba(255,255,255,0.95)",
-                font: { size: 10, family: "system-ui", weight: "600" },
-                padding: 5, borderRadius: 2,
+                content: "Median Agama Lain: " + median.toFixed(1) + "%",
+                position: "end", color: "#fff",
+                backgroundColor: "rgba(80, 80, 80, 0.9)",
+                font: { size: 11, family: "system-ui", weight: "600" },
+                padding: 6, borderRadius: 4, xAdjust: -10, yAdjust: -20
               },
             },
           },
         },
       },
       scales: {
-        x: { ticks: { color: "#666", callback: (v) => v + "%" }, max: 80, grid: { color: "#e5e5e5" } },
-        y: { ticks: { color: "#1a1a1a", font: { size: 14, weight: "600" } }, grid: { display: false } },
+        x: { 
+          ticks: { 
+            color: "#6b7280", 
+            font: { size: 12 },
+            callback: (v) => v + "%" // TAMBAHKAN SIMBOL %
+          }, 
+          max: 80, 
+          grid: { color: "rgba(0, 0, 0, 0.04)", borderDash: [3, 3] } // Gridline vertikal pudar
+        },
+        y: { 
+          ticks: { color: "#1a1a1a", font: { size: 13, weight: "600" } }, 
+          grid: { display: false } 
+        },
       },
     },
+    plugins: [dataLabelsPlugin] // Daftarkan plugin datalabels
   });
 }
 
 async function initPenghayatBreakdown() {
   const data = await loadJSON("penghayat_breakdown.json");
-  document.getElementById("breakdown").innerHTML = data.map((d) =>
-    '<div class="bd-item"><div class="bd-num">' + d.jumlah +
-    '</div><div class="bd-label">' + d.jenis + "</div></div>"
-  ).join("");
+  const el = document.getElementById("breakdown");
+  if (el) el.innerHTML = data.map((d) => '<div class="bd-item"><div class="bd-num">' + d.jumlah + '</div><div class="bd-label">' + d.jenis + "</div></div>").join("");
 }
 
 async function initCases() {
   const data = await loadJSON("kasus_kunci.json");
+  const el = document.getElementById("cases");
+  if (!el) return;
   const order = ["C118", "C116", "C119", "C089"];
   data.sort((a, b) => order.indexOf(a.id_kasus) - order.indexOf(b.id_kasus));
-  const labels = {
-    C118: "PEMBUKA", C116: "KASUS 2",
-    C119: "KASUS 3", C089: "RESOLUSI",
-  };
-  document.getElementById("cases").innerHTML = data.map((d, i) => {
-    const sama = d.ringkasan_sesuai_laporan && d.judul_baku &&
-      d.ringkasan_sesuai_laporan.trim() === d.judul_baku.trim();
-    const ringkasanHtml = sama ? "" : '<p class="case-ringkasan">' + d.ringkasan_sesuai_laporan + "</p>";
-    return (
-      '<article class="case">' +
-        '<div class="case-num">' + String(i + 1).padStart(2, "0") + "</div>" +
-        '<div class="case-body">' +
-          '<p class="case-label">' + (labels[d.id_kasus] || "") + "</p>" +
-          '<p class="case-meta">' + d.nama_wilayah + " · " + d.tahun +
-            " · " + d.peran_negara_ringkas + "</p>" +
-          "<h3>" + d.judul_baku + "</h3>" +
-          ringkasanHtml +
-          '<p class="case-status"><strong>Status:</strong> ' + d.status + "</p>" +
-        "</div>" +
-      "</article>"
-    );
-  }).join("");
+  el.innerHTML = data.map((d, i) => '<article class="case"><div class="case-num">' + String(i + 1).padStart(2, "0") + '</div><div class="case-body"><p class="case-label">' + (d.id_kasus || "") + '</p><h3>' + d.judul_baku + '</h3></div></article>').join("");
 }
 
-
-function initProgress() {
-  const bar = document.getElementById("progress-bar");
-  if (!bar) return;
-  const update = () => {
-    const h = document.documentElement.scrollHeight - window.innerHeight;
-    const pct = h > 0 ? (window.scrollY / h) * 100 : 0;
-    bar.style.width = Math.min(pct, 100) + "%";
-  };
-  window.addEventListener("scroll", update, { passive: true });
-  window.addEventListener("resize", update);
-  update();
-}
-
-document.addEventListener("DOMContentLoaded", async () => {
-  try {
-    initProgress();
-    await initHero();
-    await initMap();
-    await initTimeline();
-    initTimelineClick();
-    await initAgamaChart();
-    await initPenghayatBreakdown();
-    await initCases();
-  } catch (e) {
-    console.error(e);
-    document.body.insertAdjacentHTML("afterbegin",
-      '<div style="padding:1rem;background:#fee;color:#a00;font-family:monospace">Error: ' +
-      e.message + ". Jalankan via local server.</div>");
-  }
-});
-
-
-/* Detail panel: tampilkan kasus per wilayah */
-function showDetail(kode) {
-  const detail = document.getElementById("map-detail");
-  if (!detail) return;
-
-  const data = window.kasusByWilayah && window.kasusByWilayah[String(kode)];
-  if (!data || !data.kasus || data.kasus.length === 0) {
-    detail.innerHTML =
-      '<p class="detail-empty">Tidak ada kasus terpetakan di wilayah ini.</p>';
-    return;
-  }
-
-  let html = '<div class="detail-header">';
-  html += '<h3>' + data.nama_wilayah + '</h3>';
-  html += '<p class="detail-count">' + data.kasus.length + ' kasus</p>';
-  html += '</div><ul class="detail-list">';
-
-  data.kasus.forEach((k) => {
-    html += '<li>';
-    html += '<div class="detail-meta">' + k.tahun + ' \u00b7 ' + k.peran_negara +
-            (k.status ? ' \u00b7 ' + k.status : '') + '</div>';
-    html += '<div class="detail-judul">' + k.judul + '</div>';
-    if (k.ringkasan && k.ringkasan !== k.judul) {
-      html += '<div class="detail-ringkasan">' + k.ringkasan + '</div>';
-    }
-    html += '</li>';
-  });
-
-  html += '</ul>';
-  detail.innerHTML = html;
-
-  detail.classList.remove("flash");
-  void detail.offsetWidth;
-  detail.classList.add("flash");
-
-  setTimeout(() => {
-    detail.scrollIntoView({ behavior: "smooth", block: "nearest" });
-  }, 300);
-}
-
-
-/* Cross-filter timeline -> peta */
-function setFilterTahun(tahun) {
-  if (filterTahun === tahun) filterTahun = null;
-  else filterTahun = tahun;
-  updateFilterBadge();
-  renderChoropleth({ fit: true });
-}
-
-function updateFilterBadge() {
-  const badge = document.getElementById("filter-badge");
-  if (!badge) return;
-  if (filterTahun === null) {
-    badge.style.display = "none";
-    badge.innerHTML = "";
-    return;
-  }
-  badge.style.display = "inline-flex";
-  badge.innerHTML = 'Filter: Tahun <strong>' + filterTahun +
-    '</strong> <button type="button" aria-label="Hapus filter tahun">&times;</button>';
-  const btn = badge.querySelector("button");
-  if (btn) btn.addEventListener("click", () => setFilterTahun(filterTahun));
-}
-
-function initTimelineClick() {
-  if (!window.timelineChart) return;
-  const chart = window.timelineChart;
-  chart.canvas.style.cursor = "pointer";
-  chart.canvas.addEventListener("click", (evt) => {
-    const points = chart.getElementsAtEventForMode(evt, "nearest", { intersect: true }, false);
-    if (points.length === 0) return;
-    const idx = points[0].index;
-    const labels = chart.data.labels;
-    const tahun = parseInt(labels[idx], 10);
-    if (!isNaN(tahun)) setFilterTahun(tahun);
-  });
-}
-
-
-/* Toggle tabel untuk chart */
 function initChartToggles() {
   document.querySelectorAll(".chart-toggle-btn").forEach((btn) => {
+    // Tambahkan ikon tabel pada load pertama
+    if (btn.textContent.includes("tabel")) btn.innerHTML = "📊 " + btn.textContent;
     btn.addEventListener("click", () => toggleChartTable(btn.dataset.chart));
   });
 }
@@ -620,39 +530,51 @@ function toggleChartTable(id) {
     tableEl.innerHTML = buildTableHTML(id);
     tableEl.style.display = "block";
     if (wrap) wrap.style.display = "none";
-    btn.textContent = "Lihat sebagai grafik";
+    btn.innerHTML = "📈 Lihat sebagai grafik";
   } else {
     tableEl.style.display = "none";
     if (wrap) wrap.style.display = "block";
-    btn.textContent = "Lihat angkanya sebagai tabel";
+    btn.innerHTML = "📊 Lihat angkanya sebagai tabel";
   }
 }
 
-function buildTableHTML(id) {
-  if (id === "timeline") {
-    const data = window.timelineData || [];
-    let html = '<table class="data-table"><thead><tr>' +
-      '<th>Tahun</th><th>Negara</th><th>Campuran</th><th>Non-negara</th><th>Total</th>' +
-      '</tr></thead><tbody>';
-    data.forEach((d) => {
-      const total = d.negara + d.campuran + d.non_negara;
-      html += '<tr><td>' + d.tahun + '</td><td>' + d.negara +
-              '</td><td>' + d.campuran + '</td><td>' + d.non_negara +
-              '</td><td><strong>' + total + '</strong></td></tr>';
-    });
-    return html + '</tbody></table>';
-  }
-  if (id === "agama") {
-    const data = window.agamaData || [];
-    let html = '<table class="data-table"><thead><tr>' +
-      '<th>Kelompok</th><th>Kasus unik</th><th>Negara terlibat</th><th>% negara</th>' +
-      '</tr></thead><tbody>';
-    data.forEach((d) => {
-      html += '<tr><td>' + d.agama + '</td><td>' + d.kasus_unik +
-              '</td><td>' + d.negara_terlibat + '</td><td><strong>' +
-              d.pct_negara + '%</strong></td></tr>';
-    });
-    return html + '</tbody></table>';
-  }
-  return "";
+
+
+
+
+function setFilterTahun(tahun) {
+  if (filterTahun === tahun) filterTahun = null;
+  else filterTahun = tahun;
+  updateFilterBadge();
+  renderChoropleth({ fit: true });
 }
+
+function updateFilterBadge() {
+  const badge = document.getElementById("filter-badge");
+  if (!badge) return;
+  if (filterTahun === null) { badge.style.display = "none"; badge.innerHTML = ""; return; }
+  badge.style.display = "inline-flex";
+  badge.innerHTML = 'Filter: Tahun <strong>' + filterTahun + '</strong> <button type="button" aria-label="Hapus filter tahun">&times;</button>';
+  const btn = badge.querySelector("button");
+  if (btn) btn.addEventListener("click", () => setFilterTahun(filterTahun));
+}
+
+function initTimelineClick() {
+  if (!window.timelineChart) return;
+  window.timelineChart.canvas.style.cursor = "pointer";
+  window.timelineChart.canvas.addEventListener("click", (evt) => {
+    const points = window.timelineChart.getElementsAtEventForMode(evt, "nearest", { intersect: true }, false);
+    if (points.length === 0) return;
+    const idx = points[0].index;
+    const tahun = parseInt(window.timelineChart.data.labels[idx], 10);
+    if (!isNaN(tahun)) setFilterTahun(tahun);
+  });
+}
+
+document.addEventListener("DOMContentLoaded", async () => {
+  try {
+    await initHero(); await initMap(); await initTimeline(); initTimelineClick(); await initAgamaChart(); await initPenghayatBreakdown(); await initCases(); initChartToggles();
+  } catch (e) { console.error(e); }
+});
+
+
