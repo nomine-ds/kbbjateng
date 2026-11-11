@@ -56,6 +56,8 @@ async function initHero() {
 }
 
 let mapInstance = null;
+let geojsonLayer = null;
+let geojsonData = null;
 let allMarkers = [];
 let allMapData = [];
 
@@ -98,16 +100,16 @@ async function initMap() {
     kategoriSelect.appendChild(opt);
   });
 
-  renderMarkers();
+  renderChoropleth();
 
   ["filter-jenis", "filter-kategori", "filter-jumlah"].forEach((id) => {
-    document.getElementById(id).addEventListener("change", () => renderMarkers({ fit: true }));
+    document.getElementById(id).addEventListener("change", () => renderChoropleth({ fit: true }));
   });
 
   document.querySelectorAll(".legend-item").forEach((el) => {
     el.addEventListener("click", () => {
       document.getElementById("filter-jumlah").value = el.dataset.tier;
-      renderMarkers({ fit: true });
+      renderChoropleth({ fit: true });
     });
   });
 
@@ -162,14 +164,93 @@ function resetView() {
   if (window.location.hash.startsWith("#wilayah-")) {
     history.replaceState(null, "", window.location.pathname + window.location.search);
   }
-  renderMarkers({ fit: true });
+  renderChoropleth({ fit: true });
   const detail = document.getElementById("map-detail");
   if (detail) {
     detail.innerHTML = '<p class="detail-hint">Klik wilayah di peta untuk melihat daftar kasus di wilayah tersebut.</p>';
   }
 }
 
-function renderMarkers(options = {}) {
+async function renderChoropleth(options = {}) {
+  const { fit = false } = options;
+  if (!mapInstance) return;
+
+  if (geojsonLayer) {
+    mapInstance.removeLayer(geojsonLayer);
+    geojsonLayer = null;
+  }
+
+  if (!geojsonData) {
+    try {
+      geojsonData = await loadJSON("kabkota_jateng.geojson");
+    } catch (e) {
+      console.error("Gagal memuat GeoJSON.", e);
+      return;
+    }
+  }
+
+  const fJenis = document.getElementById("filter-jenis").value;
+  const fKategori = document.getElementById("filter-kategori").value;
+  const fJumlah = document.getElementById("filter-jumlah").value;
+
+  const kasusByKode = {};
+  allMapData.forEach(d => { kasusByKode[String(d.kode_kabkota_bps)] = d; });
+
+  let visible = 0;
+
+  geojsonLayer = L.geoJSON(geojsonData, {
+    style: function (feature) {
+      const kode = feature.properties.kode_bps;
+      const d = kasusByKode[kode];
+      const n = d ? d.jumlah_kasus_unik : 0;
+
+      if (fJenis && d && d.jenis_kabkota !== fJenis) return { opacity: 0, fillOpacity: 0 };
+      if (fKategori && d && d.kategori_terbanyak !== fKategori) return { opacity: 0, fillOpacity: 0 };
+      if (fJumlah === "0" && n !== 0) return { opacity: 0, fillOpacity: 0 };
+      if (fJumlah === "1-4" && (n < 1 || n > 4)) return { opacity: 0, fillOpacity: 0 };
+      if (fJumlah === "5-14" && (n < 5 || n > 14)) return { opacity: 0, fillOpacity: 0 };
+      if (fJumlah === "15+" && n < 15) return { opacity: 0, fillOpacity: 0 };
+
+      let fillColor = "#e0e0e0";
+      if (n >= 15) fillColor = "#7a1a1e";
+      else if (n >= 5) fillColor = "#c1272d";
+      else if (n >= 1) fillColor = "#e37a7e";
+      else if (n === 0) fillColor = "#d9d9d9";
+
+      return { fillColor: fillColor, weight: 1, opacity: 1, color: "white", fillOpacity: 0.8 };
+    },
+    onEachFeature: function (feature, layer) {
+      const kode = feature.properties.kode_bps;
+      const nama = feature.properties.shapeName;
+      const d = kasusByKode[kode];
+      const n = d ? d.jumlah_kasus_unik : 0;
+
+      layer.bindTooltip("<strong>" + nama + "</strong><br>" + n + " kasus unik", { sticky: true, className: "custom-tooltip" });
+      layer.on("click", () => { if (d) showDetail(kode); });
+      layer.on("mouseover", function () {
+        this.setStyle({ weight: 2.5, color: "#1a1a1a", fillOpacity: 0.95 });
+        this.bringToFront();
+      });
+      layer.on("mouseout", function () { geojsonLayer.resetStyle(this); });
+      visible++;
+    }
+  }).addTo(mapInstance);
+
+  const counter = document.getElementById("filter-count");
+  if (counter) counter.innerHTML = "Menampilkan <strong>" + visible + "</strong> dari " + allMapData.length + " wilayah";
+
+  const emptyEl = document.getElementById("map-empty");
+  if (emptyEl) emptyEl.style.display = visible === 0 ? "flex" : "none";
+
+  if (fit) {
+    const hasFilter = fJenis || fKategori || fJumlah;
+    if (hasFilter && geojsonLayer.getLayers().length > 0) {
+      mapInstance.fitBounds(geojsonLayer.getBounds().pad(0.1), { maxZoom: 10 });
+    } else if (!hasFilter) {
+      mapInstance.setView([-7.3, 110.3], 8, { animate: true });
+    }
+  }
+}) {
   const { fit = false } = options;
   if (!mapInstance) return;
 
@@ -487,7 +568,7 @@ function setFilterTahun(tahun) {
   if (filterTahun === tahun) filterTahun = null;
   else filterTahun = tahun;
   updateFilterBadge();
-  renderMarkers({ fit: true });
+  renderChoropleth({ fit: true });
 }
 
 function updateFilterBadge() {
