@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: ["master"] # Ganti ke "master" jika branch utama Anda master
+    branches: ["main"] # Ganti ke "master" jika branch utama Anda master
 
   workflow_dispatch:
 
